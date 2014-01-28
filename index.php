@@ -1,2 +1,2 @@
 <?php
-  echo 'index';
+  echo 'Teste 2';
