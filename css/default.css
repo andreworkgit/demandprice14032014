@@ -116,12 +116,24 @@ header input::-webkit-input-placeholder, header input:-moz-placeholder , header 
 }
 .tracks{
 	width: 100%;
-	background: #eee;
-	overflow: auto
+	overflow: auto;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #eee
+}
+.tracks ul{
+	max-width: 1000%;
+	float: left;
+
 }
 .tracks ul li{
-	max-width: 100;
-	max-height: 105px;
+	height: 105px;
 	border-bottom: 1px solid #ccc;
-	white-space: nowrap;
+	padding: 10px;
+	float:left;
+	white-space:nowrap;
+	max-width:100%;
 }
