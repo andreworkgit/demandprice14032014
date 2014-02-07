@@ -1,0 +1,127 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #fff;
+	
+}
+
+.content{
+	background: #000;
+	max-width: 100%;
+	overflow: hidden;
+}
+
+header{
+	background: #fff;
+	height: 35px;
+	max-width: 100%;
+}
+
+.logo{
+	background: #5d00d0;
+	width: 35px;
+	height: 100%;
+	float: left;
+}
+.logo img{
+	background: url(/images/sprite32x32.png) -29px -157px no-repeat;
+	width: 35px;
+	height: 35px;
+}
+header input{
+	border: none;
+	font: bold italic 16px Arial;
+	padding: 0 10px;
+	color: #666;
+	height: 100%;
+	width: 76%;
+  	float:left;
+  	outline:none;
+}
+header input::-webkit-input-placeholder, header input:-moz-placeholder , header input:-ms-input-placeholder{
+   color: #CCC;
+}
+.toolbar{
+	width: 100%;
+	height: 38px;
+	background: #ccc;
+	position: relative;
+}
+.toolbar-zoom{
+	width: 120px;
+	height: 100%;
+	position: relative;
+	float: left;
+}
+.negativeZoom, .positiveZoom{
+	width: 35px;
+	height: 100%;
+	float: left;
+	cursor: pointer;
+}
+
+.negativeZoom img, .positiveZoom img{width: 35px; height: 35px;}
+.negativeZoom img{background: url(/images/sprite32x32.png) 1px 2px no-repeat;}
+.positiveZoom img{background: url(/images/sprite32x32.png) 1px 2px no-repeat;}
+
+.percentage {
+	padding: 9px 0;
+	float: left;
+	font: bold 1em Arial;
+	color: #999;
+}
+.toolbar-ideas{
+	float: left;
+	margin: 0 2%;
+	cursor: pointer;
+	color: #999;
+}
+.toolbar-ideas img{
+	background: url(/images/sprite32x32.png) -62px 2px no-repeat;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
+.toolbar-ideas span{
+	padding: 12px 0 0;
+	float: left;
+	margin: 0 0 0 5px;
+	font: bold 1em Arial;
+}
+.toolbar-ideas:hover{color: #000;}
+.toolbar-ideas:hover > img {background: url(/images/sprite32x32.png) -95px 2px no-repeat;}
+
+.toolbar-user{
+	float: right;
+	margin-right: 5px;
+	
+}
+.toolbar-user span{
+	font: normal 1em Arial;
+	padding: 10px 0 0;
+	float: left;
+	color: #666;
+}
+.user-img{
+	margin-left: 10px;
+}
+.user-option{
+	background: url(/images/sprite32x32.png) -35px -31px no-repeat;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+.tracks{
+	width: 100%;
+	background: #eee;
+	overflow: auto
+}
+.tracks ul li{
+	max-width: 100;
+	max-height: 105px;
+	border-bottom: 1px solid #ccc;
+	white-space: nowrap;
+}
