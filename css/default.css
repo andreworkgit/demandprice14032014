@@ -9,9 +9,7 @@ body{
 }
 
 .content{
-	background: #000;
-	max-width: 100%;
-	overflow: hidden;
+	max-width: 100%;;
 }
 
 header{
@@ -25,12 +23,17 @@ header{
 	width: 35px;
 	height: 100%;
 	float: left;
+	position: relative;
+	cursor: pointer;
 }
 .logo img{
-	background: url(/images/sprite32x32.png) -29px -157px no-repeat;
+	background: #5d00d0 url(/images/sprite32x32.png) -29px -157px no-repeat;
 	width: 35px;
 	height: 35px;
+	position: relative;
+	z-index: 112;
 }
+
 header input{
 	border: none;
 	font: bold italic 16px Arial;
@@ -48,7 +51,6 @@ header input::-webkit-input-placeholder, header input:-moz-placeholder , header 
 	width: 100%;
 	height: 38px;
 	background: #ccc;
-	position: relative;
 }
 .toolbar-zoom{
 	width: 120px;
@@ -117,23 +119,47 @@ header input::-webkit-input-placeholder, header input:-moz-placeholder , header 
 .tracks{
 	width: 100%;
 	overflow: auto;
-    position: absolute;
-    top: 75px;
+    top: 73px;
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: #eee
+    background-color: #eee;
+    clear: both;
+    position: absolute;
 }
 .tracks ul{
 	max-width: 1000%;
 	float: left;
+	min-width: 100%;
 
 }
 .tracks ul li{
 	height: 105px;
 	border-bottom: 1px solid #ccc;
-	padding: 10px;
 	float:left;
 	white-space:nowrap;
-	max-width:100%;
+	width:100%;
+}
+.guitar-track{
+	width: 70px;
+	height: 68px;
+	border: 2px solid  #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	position: relative;
+	left: 5px;
+	float: left;
+	top: -3px;
+}
+.guitar-track span{
+	position: absolute;
+	font: normal 12px Arial;
+	top: 7px;
+	left: 7px;
+}
+.guitar-track img{
+	background: url(/images/sprite70x70.png) 0px -0px no-repeat;
+	width: 70px;
+	height: 70px;
 }

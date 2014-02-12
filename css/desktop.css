@@ -1,0 +1,20 @@
+.logoHover{
+	background: #4b0098;
+	position: absolute;
+	top: 0;
+	padding: 9px 18px;
+	font: normal 14px Arial;
+	color: #fff;
+	height: 17px;
+	white-space: nowrap;;
+	z-index: 111;
+	left: -115px;
+
+	-webkit-transition: left 0.5s linear 0.2s;
+	-moz-transition: left 0.5s linear 0.2s ;
+	-ms-transition: left 0.5s linear 0.2s ;
+	-o-transition: left 0.5s linear 0.2s ;
+	transition: left 0.5s linear 0.2s ;
+
+}
+.logo:hover > .logoHover{left: 35px;}
