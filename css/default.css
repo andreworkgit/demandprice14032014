@@ -4,7 +4,7 @@
 }
 
 body{
-	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px 0px no-repeat;	*/
+	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px -1px no-repeat;	*/
 }
 
 .content{
@@ -146,7 +146,7 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	list-style: none;
 	position: relative;
 }
-.guitar-track, .vocal-track, .tools-track{
+.guitar-track, .vocal-track, .tools-track, .drumm-track, .delete-track{
 	width: 69px;
 	height: 63px;
 	border: 2px solid  #CCC;
@@ -156,24 +156,19 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	color: #252525;
 	left: 5px;
 	top: 20px;
-	position: absolute;
+	position: relative;
 }
-.guitar-track span, .vocal-track span{
+.guitar-track span, .vocal-track span, .drumm-track span{
 	position: absolute;
 	font: normal .7em Arial;
 	top: 3px;
 	left: 5px;
 }
-.guitar-trackGuitarra{
-	background: url(/images/sprite70x70.png) 2px -4px no-repeat;
-	width: 70px;
-	height: 70px;
-}
-.vocal-trackVocal{
-	background: url(/images/sprite70x70.png) 2px -75px no-repeat;
-	width: 70px;
-	height: 70px;
-}
+.guitar-trackGuitar, .vocal-trackVocal, .drumm-trackDrumm{width: 70px;height: 70px;}
+.guitar-trackGuitar{background: url(/images/sprite70x70.png) 2px -4px no-repeat;}
+.vocal-trackVocal{background: url(/images/sprite70x70.png) 2px -75px no-repeat;}
+.drumm-trackDrumm{background: url(/images/sprite70x70.png) 2px -144px no-repeat;}
+
 .track-volume{
 	background: url(/images/volume.jpg) 2px -2px;
 	width: 30px;
@@ -181,6 +176,32 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	position: absolute;
 	top: 22px;
 	left: 81px;
+}
+.delete-track{
+
+}
+.delete-track img{
+	width: 30px;
+	height: 30px;
+	background: url(/images/sprite32x32.png) -97px -129px no-repeat;
+	position: absolute;
+	left: 19px;
+	top: 0px;
+}
+.delete-trackConfirm{
+	font: normal .8em Arial;
+	color: #000;
+	position: relative;
+	top: 26px;
+	left: 6px;
+}
+.delete-trackCount{
+	color: #999;
+	font: normal .8em Arial;
+	position: absolute;
+	bottom: 4px;
+	left: 31px;
+
 }
 .sound-teste1, .sound-teste2, .sound-teste3, .sound-teste4, .sound-teste5{
 	height: 83px;
@@ -190,6 +211,8 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 .sound-teste1{background: url(/images/box1.jpg);width: 377px;left: 410px;}
 .sound-teste2{background: url(/images/box2.jpg);width: 188px;left: 599px;}
 .sound-teste3{background: url(/images/box2.jpg);width: 373px;left: 132px;}
+.sound-teste4{background: url(/images/box4.jpg);width: 843px;left: 132px;}
+.sound-teste5{background: url(/images/box5.jpg);width: 842px;left: 132px;}
 
 .tools-trackSeparator{
 	background: url(/images/tools-bg.jpg);
@@ -200,33 +223,51 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	z-index: 222;
 }
 .tools-trackDel, .tools-trackSolo, .tools-trackMove, .tools-trackMute{
-	width: 30px;
+	width: 31px;
 	height: 30px;
 	cursor: pointer;
 	position: absolute;
 	z-index: 222;
 }
 .tools-trackDel{
-	background: url(/images/sprite32x32.png) -97px -129px no-repeat;
+	background: url(/images/sprite32x32.png) -95px -129px no-repeat;
 	position: absolute;
-	left: 3px;
+	left: 1px;
 	top: 1px;
 }
 .tools-trackSolo{
-	background: url(/images/sprite32x32.png) -64px -129px no-repeat;
+	background: url(/images/sprite32x32.png) -67px -129px no-repeat;
 	position: absolute;
-	left: 33px;
+	left: 37px;
 	top: 1px;	
 }
 .tools-trackMove{
-	background: url(/images/sprite32x32.png) -97px -67px no-repeat;
+	background: url(/images/sprite32x32.png) 3px -193px no-repeat;
 	position: absolute;
-	left: 3px;
-	top: 33px;
+	left: 1px;
+	top: 32px;
 }
 .tools-trackMute{
-	background: url(/images/sprite32x32.png) -96px -98px no-repeat;
+	background: url(/images/sprite32x32.png) -100px -98px no-repeat;
 	position: absolute;
-	left: 33px;
+	left: 37px;
 	top: 33px;	
+}
+.tracksolo-active{
+	background: url(/images/sprite32x32.png) -33px -192px no-repeat;
+	top: -7px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	position: absolute;
+	right: -3px;
+}
+.trackmute-active{
+	background: url(/images/sprite32x32.png) -65px -192px no-repeat;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	position: absolute;
+	right: -3px;
+	bottom: -3px;
 }
