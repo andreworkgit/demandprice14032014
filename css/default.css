@@ -206,7 +206,7 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 .sound-teste1, .sound-teste2, .sound-teste3, .sound-teste4, .sound-teste5{
 	height: 83px;
 	position: absolute;
-	top: 9px;
+	top: 11px;
 }
 .sound-teste1{background: url(/images/box1.jpg);width: 377px;left: 410px;}
 .sound-teste2{background: url(/images/box2.jpg);width: 188px;left: 599px;}
@@ -271,3 +271,14 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	right: -3px;
 	bottom: -3px;
 }
+.nameEdit{
+	position: absolute;
+	right: 0px;
+}
+.cancel-edit, .confirm-edit{
+	width: 38px;
+	height: 35px;
+	float: left;
+}
+.cancel-edit{background: #999 url(/images/sprite32x32.png) -61px -159px no-repeat;}
+.confirm-edit{background: #545454 url(/images/sprite32x32.png) -94px -159px no-repeat;}
