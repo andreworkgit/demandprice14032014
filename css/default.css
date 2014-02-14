@@ -128,7 +128,7 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 .tracks{
 	width: 100%;
 	overflow: auto;
-    top: 73px;
+    top: 98px;
     right: 0;
     left: 0;
     bottom: 0;
@@ -308,10 +308,25 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 
 }
 .addIcon img{
-	background: url(images/addTrack.gif);
+	background: url(/images/addTrack.gif);
 	width: 23px;
 	height: 23px;
 	position: relative;
 	top: 41px;
 	left: 6px;
+}
+.regua{
+	background: url(/images/regua.gif);
+	widows: 1148px;
+	height: 25px;
+}
+.player{
+	background: url(/images/player.gif);
+	width: 122px;
+	height: 120px;
+}
+footer{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
 }
