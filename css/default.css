@@ -48,6 +48,9 @@ header input{
 @media screen and (max-width: 842px){
 	header input{width: 84%}
 }
+@media screen and (max-width: 368px){
+	header input{width: 63%}
+}
 header input::-webkit-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 header input:-moz-placeholder { /* Firefox 18- */ color: #CCC;font: bold italic 1.1em Arial;}
 header input::-moz-placeholder {  /* Firefox 19+ */ color: #CCC;font: bold italic 1.1em Arial;}
@@ -126,30 +129,28 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 	cursor: pointer;
 }
 .tracks{
-	width: 100%;
-	overflow: auto;
-    top: 73px;
+    top: 98px;
     right: 0;
     left: 0;
     bottom: 0;
     background-color: #eee;
     clear: both;
     position: absolute;
+    overflow: auto;
+    width: 100%;
 }
 .tracks ul{
-	max-width: 1000%;
-	float: left;
-	min-width: 100%;
-
+	position: absolute;
+	width: 100%;
 }
 .tracks ul li{
 	height: 105px;
 	border-bottom: 1px solid #e1e1e1;
 	float:left;
-	white-space:nowrap;
-	width:100%;
-	list-style: none;
 	position: relative;
+	min-width: 100%;
+	list-style: none;
+	white-space: nowrap;
 }
 .guitar-track, .vocal-track, .tools-track, .drumm-track, .delete-track{
 	width: 69px;
@@ -317,8 +318,8 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 }
 .regua{
 	background: url(/images/regua.gif);
-	widows: 1148px;
 	height: 25px;
+	width: 1148px;
 }
 .player{
 	background: url(/images/player.gif);
