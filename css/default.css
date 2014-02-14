@@ -128,7 +128,7 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 .tracks{
 	width: 100%;
 	overflow: auto;
-    top: 98px;
+    top: 73px;
     right: 0;
     left: 0;
     bottom: 0;
