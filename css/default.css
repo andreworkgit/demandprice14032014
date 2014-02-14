@@ -4,7 +4,7 @@
 }
 
 body{
-	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px -1px no-repeat;	*/
+	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px 0px no-repeat;	*/
 }
 
 .content{
@@ -37,17 +37,22 @@ header{
 
 header input{
 	border: none;
-	font: bold italic 1.1em Arial;
-	padding: 0 12px;
-	color: #666;
+	font: bold 1em Arial;
+	padding: 0 9px;
+	color: #000;
 	height: 100%;
-	width: 76%;
+	width: 93%;
   	float:left;
   	outline:none;
 }
-header input::-webkit-input-placeholder, header input::-moz-placeholder, header input:-ms-input-placeholder{
-   color: #000;
+@media screen and (max-width: 842px){
+	header input{width: 84%}
 }
+header input::-webkit-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
+header input:-moz-placeholder { /* Firefox 18- */ color: #CCC;font: bold italic 1.1em Arial;}
+header input::-moz-placeholder {  /* Firefox 19+ */ color: #CCC;font: bold italic 1.1em Arial;}
+header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
+
 .toolbar{
 	width: 100%;
 	height: 38px;
@@ -279,6 +284,34 @@ header input::-webkit-input-placeholder, header input::-moz-placeholder, header 
 	width: 38px;
 	height: 35px;
 	float: left;
+	cursor: pointer;
 }
 .cancel-edit{background: #999 url(/images/sprite32x32.png) -61px -159px no-repeat;}
 .confirm-edit{background: #545454 url(/images/sprite32x32.png) -94px -159px no-repeat;}
+
+.addtrack{
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+.addtrack span{
+	font: bold italic 1em Arial;
+	color: #666;
+	position: relative;
+	top: 45px;
+	left: 23px;
+}
+.addIcon{
+	width: 35px;
+	height: 100%;
+	float: left;
+	background-color: #CCC;
+
+}
+.addIcon img{
+	background: url(images/addTrack.gif);
+	width: 23px;
+	height: 23px;
+	position: relative;
+	top: 41px;
+	left: 6px;
+}
