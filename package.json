@@ -12,8 +12,8 @@
     "nodemon": "~1.0.15"
   },
   "scripts": {
-    "start": "nodejs app.js",
-    "debug": "nodejs debug app.js"
+    "start": "node app.js",
+    "debug": "node debug app.js"
   },
   "main": "app.js",
   "repository": "",
