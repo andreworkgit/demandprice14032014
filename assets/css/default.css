@@ -4,12 +4,13 @@
 }
 
 body{
+	background: #efefef;
 	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px 0px no-repeat;	*/
 }
 
 .content{
-	max-width: 100%;
 	overflow: hidden;
+	max-width: 100%;
 	/*opacity: .5;*/
 }
 
@@ -129,19 +130,15 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 	cursor: pointer;
 }
 .tracks{
-    top: 98px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #eee;
-    clear: both;
-    position: absolute;
-    overflow: auto;
-    width: 100%;
+	position: absolute;
+	display: block;
+	float: left;
+	top: 69px;
+	min-width: 100%;
 }
 .tracks ul{
-	position: absolute;
-	width: 100%;
+	float: left;
+	min-width: 100%;
 }
 .tracks ul li{
 	height: 105px;
@@ -163,6 +160,7 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 	left: 5px;
 	top: 20px;
 	position: relative;
+	float: left;;
 }
 .guitar-track span, .vocal-track span, .drumm-track span{
 	position: absolute;
@@ -317,6 +315,7 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 	left: 6px;
 }
 .regua{
+	
 	background: url(/images/regua.gif);
 	height: 25px;
 	width: 1148px;
@@ -327,7 +326,12 @@ header input:-ms-input-placeholder {color: #CCC;font: bold italic 1.1em Arial;}
 	height: 120px;
 }
 footer{
-	position: absolute;
+	position: fixed;
 	right: 0px;
 	bottom: 0px;
+}
+.fixed-top{
+	position: fixed;
+	width: 100%;
+	z-index: 999;
 }
