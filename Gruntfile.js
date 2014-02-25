@@ -47,19 +47,27 @@ module.exports = function (grunt) {
     // linked in the proper order order
 
     // Bring in the socket.io client
-    'angularjs/js/socket.io.js',
+    'angularjs/lib/sails/socket.io.js',
 
     // then beef it up with some convenience logic for talking to Sails.js
-    'angularjs/js/sails.io.js',
+    'angularjs/lib/sails/sails.io.js',
 
     // A simpler boilerplate library for getting you up and running w/ an
     // automatic listener for incoming messages from Socket.io.
-    'angularjs/js/app.js',
+    //'angularjs/js/app.js',
 
     // *->    put other dependencies here   <-*
+    "angularjs/lib/jquery/jquery-1.11.0.min.js",
+    "angularjs/lib/angular/angular.js",
+    "angularjs/lib/angular/angular-route.js",
+    "angularjs/js/app.js",
+    "angularjs/js/services.js",
+    "angularjs/js/controllers.js",
+    "angularjs/js/filters.js",
+    "angularjs/js/directives.js"
 
     // All of the rest of your app scripts imported here
-    'angularjs/**/*.js'
+    //'angularjs/**/*.js'
   ];
 
 
