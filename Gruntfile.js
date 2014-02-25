@@ -58,8 +58,8 @@ module.exports = function (grunt) {
     //'angularjs/js/app.js',
 
     // *->    put other dependencies here   <-*
-    "js/bootstrap.min.js",
     "angularjs/lib/jquery/jquery-1.11.0.min.js",
+    "js/bootstrap.min.js",
     "angularjs/lib/angular/angular.js",
     "angularjs/lib/angular/angular-route.js",
     "angularjs/js/app.js",

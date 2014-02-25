@@ -3,9 +3,9 @@
 /* Controllers */
 
 angular.module('NcBox.controllers', []).
-  controller('MyCtrl1', [function() {
+	controller('Home', function($scope){
+		$scope.firstname = 'henrique';
+	})
+	.controller('MyCtrl2', [function() {
 
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+ 	}]);
