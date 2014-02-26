@@ -8,7 +8,11 @@ angular.module('NcBox.services', []).
   	return $resource('/users/:id',{id: '@id'}, {
   		create: {
   			method: 'POST',
-  			utl: '/users/create'
+  			url: '/users/create'
+  		},
+  		login: {
+  			method: 'POST',
+  			url: '/users/login'
   		}
   	});
   }]);

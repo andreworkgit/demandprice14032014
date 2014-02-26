@@ -5,26 +5,41 @@
 angular.module('NcBox.controllers', []).
 	controller('Home', ['$scope','$location', 'usersService', function($scope, $location, usersService){
 		$scope.login = function(){
-			if($scope.loginemail == 'teste@teste.com' && $scope.loginsenha == '123'){
-				$location.url('/view2');
-			}else{
-				$scope.errorlogin = 'Login invalido';
-			}
-		}
-
-		$scope.cadastro = function(item){ 
-			//console.dir(usersService);
-
-			var result = usersService.create(
+			var params = {email: $scope.loginemail, password: $scope.loginsenha}
+			var result = usersService.login(
 				{},
-				{firstname: item.firstname, lastname: item.lastname, email: item.email, password: item.password},
+				params,
 				function(res){
 					$location.url('/view2');
 				},
 				function(res){
-					console.dir(res.data.ValidationError);
+					$scope.errorlogin = 'Login invalido';
 				}
 			);
+		}
+
+		$scope.cadastro = function(item){
+			if(item != undefined){
+				//console.dir(usersService);
+				console.log(item);
+				var params = {
+					firstname: item.firstname, 
+					lastname: item.lastname, 
+					email: item.email, 
+					password: item.password
+				}
+
+				var result = usersService.create(
+					{},
+					params,
+					function(res){
+						$location.url('/view2');
+					},
+					function(res){
+						console.dir(res.data.ValidationError);
+					}
+				);
+			}
 
 			//console.log(result);
 		}

@@ -24,7 +24,7 @@
                             <!-- Username -->
                             <label class="control-label" for="email">E-mail</label>
                             <div class="controls">
-                              <input type="text" id="email" ng-model="loginemail" name="email" class="input-xlarge">
+                              <input type="text" id="email" ng-model="loginemail" required name="email" class="input-xlarge">
                             </div>
                           </div>
      
@@ -32,7 +32,7 @@
                             <!-- Password-->
                             <label class="control-label" for="password">Password</label>
                             <div class="controls">
-                              <input type="password" id="password" ng-model="loginsenha" name="password" placeholder="" class="input-xlarge">
+                              <input type="password" id="password" ng-model="loginsenha" required name="password"  class="input-xlarge">
                             </div>
                           </div>
      
@@ -48,13 +48,13 @@
                     <div class="tab-pane fade" id="create">
                       <form id="tab" ng-submit="cadastro(item)">
                         <label>First Name</label>
-                        <input type="text" value="" ng-model="item.firstname" class="input-xlarge">
+                        <input type="text" value="" ng-model="item.firstname" required class="input-xlarge">
                         <label>Last Name</label>
-                        <input type="text" value="" ng-model="item.lastname" class="input-xlarge">
+                        <input type="text" value="" ng-model="item.lastname" required class="input-xlarge">
                         <label>Email</label>
-                        <input type="text" value="" ng-model="item.email" class="input-xlarge">
+                        <input type="email" value="" ng-model="item.email" required class="input-xlarge">
                         <label>Password</label>
-                        <input type="password" value="" ng-model="item.password" class="input-xlarge">
+                        <input type="password" value="" ng-model="item.password" required class="input-xlarge">
      
                         <div>
                           <button class="btn btn-primary">Create Account</button>

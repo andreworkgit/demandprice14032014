@@ -10,7 +10,9 @@
     "ejs": "0.8.4",
     "optimist": "0.3.4",
     "nodemon": "~1.0.15",
-    "sails-mongo": "~0.9.7"
+    "sails-mongo": "~0.9.7",
+    "bcrypt-nodejs": "0.0.3",
+    "shortid":"2.0.0"
   },
   "scripts": {
     "start": "node app.js",
