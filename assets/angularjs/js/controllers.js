@@ -20,8 +20,6 @@ angular.module('NcBox.controllers', []).
 
 		$scope.cadastro = function(item){
 			if(item != undefined){
-				//console.dir(usersService);
-				console.log(item);
 				var params = {
 					firstname: item.firstname, 
 					lastname: item.lastname, 
@@ -40,8 +38,6 @@ angular.module('NcBox.controllers', []).
 					}
 				);
 			}
-
-			//console.log(result);
 		}
 	}])
 	.controller('MyCtrl2', [function() {
