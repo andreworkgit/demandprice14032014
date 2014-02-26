@@ -13,7 +13,7 @@
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane active in" id="login">
-                      <form class="form-horizontal" action='' method="POST">
+                      <form class="form-horizontal" ng-submit="login()">
                         <fieldset>
                           <div id="legend">
                             <legend class="">Login</legend>
@@ -46,15 +46,15 @@
                       </form>                
                     </div>
                     <div class="tab-pane fade" id="create">
-                      <form id="tab">
+                      <form id="tab" ng-submit="cadastro(item)">
                         <label>First Name</label>
-                        <input type="text" value="" ng-model="firstname" class="input-xlarge">
+                        <input type="text" value="" ng-model="item.firstname" class="input-xlarge">
                         <label>Last Name</label>
-                        <input type="text" value="" ng-model="lastname" class="input-xlarge">
+                        <input type="text" value="" ng-model="item.lastname" class="input-xlarge">
                         <label>Email</label>
-                        <input type="text" value="" ng-model="email" class="input-xlarge">
+                        <input type="text" value="" ng-model="item.email" class="input-xlarge">
                         <label>Password</label>
-                        <input type="password" value="" ng-model="password" class="input-xlarge">
+                        <input type="password" value="" ng-model="item.password" class="input-xlarge">
      
                         <div>
                           <button class="btn btn-primary">Create Account</button>

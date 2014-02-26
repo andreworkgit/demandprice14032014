@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('NcBox', [
   'ngRoute',
+  'ngResource',
   'NcBox.filters',
   'NcBox.services',
   'NcBox.directives',
