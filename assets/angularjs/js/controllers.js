@@ -67,5 +67,5 @@ controller('Perfil', ['$scope','$location', 'usersService', '$templateCache', fu
 
 	$templateCache.removeAll();
 	$scope.parte = 'angularjs/partials/partial1.html';
-	$scope.musica = {nome: 'musica teste', artista: 'artista teste'}
+	$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
 }]);
