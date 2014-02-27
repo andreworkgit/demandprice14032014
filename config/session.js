@@ -35,13 +35,13 @@ module.exports.session = {
 
 
   // Uncomment the following lines to use your Mongo adapter as a session store
-  // adapter: 'mongo',
+   adapter: 'mongo',
   //
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'ncbox',
-  // collection: 'sessions',
-  // prefix: 'sails'
+   host: 'localhost',
+   port: 27017,
+   db: 'ncbox',
+   collection: 'sessions',
+   prefix: 'sailsjs'
   //
   // Optional Values:
   //
