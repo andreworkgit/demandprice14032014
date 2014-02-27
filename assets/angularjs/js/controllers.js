@@ -10,7 +10,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 			{},
 			params,
 			function(res){
-				$location.url('/view2');
+				$location.url('/perfil');
 			},
 			function(res){
 				$scope.errorlogin = 'Login invalido';
@@ -31,7 +31,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				{},
 				params,
 				function(res){
-					$location.url('/view2');
+					$location.url('/perfil');
 				},
 				function(res){
 					console.dir(res.data.ValidationError);
@@ -46,13 +46,13 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				if(!res.result){
 					$location.url('/');
 				}else{
-					$location.url('/view2');
+					$location.url('/perfil');
 				}
 			}
 		);
 	}
 }]).
-controller('Perfil', ['$scope','$location', 'usersService', function($scope, $location, usersService){
+controller('Perfil', ['$scope','$location', 'usersService', '$templateCache', function($scope, $location, usersService, $templateCache){
 	$scope.logado = function(){
 		usersService.logado(
 			function(res){
@@ -64,4 +64,8 @@ controller('Perfil', ['$scope','$location', 'usersService', function($scope, $lo
 			}
 		);
 	}
+
+	$templateCache.removeAll();
+	$scope.parte = 'angularjs/partials/partial1.html';
+	$scope.musica = {nome: 'musica teste', artista: 'artista teste'}
 }]);
