@@ -17,7 +17,7 @@ module.exports = {
 				//req.session.user = user;
 				req.session.logado = true;
 				req.session.cookie.maxAge = 86400000 * 28;
-				req.session.user = user;
+				req.session.user = user.toJSON();
 				req.session.save();
 				res.json(user);
 			}
@@ -59,6 +59,7 @@ module.exports = {
 	},
 	logado: function(req, res, next){
 		if(req.session.logado && req.session.logado != undefined){
+			//delete req.session.user.password;
 			res.json({result: true, data: req.session.user});
 		}else{
 			res.json({result: false});
