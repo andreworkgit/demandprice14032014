@@ -39,7 +39,16 @@ angular.module('NcBox.controllers', []).
 				);
 			}
 		}
-	}])
-	.controller('MyCtrl2', [function() {
 
- 	}]);
+		$scope.logado = function(){
+			usersService.logado(
+				function(data){
+					if(!data.result){
+						$location.url('/');
+					}else{
+						$location.url('/view2');
+					}
+				}
+			);
+		}
+	}]);

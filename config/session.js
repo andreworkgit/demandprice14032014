@@ -15,7 +15,7 @@ module.exports.session = {
   // Session secret is automatically generated when your new app is created
   // Replace at your own risk in production-- you will invalidate the cookies of your users,
   // forcing them to log in again. 
-  secret: '9cc18654b688d88c80e276004a24d7ca'
+  secret: '9cc18654b688d88c80e276004a24d7ca',
 
 
   // In production, uncomment the following lines to set up a shared redis session store
@@ -39,8 +39,9 @@ module.exports.session = {
   //
   // host: 'localhost',
   // port: 27017,
-  // db: 'sails',
+  // db: 'ncbox',
   // collection: 'sessions',
+  // prefix: 'sails'
   //
   // Optional Values:
   //
@@ -52,5 +53,4 @@ module.exports.session = {
   // auto_reconnect: false,
   // ssl: false,
   // stringify: true
-
 };

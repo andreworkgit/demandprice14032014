@@ -13,6 +13,10 @@ angular.module('NcBox.services', []).
   		login: {
   			method: 'POST',
   			url: '/users/login'
+  		},
+  		logado: {
+  			method: 'GET',
+  			url: '/users/logado'
   		}
   	});
   }]);
