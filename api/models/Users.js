@@ -36,6 +36,11 @@ module.exports = {
       values.password = encryptedPassword;
       next();
     });
+  },
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.updatedAt;
+    return obj;
   }
 
 };

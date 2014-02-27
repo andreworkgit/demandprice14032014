@@ -12,15 +12,20 @@ module.exports = {
 				res.json(err);
 				res.writeHead(400);
 				req.session.logado = false;
+				req.session.save();
 			}else if(user){
 				//req.session.user = user;
 				req.session.logado = true;
+				req.session.cookie.maxAge = 86400000 * 28;
+				req.session.user = user;
+				req.session.save();
 				res.json(user);
 			}
 		});
 	},
 	login: function(req, res, next){
 		req.session.logado = false;
+		req.session.save();
 		if(!req.param('email')){
 			res.writeHead(400);
 			res.end('Login Invalido');
@@ -37,12 +42,11 @@ module.exports = {
 						res.writeHead(400);
 						res.end('Login Invalido');
 					}else{
-						res.end('ok');
 						req.session.logado = true;
-						//req.session.cookie.maxAge = 365 * 24 * 60 * 60 * 1000;
-						//req.session.cookie.maxAge = 9000000;
 						req.session.cookie.maxAge = 86400000 * 28;
+						req.session.user = user.toJSON();
 						req.session.save();
+						res.json({result: 'ok'});
 					}
 			    });
 
@@ -55,7 +59,7 @@ module.exports = {
 	},
 	logado: function(req, res, next){
 		if(req.session.logado && req.session.logado != undefined){
-			res.json({result: true});
+			res.json({result: true, data: req.session.user});
 		}else{
 			res.json({result: false});
 		}

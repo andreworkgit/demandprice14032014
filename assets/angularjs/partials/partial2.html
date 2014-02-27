@@ -1,7 +1,13 @@
-<div ng-init="logado()">
-	<p>This is the partial for view 2.</p>
-	<p>
-	  Showing of 'interpolate' filter:
-	  {{ 'Current version is v%VERSION%.' | interpolate }}
-	</p>
+<div class="container" ng-init="logado()">
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            <img src="http://placehold.it/100x100" alt="" class="img-rounded img-responsive" />
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <blockquote>
+                <p>{{user.firstname}} {{user.lastname}}</p> <small><cite title="Source Title">Usuário NoiseCall  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+            </blockquote>
+            <p> <i class="glyphicon glyphicon-envelope"></i> {{user.email}}
+        </div>
+    </div>
 </div>
