@@ -17,7 +17,11 @@ angular.module('NcBox.services', []).
   		logado: {
   			method: 'GET',
   			url: '/users/logado'
-  		}
+  		},
+  		logoff: {
+  			method: 'GET',
+  			url: '/users/logoff'
+  		}  	
   	});
   }]);
 
