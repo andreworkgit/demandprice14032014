@@ -52,7 +52,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 		);
 	}
 }]).
-controller('Perfil', ['$scope','$location', 'usersService', '$templateCache', function($scope, $location, usersService, $templateCache){
+controller('Perfil', ['$scope','$location', 'usersService', function($scope, $location, usersService){
 	$scope.logado = function(){
 		usersService.logado(
 			function(res){
@@ -65,7 +65,28 @@ controller('Perfil', ['$scope','$location', 'usersService', '$templateCache', fu
 		);
 	}
 
-	$templateCache.removeAll();
-	$scope.parte = 'angularjs/partials/partial1.html';
-	$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
+	$scope.newShow = false;
+
+	$scope.parte = 'angularjs/partials/listaProjetos.html';
+	$scope.projetos = [
+		{nome: 'projeto1', descricao: 'descricao1'},
+		{nome: 'projeto2', descricao: 'descricao2'},
+		{nome: 'projeto3', descricao: 'descricao3'},
+		{nome: 'projeto4', descricao: 'descricao4'},
+		{nome: 'projeto5', descricao: 'descricao5'},
+	];
+	
+	$scope.includeNewProjeto = function(){
+		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
+	}
+
+	$scope.newProjeto = function(item){
+		$scope.projetos.push(item);
+		$scope.ngNewProjeto = '';
+	}
+
+	/*$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
+
+	$scope.parte2 = 'angularjs/partials/parte2.html';
+	$scope.teste2 = 'parte2';*/
 }]);
