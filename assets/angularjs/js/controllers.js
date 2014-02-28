@@ -10,7 +10,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 			{},
 			params,
 			function(res){
-				$location.url('/perfil');
+				$location.url('/projetos');
 			},
 			function(res){
 				$scope.errorlogin = 'Login invalido';
@@ -31,7 +31,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				{},
 				params,
 				function(res){
-					$location.url('/perfil');
+					$location.url('/projetos');
 				},
 				function(res){
 					console.dir(res.data.ValidationError);
@@ -46,13 +46,13 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				if(!res.result){
 					$location.url('/');
 				}else{
-					$location.url('/perfil');
+					$location.url('/projetos');
 				}
 			}
 		);
 	}
 }]).
-controller('Perfil', ['$scope','$location', 'usersService', function($scope, $location, usersService){
+controller('Projetos', ['$scope','$location', 'usersService', function($scope, $location, usersService){
 	$scope.logado = function(){
 		usersService.logado(
 			function(res){

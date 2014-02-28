@@ -24,6 +24,13 @@ module.exports = {
     password: {
       type: "string",
       required: true
+    },
+    projetos: {
+      type: "array",
+      projeto:{
+        nome: "string",
+        descricao: "string"
+      }
     }
   },
   beforeCreate: function (values, next) {
