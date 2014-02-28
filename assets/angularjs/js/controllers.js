@@ -52,20 +52,22 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 		);
 	}
 }]).
-controller('Perfil', ['$scope','$location', 'usersService', '$templateCache', function($scope, $location, usersService, $templateCache){
+controller('Perfil', ['$scope','$location', 'usersService', function($scope, $location, usersService){
 	$scope.logado = function(){
+
 		usersService.logado(
 			function(res){
 				if(!res.result){
 					$location.url('/');
 				}else{
 					$scope.user = res.data;
+					$scope.parte = 'angularjs/partials/partial1.html';
+					$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'};
 				}
 			}
 		);
 	}
 
-	$templateCache.removeAll();
-	$scope.parte = 'angularjs/partials/partial1.html';
-	$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
+
+	
 }]);
