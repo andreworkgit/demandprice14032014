@@ -54,7 +54,7 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 		);
 	}
 }]).
-controller('Projetos', ['$scope','$location', 'usersService', function($scope, $location, usersService){
+controller('Projetos', ['$scope','$location', 'usersService','projetosService', function($scope, $location, usersService,projetosService){
 	$scope.logado = function(){
 
 		usersService.logado(
@@ -98,19 +98,35 @@ controller('Projetos', ['$scope','$location', 'usersService', function($scope, $
 		$scope.ngNewProjeto = '';
 	}
 
+	$scope.lista = function(){
+		var result = projetosService.lista(
+			{},
+			{},
+			function(res){
+				//console.log(res.projeto);
+				$scope.projetos = res.projeto;
+			},
+			function(res){
+				console.dir(res.data.ValidationError);
+			}
+		);
+	}
+
 	$scope.cadastro = function(item){
 		if(item != undefined){
 
 			var params = {
-				nome: item.firstname, 
-				descricao: item.lastname
+				nome: item.nome, 
+				descricao: item.descricao
 			}
 
 			var result = projetosService.create(
 				{},
 				params,
 				function(res){
-					$location.url('/projetos');
+					console.log(res.projeto);
+					$scope.lista();
+					//$location.url('/projetos');
 				},
 				function(res){
 					console.dir(res.data.ValidationError);

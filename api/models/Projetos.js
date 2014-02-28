@@ -10,7 +10,20 @@ module.exports = {
   	
   	schema: true,
 
+    types: {
+      objId: function(id){
+       var ObjectID = require('mongodb').ObjectID;
+       return new ObjectID(id);
+      }
+    },
+
   	attributes: {
+
+      id: {
+        type: "json",
+        objId:true
+      },
+
 	    nome: {
 	      type: "string"
 	    },
