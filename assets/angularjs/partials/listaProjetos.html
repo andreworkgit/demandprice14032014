@@ -1,0 +1,27 @@
+<div class="span5">
+	<h2>Projetos</h2>
+
+	<button ng-click="includeNewProjeto()" class="btn btn-primary">Novo Projeto</button>
+</div>
+
+<div ng-include="ngNewProjeto"></div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="projeto in projetos">
+            <td>{{projeto.nome}}</td>
+            <td>{{projeto.descricao}}</td>
+            <td>
+                <button class="btn"><i class="icon-edit"></i> Edit</button>
+                <button class="btn"><i class="icon-remove"></i> Del</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
