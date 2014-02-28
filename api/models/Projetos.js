@@ -7,13 +7,25 @@
  */
 
 module.exports = {
-
-  attributes: {
   	
+  	schema: true,
+
+  	attributes: {
+	    nome: {
+	      type: "string"
+	    },
+	    descricao: {
+	      type: "string"
+	    },
+      user_id : {
+        type: "array"
+      }
+
+
+  	},
+
   	/* e.g.
   	nickname: 'string'
   	*/
     
-  }
-
 };

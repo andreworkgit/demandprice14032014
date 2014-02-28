@@ -19,6 +19,22 @@ angular.module('NcBox.services', []).
   			url: '/users/logado'
   		}
   	});
+  }])
+  .factory('projetosService', ['$resource', function($resource){
+    return $resource('/projetos/:id',{id: '@id'}, {
+      create: {
+        method: 'POST',
+        url: '/projetos/create'
+      },
+      login: {
+        method: 'POST',
+        url: '/projetos/login'
+      },
+      logado: {
+        method: 'GET',
+        url: '/projetos/logado'
+      }
+    });
   }]);
 
 

@@ -20,11 +20,13 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 
 	$scope.cadastro = function(item){
 		if(item != undefined){
+
 			var params = {
 				firstname: item.firstname, 
 				lastname: item.lastname, 
 				email: item.email, 
-				password: item.password
+				password: item.password,
+				//projetos: [{projeto: [{nome: 'qqq'}]}]	
 			}
 
 			var result = usersService.create(
@@ -86,6 +88,27 @@ controller('Projetos', ['$scope','$location', 'usersService', function($scope, $
 	$scope.newProjeto = function(item){
 		$scope.projetos.push(item);
 		$scope.ngNewProjeto = '';
+	}
+
+	$scope.cadastro = function(item){
+		if(item != undefined){
+
+			var params = {
+				nome: item.firstname, 
+				descricao: item.lastname
+			}
+
+			var result = projetosService.create(
+				{},
+				params,
+				function(res){
+					$location.url('/projetos');
+				},
+				function(res){
+					console.dir(res.data.ValidationError);
+				}
+			);
+		}
 	}
 
 	/*$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
