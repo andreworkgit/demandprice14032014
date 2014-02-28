@@ -24,9 +24,30 @@ module.exports = {
     password: {
       type: "string",
       required: true
+    },  
+
+    projeto_nome: {
+      type: "string",
+      unique: true
+    },
+
+    projeto_descricao: {
+      type: "string"
+    },
+
+    projetos: {
+      type: "array"
     }
   },
   beforeCreate: function (values, next) {
+    var projetos = [];
+    //projetos[0]
+    //[{projeto: [{nome: 'qqq'}]}]
+    values.projetos = [{projeto: [{nome: values.projeto_nome, descricao: values.projeto_descricao}]}];  
+
+    delete values.projeto_nome;
+    delete values.projeto_descricao;
+
     if (!values.password) {
       return next();
     }
