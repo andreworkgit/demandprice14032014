@@ -57,6 +57,12 @@ module.exports = {
 			}
 		});
 	},
+	logoff: function(req, res, next){
+		req.session.logado = false;
+		delete req.session.user;
+		req.session.save();
+		res.json({result: true});
+	},
 	logado: function(req, res, next){
 		if(req.session.logado && req.session.logado != undefined){
 			//delete req.session.user.password;
@@ -64,5 +70,8 @@ module.exports = {
 		}else{
 			res.json({result: false});
 		}
+	},
+	createprojetos: function(req, res, next){
+		
 	}
 };

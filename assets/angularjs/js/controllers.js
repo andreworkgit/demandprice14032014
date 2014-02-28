@@ -69,6 +69,14 @@ controller('Projetos', ['$scope','$location', 'usersService', function($scope, $
 		);
 	}
 
+	$scope.logoff = function(){
+		usersService.logoff(
+			function(res){
+				$location.url('/');
+			}
+		);
+	}
+
 
 	$scope.newShow = false;
 
