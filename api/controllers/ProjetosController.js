@@ -24,7 +24,38 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to ProjetosController)
    */
-  _config: {}
+  _config: {},
+
+	create: function(req, res, next){
+		//req.session.user.id
+		var ObjectID = require('mongodb').ObjectID;
+		var idObj = new ObjectID(req.session.user.id);
+
+		//var idObj = "ObjectId(" + req.session.user.id + ")";
+		var params = {
+			nome: req.param('nome'),
+			descricao: req.param('descricao'),
+			user_id : [idObj]
+
+		}	
+
+		Projetos.create(params, function (err, projeto){
+			if(err){
+				res.json(err);
+				res.writeHead(400);
+			}else if(projeto){
+				res.json({projeto: projeto});
+			}
+		});
+	},
+
+	lista: function(req, res, next){
+
+		Projetos.find().exec(function(err, projeto) {
+			res.json({projeto: projeto});
+		});
+
+	}
 
   
 };

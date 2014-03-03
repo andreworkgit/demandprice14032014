@@ -30,13 +30,9 @@ angular.module('NcBox.services', []).
         method: 'POST',
         url: '/projetos/create'
       },
-      login: {
-        method: 'POST',
-        url: '/projetos/login'
-      },
-      logado: {
+      lista: {
         method: 'GET',
-        url: '/projetos/logado'
+        url: '/projetos/lista'
       }
     });
   }]);
