@@ -5,17 +5,40 @@
 module.exports = {
     
 	_config: {},
+	Users: require('../models/mongoose/Users.js').Users,
 
 	listar: function(req, res, next){
-		var Users = require('../models/mongoose/Users.js');
+		//var Users = require('../models/mongoose/Users.js').Users;
+
+		//console.dir(Users);
+
+		//res.json({});
 
 		Users.find({}, function(err, rs){
 			console.dir(rs);
+			res.json(rs);
 		});
+
+
+
+
 	},
 
 	create: function(req, res, next){
-		Users.create(req.params.all(), function (err, user){
+		user = new Users();
+		user.firstname = req.body.firstname;
+		user.lastname = req.body.lastname;
+		user.email = req.body.email;
+		user.password = req.body.password;
+
+		user.save(function(err){
+			console.log("salvo");
+			//res.redirect('/');
+			res.json(user);
+		});
+
+
+		/*Users.create(req.params.all(), function (err, user){
 			if(err){
 				res.json(err);
 				res.writeHead(400);
@@ -29,7 +52,7 @@ module.exports = {
 				req.session.save();
 				res.json(user);
 			}
-		});
+		});*/
 	},
 	login: function(req, res, next){
 		req.session.logado = false;
