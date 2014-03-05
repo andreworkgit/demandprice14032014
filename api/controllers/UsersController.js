@@ -6,6 +6,14 @@ module.exports = {
     
 	_config: {},
 
+	listar: function(req, res, next){
+		var Users = require('../models/mongoose/Users.js');
+
+		Users.find({}, function(err, rs){
+			console.dir(rs);
+		});
+	},
+
 	create: function(req, res, next){
 		Users.create(req.params.all(), function (err, user){
 			if(err){
