@@ -25,6 +25,45 @@ module.exports = {
 
   	_config: {},
 
+  	createprojeto: function(req, res, next){
+		ModelUsers.findById(req.param('id'), function(err, rs){
+			if(err){
+				return res.end(err);
+			}
+
+			projeto = {
+				nome: req.param('nome'),
+				descricao: req.param('descricao')
+			};
+
+			rs.projetos.push(projeto);
+			rs.save(function(err){
+				if(err){
+					res.json(err);
+				}else{
+					res.json(rs);
+				}
+			});
+		});
+	},
+	editprojeto: function(req, res, next){
+		var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
+		var dados = {
+		    $set: {
+		        "projetos.$.nome": req.param('nome'),
+		        "projetos.$.descricao": req.param('descricao')
+		    }
+		}
+
+		ModelUsers.update(where, dados, function(err, rs){
+			if(err){
+				return res.end(err);
+			}
+
+			res.json(rs);
+		});
+	},
+
 	create: function(req, res, next){
 		var ObjectID = require('mongodb').ObjectID;
 		var idObj = new ObjectID(req.session.user.id);
