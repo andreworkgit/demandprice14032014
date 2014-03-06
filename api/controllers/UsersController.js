@@ -6,17 +6,60 @@ module.exports = {
     
 	_config: {},
 	listar: function(req, res, next){
+
+		//console.dir(this.sails.models.mongoose.users);
+		console.dir(this.sails);
+
+
 		ModelUsers.find({}, function(err, rs){
 			console.dir(rs);
 			res.json(rs);
 		});
 	},
+	createprojeto: function(req, res, next){
+		ModelUsers.findById(req.param('id'), function(err, rs){
+			if(err){
+				return res.end(err);
+			}
+
+			projeto = {
+				nome: req.param('nome'),
+				descricao: req.param('descricao')
+			};
+
+			rs.projetos.push(projeto);
+			rs.save(function(err){
+				if(err){
+					res.json(err);
+				}else{
+					res.json(rs);
+				}
+			});
+		});
+	},
+	editprojeto: function(req, res, next){
+		var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
+		var dados = {
+		    $set: {
+		        "projetos.$.nome": req.param('nome'),
+		        "projetos.$.descricao": req.param('descricao')
+		    }
+		}
+
+		ModelUsers.update(where, dados, function(err, rs){
+			if(err){
+				return res.end(err);
+			}
+
+			res.json(rs);
+		});
+	},
 	create: function(req, res, next){
 		user = ModelUsers();
-		user.firstname = req.body.firstname;
-		user.lastname = req.body.lastname;
-		user.email = req.body.email;
-		user.password = req.body.password;
+		user.firstname = req.param('firstname');
+		user.lastname = req.param('lastname');
+		user.email = req.param('email');
+		user.password = req.param('password');
 
 		user.save(function(err){
 			if(err){
