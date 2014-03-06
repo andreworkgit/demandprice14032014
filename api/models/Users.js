@@ -5,20 +5,26 @@
 module.exports = {
 
   schema: true,
-
-  types: {
+  adapter: 'mongoose',
+  /*types: {
       objId: function(id){
        var ObjectID = require('mongodb').ObjectID;
        return new ObjectID(id);
       }
-    },
+    },*/
 
   attributes: {
+    firstname: 'String',
+    lastname: 'String',
+  },
+
+ /* attributes: {
 
     id: {
         type: "json",
         objId:true
     },
+
     firstname: {
       type: "string",
       required: true
@@ -46,19 +52,24 @@ module.exports = {
     projeto_descricao: {
       type: "string"
     },
-
     projetos: {
       type: "array"
     }
-  },
+  },*/
+
+
+  /*
   beforeCreate: function (values, next) {
-    var projetos = [];
+
+    
+    //var projetos = [];
     //projetos[0]
     //[{projeto: [{nome: 'qqq'}]}]
-    values.projetos = [{projeto: [{nome: values.projeto_nome, descricao: values.projeto_descricao}]}];  
+    //values.projetos = [{lista: [{nome: values.projeto_nome, descricao: values.projeto_descricao}]}];  
+    //console.log(values.projetos);
 
-    delete values.projeto_nome;
-    delete values.projeto_descricao;
+    //delete values.projeto_nome;
+    //delete values.projeto_descricao;
 
     if (!values.password) {
       return next();
@@ -76,5 +87,6 @@ module.exports = {
     delete obj.password;
     return obj;
   }
+  */
 
 };
