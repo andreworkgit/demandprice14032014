@@ -81,13 +81,13 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 	$scope.newShow = false;
 
 	$scope.parte = 'angularjs/partials/listaProjetos.html';
-	$scope.projetos = [
+	/*$scope.projetos = [
 		{nome: 'projeto1', descricao: 'descricao1'},
 		{nome: 'projeto2', descricao: 'descricao2'},
 		{nome: 'projeto3', descricao: 'descricao3'},
 		{nome: 'projeto4', descricao: 'descricao4'},
 		{nome: 'projeto5', descricao: 'descricao5'},
-	];
+	];*/
 	
 	$scope.includeNewProjeto = function(){
 		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
