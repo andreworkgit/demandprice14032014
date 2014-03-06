@@ -14,16 +14,16 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
- var callModel = function (name){
-   	return require('../models/mongoose/'+name+'.js')(Users.adapter.config);
- };
+
+
 
 module.exports = {
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to ProjetosController)
    */
-  _config: {},
+
+  	_config: {},
 
 	create: function(req, res, next){
 		var ObjectID = require('mongodb').ObjectID;
@@ -39,13 +39,12 @@ module.exports = {
 			projetos: [{lista: [{nome: req.param('nome'), descricao: req.param('descricao')}]}]
 		}*/
 		//console.log(params);
-		Users.findOrCreate({id: idObj},params, function (err, projeto){
-			if(err){
-				res.json(err);
-				res.writeHead(400);
-			}else if(projeto){
-				res.json({projeto: projeto});
-			}
+		
+		console.log('create projeto '+ req.session.user.id);
+		callModel('users').find({_id: req.session.user.id }, function (err, user) {
+			console.log(err);
+			console.log(user);
+			//res.json({projeto: user});
 		});
 
 
@@ -61,11 +60,15 @@ module.exports = {
 	},
 
 	lista: function(req, res, next){
-		
-		callModel('users').find({}, function (err, user) {
-			console.log(err);
-			console.log(user);
-			res.json({projeto: user});
+		//console.dir(this.sails);
+		//console.dir(Users);
+
+		Users.mongoose(function (model){
+			model.find({}, function (err, user) {
+					//console.log(err);
+					//console.log(user);
+					res.json({projeto: user});
+			});
 		});
 		
 		
@@ -75,9 +78,6 @@ module.exports = {
 			} );
 			console.log(result);
 		})*/
-
-		
-
 	}
 
   

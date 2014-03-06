@@ -1,8 +1,12 @@
 
 
-module.exports = function (config){ 
-	var mongoose = require('mongoose');
-	mongoose.connect(config.url);
+module.exports = function (mongoose){ 
+	//if(mongoose.connection.readyState)
+	//	mongoose.connection.close();
+	
+	//mongoose.connect(this.sails.config.adapters.mongoose.url);
+	//console.dir(mongoose.models.users);
+	
 	var Schema = mongoose.Schema;
 	var schemaOptions = {
 	 toJSON: {
@@ -26,20 +30,9 @@ module.exports = function (config){
 	 projetos  : [ProjetoSchema]
 	});
 
-	return mongoose.model('users', UsersSchema);
-
+	return UsersSchema;
+		//var modelComplete = mongoose.model('users', UsersSchema);
+		
 };
 
-/*var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ncbox');
-var Schema = mongoose.Schema;
-
-var UsersSchema = new Schema({
-	firstname	: String,
-	lastname	: String,
-	email		: String,
-	password	: String
-});
-
-exports.Users = mongoose.model('Users', UsersSchema);*/
 

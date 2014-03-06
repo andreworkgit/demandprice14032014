@@ -1,7 +1,7 @@
 /**
  * UsersController
  */
-var ModelUsers = require('../models/mongoose/Users.js').Users;
+
 module.exports = {
     
 	_config: {},
@@ -12,7 +12,7 @@ module.exports = {
 		});
 	},
 	create: function(req, res, next){
-		user = ModelUsers();
+		user = callModel('users')();
 		user.firstname = req.body.firstname;
 		user.lastname = req.body.lastname;
 		user.email = req.body.email;
@@ -58,31 +58,41 @@ module.exports = {
 			res.end('Login Invalido');
 			return false;
 		}
+		
+		Users.mongoose(function (model){
 
-		Users.findOneByEmail(req.param('email'), function(err, user){
-			if(err){
-				res.json(err);
-				res.writeHead(400);
-			}else if(user){
-				require('bcrypt-nodejs').compare(req.param('password'), user.password, function (err, valid) {
-			    	if(err || !valid){
-						res.writeHead(400);
-						res.end('Login Invalido');
-					}else{
-						req.session.logado = true;
-						req.session.cookie.maxAge = 86400000 * 28;
-						req.session.user = user.toJSON();
-						req.session.save();
-						res.json({result: 'ok'});
-					}
-			    });
+			model.find({email: req.param('email')}, function(err, user){
+				if(err){
+					res.json(err);
+					res.writeHead(400);
+				}else if(user){
+					/*require('bcrypt-nodejs').compare(req.param('password'), user.password, function (err, valid) {
+				    	if(err || !valid){
+							res.writeHead(400);
+							res.end('Login Invalido22');
+						}else{
+							req.session.logado = true;
+							req.session.cookie.maxAge = 86400000 * 28;
+							req.session.user = user.toJSON();
+							req.session.save();
+							res.json({result: 'ok'});
+						}
+				    });*/
 
-			    //res.json(user);
-			}else{
-				res.writeHead(400);
-				res.end('Login Invalido');
-			}
-		});
+				    req.session.logado = true;
+					req.session.cookie.maxAge = 86400000 * 28;
+					req.session.user = user[0];
+					req.session.save();
+					res.json({result: 'ok'});
+
+				    //res.json(user);
+				}else{
+					res.writeHead(400);
+					res.end('Login Invalido');
+				}
+			});
+
+		})
 	},
 	logoff: function(req, res, next){
 		req.session.logado = false;

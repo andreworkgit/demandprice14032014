@@ -26,27 +26,25 @@ module.exports = (function () {
      */
 
     registerCollection: function (collection, cb) {
-      console.log('registerCollection');
+      //console.log('registerCollection');
       //console.log(collection);
-      //createConnection(collection.config);
-      //createModel(collection.identity);
+      createConnection(collection.config);
+      createModel(collection.identity);
 
       cb();
     },
 
     define: function(collectionName, definition, cb) {
-      console.log('define');
-      console.log(definition);
+      //console.log('define');
+      //console.log(definition);
 
     },
 
+    mongoose: function(collectionName,cb) {
+      cb(Modelo);
+    },
+
     find: function(collectionName,options, cb) {
-       console.log('find');
-       console.log(collectionName);
-       console.log(options);
-       //console.log(par2);
-
-
        Modelo.find(options, function (err, user) {
         cb(err,user);
        });
@@ -58,8 +56,8 @@ module.exports = (function () {
   };
 
   function createConnection(config) {
-    console.log('createConnection');
-    console.log(config.url);
+    //console.log('createConnection');
+    //console.log(config.url);
     mongoose.connect(config.url);
 
   }
@@ -67,9 +65,6 @@ module.exports = (function () {
   function createModel(collectionName){
 
     var objSchema = require('../models/mongoose/'+collectionName+'.js')(mongoose);
-    //console.log(attrModulo);
-    //var objSchema = new Schema(attrModulo);
-
     Modelo = mongoose.model(collectionName, objSchema);
   }
 
