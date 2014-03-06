@@ -12,25 +12,33 @@ module.exports = {
 		});
 	},
 	create: function(req, res, next){
-		user = callModel('users')();
-		user.firstname = req.body.firstname;
-		user.lastname = req.body.lastname;
-		user.email = req.body.email;
-		user.password = req.body.password;
 
-		user.save(function(err){
-			if(err){
-				res.writeHead(400);
-				req.session.logado = false;
-				req.session.save();
-				res.json(err);
-			}else if(user){
-				req.session.logado = true;
-				req.session.cookie.maxAge = 86400000 * 28;
-				req.session.user = user;
-				req.session.save();
-				res.json(user);
-			}
+		Users.mongoose(function (model){
+
+			var user = new model({
+
+				firstname : req.body.firstname,
+				lastname : req.body.lastname,
+				email : req.body.email,
+				password : req.body.password
+
+			});
+			
+			user.save(function(err){
+				if(err){
+					res.writeHead(400);
+					req.session.logado = false;
+					req.session.save();
+					res.json(err);
+				}else if(user){
+					req.session.logado = true;
+					req.session.cookie.maxAge = 86400000 * 28;
+					req.session.user = user;
+					req.session.save();
+					res.json(user);
+				}
+			});
+
 		});
 
 
