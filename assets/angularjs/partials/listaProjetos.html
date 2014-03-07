@@ -2,7 +2,6 @@
 	<h2>Projetos</h2>
 
 	<button ng-click="includeNewProjeto()" class="btn btn-primary">Novo Projeto</button>
-    <button ng-click="lista()" class="btn btn-primary">Lista</button>
 </div>
 
 <div ng-include="ngNewProjeto"></div>
@@ -12,7 +11,6 @@
         <tr>
             <th>Nome</th>
             <th>Descricao</th>
-            <th>Usuario</th>
             <th></th>
         </tr>
     </thead>
@@ -20,10 +18,9 @@
         <tr ng-repeat="projeto in projetos">
             <td>{{projeto.nome}}</td>
             <td>{{projeto.descricao}}</td>
-            <td></td>
             <td>
                 <button class="btn btn-primary btn-xs">Edit</button>
-                <button class="btn btn-danger btn-xs">Del</button>
+                <button class="btn btn-danger btn-xs" ng-click="del(projeto.id)">Del</button>
             </td>
         </tr>
     </tbody>

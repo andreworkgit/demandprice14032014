@@ -56,7 +56,6 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 }]).
 controller('Projetos', ['$scope','$location', 'usersService','projetosService', function($scope, $location, usersService,projetosService){
 	$scope.logado = function(){
-
 		usersService.logado(
 			function(res){
 				if(!res.result){
@@ -69,16 +68,9 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 		);
 	}
 
-	$scope.logoff = function(){
-		usersService.logoff(
-			function(res){
-				$location.url('/');
-			}
-		);
-	}
+	$scope.logado();
 
-
-	$scope.newShow = false;
+	$scope.logoff = function(){usersService.logoff(function(res){$location.url('/');});}
 
 	$scope.parte = 'angularjs/partials/listaProjetos.html';
 	/*$scope.projetos = [
@@ -107,10 +99,12 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 				$scope.projetos = res.projeto;
 			},
 			function(res){
-				console.dir(res.data.ValidationError);
+				//console.dir(res.data.ValidationError);
 			}
 		);
 	}
+
+	//$scope.lista();
 
 	$scope.cadastro = function(item){
 		if(item != undefined){
@@ -124,15 +118,28 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 				{},
 				params,
 				function(res){
-					console.log(res.projeto);
+					//console.log(res.projeto);
 					$scope.lista();
 					//$location.url('/projetos');
+					$scope.ngNewProjeto = '';
 				},
 				function(res){
-					console.dir(res.data.ValidationError);
+					//console.dir(res.data.ValidationError);
 				}
 			);
 		}
+	}
+
+	$scope.del = function(id){
+		console.log(id);
+
+		var result = projetosService.del(
+			{},
+			{id: id},
+			function(res){
+				$scope.lista();
+			}
+		);
 	}
 
 	/*$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
