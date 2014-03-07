@@ -10,17 +10,18 @@ module.exports = function (mongoose){
 	};
 	
 	var ProjetoSchema = new Schema({
-		nome		: String,
+		nome		: { type: String, unique: true, required: true },
 		descricao	: String
 	}, schemaOptions);
+
+	//ProjetoSchema.path('nome').index({ unique: true });
 	
 	var UsersSchema = new Schema({
 		firstname 	: String,
 		lastname 	: String,
-		email  		: String,
+		email  		: { type: String, unique: true },
 		password 	: String,
 		projetos  	: [ProjetoSchema]
 	});
-	
 	return UsersSchema;
 };

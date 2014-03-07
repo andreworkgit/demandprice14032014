@@ -33,7 +33,11 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				{},
 				params,
 				function(res){
-					$location.url('/projetos');
+					if(res.erro){
+						alert(res.erro);
+					}else{
+						$location.url('/projetos');
+					}
 				},
 				function(res){
 					console.dir(res.data.ValidationError);

@@ -20,31 +20,45 @@ module.exports = {
 			req.session.save();
 			res.json({error: 'invalid'});
 		}
-
+		
 		require('bcrypt-nodejs').hash(req.body.password, null, null, function(err, hash) {
 			Users.mongoose(function (model){
-				var user = new model({
-					firstname : req.body.firstname,
-					lastname : req.body.lastname,
-					email : req.body.email,
-					password : hash
-				});
 				
-				user.save(function(err){
+				model.findOne({ email: req.body.email}, function (err,userm){
+
 					if(err){
-						res.writeHead(400);
-						req.session.logado = false;
-						req.session.save();
-						res.json(err);
-					}else if(user){
-						delete user.password;
-						req.session.logado = true;
-						req.session.cookie.maxAge = 86400000 * 28;
-						req.session.user = user;
-						req.session.save();
-						res.json(user);
+						res.json({erro: err});
+					}else if(!userm){
+						var user = new model({
+							firstname : req.body.firstname,
+							lastname : req.body.lastname,
+							email : req.body.email,
+							password : hash
+						});
+
+						user.save(function(err){
+							if(err){
+								res.writeHead(400);
+								req.session.logado = false;
+								req.session.save();
+								res.json(err);
+							}else if(user){
+								delete user.password;
+								req.session.logado = true;
+								req.session.cookie.maxAge = 86400000 * 28;
+								req.session.user = user;
+								req.session.save();
+								res.json(user);
+							}
+						});
+						
+					}else{
+						//res.writeHead(400);
+						res.json({erro: "email ja existe"});
 					}
-				});
+
+				})
+				
 			});
 		});
 	},

@@ -66,6 +66,10 @@ module.exports = (function () {
 
     var objSchema = require('../models/mongoose/'+collectionName+'.js')(mongoose);
     Modelo = mongoose.model(collectionName, objSchema);
+
+    Modelo.on('index', function (err) {
+      if (err) console.error(err); // error occurred during index creation
+    })
   }
 
 
