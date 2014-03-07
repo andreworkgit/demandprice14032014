@@ -64,7 +64,7 @@ module.exports = (function () {
 
   function createModel(collectionName){
 
-    var objSchema = require('../models/mongoose/'+collectionName+'.js')(mongoose);
+    var objSchema = require('../models/mongoose/'+collectionName.toUpperCase()+'.js')(mongoose);
     Modelo = mongoose.model(collectionName, objSchema);
   }
 
