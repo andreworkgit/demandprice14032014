@@ -19,7 +19,7 @@
             <td>{{projeto.nome}}</td>
             <td>{{projeto.descricao}}</td>
             <td>
-                <button class="btn btn-primary btn-xs">Edit</button>
+                <button class="btn btn-primary btn-xs" ng-click="includeEditProjeto($index)">Edit</button>
                 <button class="btn btn-danger btn-xs" ng-click="del(projeto.id)">Del</button>
             </td>
         </tr>

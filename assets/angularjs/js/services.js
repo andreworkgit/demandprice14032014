@@ -37,6 +37,10 @@ angular.module('NcBox.services', []).
       del: {
         method: 'POST',
         url: '/projetos/delete'
+      },
+      edit: {
+        method: 'POST',
+        url: '/projetos/edit'
       }
     });
   }]);

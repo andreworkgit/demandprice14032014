@@ -82,12 +82,17 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 	];*/
 	
 	$scope.includeNewProjeto = function(){
+		$scope.item = '';
 		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
 	}
 
-	$scope.newProjeto = function(item){
-		$scope.projetos.push(item);
-		$scope.ngNewProjeto = '';
+	$scope.includeEditProjeto = function(index){
+		$scope.ngNewProjeto = 'angularjs/partials/editProjeto.html';
+		$scope.item = {
+			id: $scope.projetos[index].id,
+			nome: $scope.projetos[index].nome,
+			descricao: $scope.projetos[index].descricao
+		};;
 	}
 
 	$scope.lista = function(){
@@ -131,8 +136,6 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 	}
 
 	$scope.del = function(id){
-		console.log(id);
-
 		var result = projetosService.del(
 			{},
 			{id: id},
@@ -142,9 +145,15 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 		);
 	}
 
-	/*$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
-
-	$scope.parte2 = 'angularjs/partials/parte2.html';
-	$scope.teste2 = 'parte2';*/
+	$scope.editar = function(item){
+		var result = projetosService.edit(
+			{},
+			item,
+			function(res){
+				$scope.lista();
+				$scope.ngNewProjeto = '';
+			}
+		);
+	}
 
 }]);

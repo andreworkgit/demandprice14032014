@@ -48,21 +48,23 @@ module.exports = {
 			});
 		});
 	},
-	editprojeto: function(req, res, next){
-		var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
-		var dados = {
-		    $set: {
-		        "projetos.$.nome": req.param('nome'),
-		        "projetos.$.descricao": req.param('descricao')
-		    }
-		}
-
-		ModelUsers.update(where, dados, function(err, rs){
-			if(err){
-				return res.end(err);
+	edit: function(req, res, next){
+		Users.mongoose(function (model){
+			var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
+			var dados = {
+			    $set: {
+			        "projetos.$.nome": req.param('nome'),
+			        "projetos.$.descricao": req.param('descricao')
+			    }
 			}
 
-			res.json(rs);
+			model.update(where, dados, function(err, rs){
+				if(err){
+					return res.end(err);
+				}
+
+				res.json(rs);
+			});
 		});
 	},
 
@@ -99,7 +101,7 @@ module.exports = {
 				res.json(rs);
 			});
 		});
-	},
+	}
 
   
 };
