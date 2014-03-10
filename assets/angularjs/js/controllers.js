@@ -166,4 +166,9 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 		);
 	}
 
+    $scope.disabled = false;
+    $scope.upload = function(content) {
+      $scope.uploadResponse = content.msg;
+    }
+
 }]);
