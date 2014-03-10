@@ -103,9 +103,28 @@ module.exports = {
 		});
 	},
 	upload: function(req, res, next){
-		console.dir(req.files);
-		res.end('teste');
-	}
-
-  
+		var fs = require('fs'), path = require('path');
+		res.setHeader('Content-Type', 'text/html');
+		if(req.files.file == undefined || req.files.length == 0 || req.files.file.size == 0)
+			res.send({ msg: 'No file uploaded at ' + new Date().toString() });
+		else{
+			var file = req.files.file;
+			fs.readFile(file.path, function (err, data){
+				console.log(file.path);
+				var newPath = path.join(__dirname,"..","..","assets","uploads", file.name);
+				fs.writeFile(newPath, data, function (err){
+					if(err) 
+						res.send({ msg: err});
+					else{
+						fs.unlink(file.path, function (err){
+							if(err)
+								res.send({ msg: 'erro no unlink'});
+							else
+								res.send({ msg: '<b>"' + file.name + '"</b> uploaded to the server '});
+						});
+					}
+				});
+			});
+		}
+	}  
 };
