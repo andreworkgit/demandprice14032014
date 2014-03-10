@@ -125,7 +125,9 @@ module.exports = {
 				res.send({ msg: 'No file uploaded at ' + new Date().toString() });
 			else{
 				var file = req.files.file;
-				if(file.headers['content-type']){
+				
+				var extensoes_validas = ['audio/mp3','audio/mpeg'];
+				if(extensoes_validas.indexOf(file.headers['content-type']) < 0){
 					res.send({ msg: 'não é um arquivo mp3'});
 					return;
 				}
