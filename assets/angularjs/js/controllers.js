@@ -127,10 +127,16 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 				{},
 				params,
 				function(res){
-					//console.log(res.projeto);
-					$scope.lista();
-					//$location.url('/projetos');
-					$scope.ngNewProjeto = '';
+
+					if(res.err){
+						alert(res.err);
+					}else{
+						//console.log(res.projeto);
+						$scope.lista();
+						//$location.url('/projetos');
+						$scope.ngNewProjeto = '';
+					}
+					
 				},
 				function(res){
 					//console.dir(res.data.ValidationError);

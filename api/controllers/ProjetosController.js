@@ -27,24 +27,39 @@ module.exports = {
 
   	create: function(req, res, next){
   		Users.mongoose(function (model){
+
 			model.findById(req.session.user._id, function(err, rs){
 				if(err){
 					return res.end(err);
 				}
 
 				projeto = {
-					nome: req.param('nome'),
+					nome: req.param('nome').toLowerCase(),
 					descricao: req.param('descricao')
 				};
 
-				rs.projetos.push(projeto);
-				rs.save(function(err){
-					if(err){
-						res.json(err);
-					}else{
-						res.json(rs);
-					}
-				});
+				var result = 0;
+				
+				for (var i = 0; i < rs.projetos.length; i++) { 
+				  if (rs.projetos[i].nome === projeto.nome) { 
+				    result = 1;
+				    break;
+				  } 
+				}
+
+				if(result == 0){
+					rs.projetos.push(projeto);
+					rs.save(function(err){
+						if(err){
+							res.json(err);
+						}else{
+							res.json(rs);
+						}
+					});
+
+				}else{
+					res.json({err: "projeto já existe"})					
+				}
 			});
 		});
 	},
