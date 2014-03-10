@@ -156,4 +156,20 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 		);
 	}
 
+
+	$scope.upload = function(item){
+		console.dir(item);
+
+	}
+
+
+
+
+	$scope.foo = "Hello World";
+    $scope.disabled = false;
+    $scope.bar = function(content) {
+      if (console) console.log(content);
+      $scope.uploadResponse = content.msg;
+    }
+
 }]);

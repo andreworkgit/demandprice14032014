@@ -12,5 +12,27 @@
         <button ng-click="logoff()" class="btn btn-danger">Sair</button>
     </div>
 
+<br><br>
+    <h1>
+      Example 1 - Running with default configuration (requirement: v0.1.1 and above)
+    </h1><span>Current value of foo is: <b>{{foo}}</b>. <i>(Works with the active $scope.)</i></span><br>
+    <br>
+    <form id="foo" ng-upload="bar(content)" method="post" action="/projetos/upload" name="foo">
+      <p>
+        <label>Select a file to upload:</label> <input type="file" name="file">
+      </p>
+      <p>
+        <input type="submit" class="btn" value="Submit" ng-disabled="$isUploading"><br>
+        <i>Button is not <b>disabled</b> during upload. (version 0.5 and greater).</i> You can disable by using <b>ng-disabled</b>
+      </p>
+    </form>
+    <div class="alert alert-info">
+      Server Response:
+      <div>
+        {{uploadResponse}}
+      </div>
+    </div>
+  </div>
+<br><br>
 	<div ng-include="parte"></div>
 </div>

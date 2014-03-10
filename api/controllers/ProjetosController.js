@@ -101,6 +101,10 @@ module.exports = {
 				res.json(rs);
 			});
 		});
+	},
+	upload: function(req, res, next){
+		console.dir(req.files);
+		res.end('teste');
 	}
 
   

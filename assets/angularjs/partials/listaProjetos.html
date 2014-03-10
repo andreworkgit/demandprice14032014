@@ -1,27 +1,35 @@
-<div class="span5">
-	<h2>Projetos</h2>
+<div class="container">
+    <div class="span9">
+    	<h2>Projetos</h2>
 
-	<button ng-click="includeNewProjeto()" class="btn btn-primary">Novo Projeto</button>
+    	<button ng-click="includeNewProjeto()" class="btn btn-primary">Novo Projeto</button>
+    
+
+        <div ng-include="ngNewProjeto"></div>
+    </div>
+
+    <div class="span9">
+    <br><br>
+        Busca <input type="search" ng-model="busca">
+    </div>
+
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descricao</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="projeto in projetos | filter:busca">
+                <td>{{projeto.nome}}</td>
+                <td>{{projeto.descricao}}</td>
+                <td>
+                    <button class="btn btn-primary btn-xs" ng-click="includeEditProjeto($index)">Edit</button>
+                    <button class="btn btn-danger btn-xs" ng-click="del(projeto.id)">Del</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-<div ng-include="ngNewProjeto"></div>
-
-<table class="table table-striped" >
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Descricao</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="projeto in projetos">
-            <td>{{projeto.nome}}</td>
-            <td>{{projeto.descricao}}</td>
-            <td>
-                <button class="btn btn-primary btn-xs" ng-click="includeEditProjeto($index)">Edit</button>
-                <button class="btn btn-danger btn-xs" ng-click="del(projeto.id)">Del</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
