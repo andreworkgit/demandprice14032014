@@ -14,6 +14,6 @@ angular.module('NcBox', [
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {templateUrl: 'angularjs/partials/home.html', controller: 'Home'});
 	$routeProvider.when('/projetos', {templateUrl: 'angularjs/partials/perfil.html', controller: 'Projetos'});
-  $routeProvider.when('/projetos/projeto', {templateUrl: 'angularjs/partials/partial1.html', controller: 'Projetos'});
+  $routeProvider.when('/projeto/:index', {templateUrl: 'angularjs/partials/perfil.html', controller: 'Projeto'});
 	$routeProvider.otherwise({redirectTo: '/'});
 }]);

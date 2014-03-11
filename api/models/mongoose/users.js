@@ -8,11 +8,18 @@ module.exports = function (mongoose){
 			virtuals: true
 		}
 	};
+
+	var MusicaSchema = new Schema({
+		titulo		: String,
+		artista		: String,
+		url			: String
+	}, schemaOptions);
 	
 	var ProjetoSchema = new Schema({
 		nome		: { type: String, unique: true, required: true },
 		descricao	: String,
-		curtiu		: Array
+		curtiu		: Array,
+		musicas 	: [MusicaSchema]
 	}, schemaOptions);
 
 	//ProjetoSchema.path('nome').index({ unique: true });

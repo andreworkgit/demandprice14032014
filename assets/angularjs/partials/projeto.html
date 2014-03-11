@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="span9">
+    	<h2>Projeto: {{projeto.nome}}</h2>
+        <p>{{projeto.descricao}}</p>
+
+    	<button ng-click="includeNewMusica()" class="btn btn-primary">Nova Musica</button>
+    
+        <div ng-include="ngNewMusica"></div>
+    </div>
+
+    <div class="span9">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Artista</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="musica in projeto.musicas ">
+                <td>{{musica.titulo}}</td>
+                <td>{{musica.artista}}</td>
+                <td>
+                    <button class="btn btn-success btn-xs" ng-click="">Play</button>
+                    <button class="btn btn-primary btn-xs" ng-click="">Edit</button>
+                    <button class="btn btn-danger btn-xs" ng-click="">Del</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

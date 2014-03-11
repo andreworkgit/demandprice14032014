@@ -35,7 +35,8 @@ module.exports = {
 
 				projeto = {
 					nome: req.param('nome').toLowerCase(),
-					descricao: req.param('descricao')
+					descricao: req.param('descricao'),
+					musicas: {}
 				};
 
 				var result = 0;
