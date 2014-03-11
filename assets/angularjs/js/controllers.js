@@ -3,7 +3,44 @@
 /* Controllers */
 
 angular.module('NcBox.controllers', []).
-controller('Home', ['$scope','$location', 'usersService', function($scope, $location, usersService){
+run(function($rootScope, projetosService, usersService, $location) {
+    $rootScope.lista = function(cal){
+		var result = projetosService.lista(
+			{},
+			{},
+			function(res){
+				console.log(res.projeto);
+				$rootScope.projetos = res.projeto;
+				return (cal != undefined) ? cal() : true;
+			},
+			function(res){
+				$rootScope.projetos = {};
+				return (cal != undefined) ? cal() : true;
+				//console.dir(res.data.ValidationError);
+				//return call();
+			}
+		);
+	}
+
+	$rootScope.logado = function(pag){
+		usersService.logado(
+			function(res){
+				if(!res.result){
+					$location.url('/');
+				}else{
+					if(pag == 'Home'){
+						$location.url('/projetos');
+					}else{
+						$rootScope.user = res.data;
+					}
+				}
+			}
+		);
+	}
+
+	$rootScope.logoff = function(){usersService.logoff(function(res){$location.url('/');});}
+}).
+controller('Home', ['$scope','$location', '$rootScope', 'usersService', function($scope, $location, $rootScope, usersService){
 	$scope.login = function(){
 		var params = {email: $scope.loginemail, password: $scope.loginsenha}
 		var result = usersService.login(
@@ -46,45 +83,14 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 		}
 	}
 
-	$scope.logado = function(){
-		usersService.logado(
-			function(res){
-				if(!res.result){
-					$location.url('/');
-				}else{
-					$location.url('/projetos');
-				}
-			}
-		);
-	}
+	$rootScope.logado('Home');
 }]).
-controller('Projetos', ['$scope','$location', 'usersService','projetosService', function($scope, $location, usersService,projetosService){
-	$scope.logado = function(){
-		usersService.logado(
-			function(res){
-				if(!res.result){
-					$location.url('/');
-				}else{
-					$scope.user = res.data;
-				
-				}
-			}
-		);
-	}
-
-	$scope.logado();
-
-	$scope.logoff = function(){usersService.logoff(function(res){$location.url('/');});}
+controller('Projetos', ['$scope','$rootScope','$location', 'usersService','projetosService', function($scope, $rootScope, $location, usersService,projetosService){
+	
+	$rootScope.logado('Proejtos');
 
 	$scope.parte = 'angularjs/partials/listaProjetos.html';
-	/*$scope.projetos = [
-		{nome: 'projeto1', descricao: 'descricao1'},
-		{nome: 'projeto2', descricao: 'descricao2'},
-		{nome: 'projeto3', descricao: 'descricao3'},
-		{nome: 'projeto4', descricao: 'descricao4'},
-		{nome: 'projeto5', descricao: 'descricao5'},
-	];*/
-	
+
 	$scope.includeNewProjeto = function(){
 		$scope.item = '';
 		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
@@ -93,27 +99,13 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 	$scope.includeEditProjeto = function(index){
 		$scope.ngNewProjeto = 'angularjs/partials/editProjeto.html';
 		$scope.item = {
-			id: $scope.projetos[index].id,
-			nome: $scope.projetos[index].nome,
-			descricao: $scope.projetos[index].descricao
+			id: $rootScope.projetos[index].id,
+			nome: $rootScope.projetos[index].nome,
+			descricao: $rootScope.projetos[index].descricao
 		};;
 	}
 
-	$scope.lista = function(){
-		var result = projetosService.lista(
-			{},
-			{},
-			function(res){
-				//console.log(res.projeto);
-				$scope.projetos = res.projeto;
-			},
-			function(res){
-				//console.dir(res.data.ValidationError);
-			}
-		);
-	}
-
-	//$scope.lista();
+	$rootScope.lista();
 
 	$scope.cadastro = function(item){
 		if(item != undefined){
@@ -132,7 +124,7 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 						alert(res.err);
 					}else{
 						//console.log(res.projeto);
-						$scope.lista();
+						$rootScope.lista();
 						//$location.url('/projetos');
 						$scope.ngNewProjeto = '';
 					}
@@ -150,7 +142,7 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 			{},
 			{id: id},
 			function(res){
-				$scope.lista();
+				$rootScope.lista();
 			}
 		);
 	}
@@ -160,7 +152,7 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 			{},
 			item,
 			function(res){
-				$scope.lista();
+				$rootScope.lista();
 				$scope.ngNewProjeto = '';
 			}
 		);
@@ -168,7 +160,27 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 
     $scope.disabled = false;
     $scope.upload = function(content) {
-      $scope.uploadResponse = content.msg;
+		$scope.uploadResponse = content.msg;
     }
 
+}]).
+controller('Projeto', 
+['$scope','$rootScope','$location', '$routeParams', 'usersService','projetosService', 
+function($scope, $rootScope, $location, $routeParams, usersService,projetosService){
+	$rootScope.logado('Projeto');
+
+	if($rootScope.projetos == undefined){
+		 $rootScope.lista(function(){
+		 	 $scope.projeto = $rootScope.projetos[$routeParams.index - 1];
+		 });
+	}else{
+		$scope.projeto = $rootScope.projetos[$routeParams.index - 1];
+	}
+
+	$scope.parte = 'angularjs/partials/projeto.html';
+	
+	$scope.includeNewMusica = function(){
+		$scope.item = '';
+		$scope.ngNewMusica = 'angularjs/partials/newMusica.html';
+	}
 }]);
