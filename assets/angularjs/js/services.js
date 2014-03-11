@@ -33,6 +33,14 @@ angular.module('NcBox.services', []).
       lista: {
         method: 'GET',
         url: '/projetos/lista'
+      },
+      del: {
+        method: 'POST',
+        url: '/projetos/delete'
+      },
+      edit: {
+        method: 'POST',
+        url: '/projetos/edit'
       }
     });
   }]);

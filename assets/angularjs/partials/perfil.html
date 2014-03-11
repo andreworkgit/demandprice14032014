@@ -1,4 +1,4 @@
-<div class="container" ng-init="logado()">
+<div class="container" ng-init="lista()">
     <div class="row">
         <div class="col-sm-2 col-md-2">
             <img src="http://placehold.it/100x100" alt="" class="img-rounded img-responsive" />
@@ -12,7 +12,24 @@
         <button ng-click="logoff()" class="btn btn-danger">Sair</button>
     </div>
 
+<br><br>
+    <h2>Example 1 - Running with default configuration (requirement: v0.1.1 and above)</h2>
+    <br>
+    <form ng-upload="upload(content)" method="post" action="/projetos/upload" >
+      <p>
+        <input type="file" name="file">
+      </p>
+      <p>
+        <input type="submit" class="btn" value="Submit" ng-disabled="$isUploading"><br>
+      </p>
+    </form>
+    <div class="alert alert-info">
+      Server Response:
+      <div>
+        {{uploadResponse}}
+      </div>
+    </div>
+  </div>
+<br><br>
 	<div ng-include="parte"></div>
-
-    <button ng-click='clearCache()'>Clear cache</button>
 </div>

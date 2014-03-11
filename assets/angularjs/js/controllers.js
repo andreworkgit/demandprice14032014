@@ -33,7 +33,11 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 				{},
 				params,
 				function(res){
-					$location.url('/projetos');
+					if(res.erro){
+						alert(res.erro);
+					}else{
+						$location.url('/projetos');
+					}
 				},
 				function(res){
 					console.dir(res.data.ValidationError);
@@ -56,7 +60,6 @@ controller('Home', ['$scope','$location', 'usersService', function($scope, $loca
 }]).
 controller('Projetos', ['$scope','$location', 'usersService','projetosService', function($scope, $location, usersService,projetosService){
 	$scope.logado = function(){
-
 		usersService.logado(
 			function(res){
 				if(!res.result){
@@ -69,33 +72,31 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 		);
 	}
 
-	$scope.logoff = function(){
-		usersService.logoff(
-			function(res){
-				$location.url('/');
-			}
-		);
-	}
+	$scope.logado();
 
-
-	$scope.newShow = false;
+	$scope.logoff = function(){usersService.logoff(function(res){$location.url('/');});}
 
 	$scope.parte = 'angularjs/partials/listaProjetos.html';
-	$scope.projetos = [
+	/*$scope.projetos = [
 		{nome: 'projeto1', descricao: 'descricao1'},
 		{nome: 'projeto2', descricao: 'descricao2'},
 		{nome: 'projeto3', descricao: 'descricao3'},
 		{nome: 'projeto4', descricao: 'descricao4'},
 		{nome: 'projeto5', descricao: 'descricao5'},
-	];
+	];*/
 	
 	$scope.includeNewProjeto = function(){
+		$scope.item = '';
 		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
 	}
 
-	$scope.newProjeto = function(item){
-		$scope.projetos.push(item);
-		$scope.ngNewProjeto = '';
+	$scope.includeEditProjeto = function(index){
+		$scope.ngNewProjeto = 'angularjs/partials/editProjeto.html';
+		$scope.item = {
+			id: $scope.projetos[index].id,
+			nome: $scope.projetos[index].nome,
+			descricao: $scope.projetos[index].descricao
+		};;
 	}
 
 	$scope.lista = function(){
@@ -107,10 +108,12 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 				$scope.projetos = res.projeto;
 			},
 			function(res){
-				console.dir(res.data.ValidationError);
+				//console.dir(res.data.ValidationError);
 			}
 		);
 	}
+
+	//$scope.lista();
 
 	$scope.cadastro = function(item){
 		if(item != undefined){
@@ -124,20 +127,48 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 				{},
 				params,
 				function(res){
-					console.log(res.projeto);
-					$scope.lista();
-					//$location.url('/projetos');
+
+					if(res.err){
+						alert(res.err);
+					}else{
+						//console.log(res.projeto);
+						$scope.lista();
+						//$location.url('/projetos');
+						$scope.ngNewProjeto = '';
+					}
+					
 				},
 				function(res){
-					console.dir(res.data.ValidationError);
+					//console.dir(res.data.ValidationError);
 				}
 			);
 		}
 	}
 
-	/*$scope.musica = {nome: 'musica teste 2', artista: 'artista teste 2'}
+	$scope.del = function(id){
+		var result = projetosService.del(
+			{},
+			{id: id},
+			function(res){
+				$scope.lista();
+			}
+		);
+	}
 
-	$scope.parte2 = 'angularjs/partials/parte2.html';
-	$scope.teste2 = 'parte2';*/
+	$scope.editar = function(item){
+		var result = projetosService.edit(
+			{},
+			item,
+			function(res){
+				$scope.lista();
+				$scope.ngNewProjeto = '';
+			}
+		);
+	}
+
+    $scope.disabled = false;
+    $scope.upload = function(content) {
+      $scope.uploadResponse = content.msg;
+    }
 
 }]);
