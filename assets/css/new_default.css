@@ -1,0 +1,92 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body, html{
+	background: #efefef;
+	height: 100%;
+	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px 0px no-repeat;	*/
+}
+
+header{
+	background: #fff;
+	position: fixed;
+	z-index: 999;
+
+	-webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	width:         100%;
+	height:         45px;
+}
+.logo{
+	width: 140px;
+	position: relative;
+	left: 630px;
+	top: 8px;
+	float: left;
+}
+.toobar-global{
+	float: right;
+	width: 253px;
+	right: 608px;
+	position: relative;
+}
+.toolbar-separator{
+	float: left;
+	font-size: 40px;
+	margin: -4px 10px 0;
+}
+
+.toolbar-ideas{
+	cursor: pointer;
+	color: #999;
+	float: left;
+	margin-top: 2px;
+}
+.toolbar-ideas img{
+	background: url(/images/sprite32x32.png) -62px 2px no-repeat;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
+.toolbar-ideas span{
+	padding: 12px 0 0;
+	float: left;
+	font: bold 0.8em Arial;
+	margin-right: 10px;
+}
+
+.toolbar-ideas:hover{color: #000;}
+.toolbar-ideas:hover > img {background: url(/images/sprite32x32.png) -95px 2px no-repeat;}
+
+.toolbar-user{
+	float: left;
+	margin-top: 7px;
+	
+}
+.toolbar-user span{
+	font: normal 0.8em Arial;
+	padding: 8px 0 0;
+	float: left;
+	color: #666;
+}
+.user-img{
+	margin-left: 10px;
+	border-radius: 50%;
+}
+
+
+.content{
+	overflow: hidden;
+	height: 100%;
+	margin: 0 auto;
+	border-left: 1px solid #c0c0c0;
+	border-right: 1px solid #c0c0c0;
+	width: 35.4%;
+	min-width: 680px;
+	padding: 54px 0;
+	/*opacity: .5;*/
+}
