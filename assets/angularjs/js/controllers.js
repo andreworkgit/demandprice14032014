@@ -9,7 +9,6 @@ run(function($rootScope, projetosService, usersService, $location) {
 			{},
 			{},
 			function(res){
-				console.log(res.projeto);
 				$rootScope.projetos = res.projeto;
 				return (cal != undefined) ? cal() : true;
 			},
@@ -17,7 +16,6 @@ run(function($rootScope, projetosService, usersService, $location) {
 				$rootScope.projetos = {};
 				return (cal != undefined) ? cal() : true;
 				//console.dir(res.data.ValidationError);
-				//return call();
 			}
 		);
 	}
@@ -90,6 +88,7 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 	$rootScope.logado('Proejtos');
 
 	$scope.parte = 'angularjs/partials/listaProjetos.html';
+	$rootScope.lista();
 
 	$scope.includeNewProjeto = function(){
 		$scope.item = '';
@@ -102,10 +101,8 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 			id: $rootScope.projetos[index].id,
 			nome: $rootScope.projetos[index].nome,
 			descricao: $rootScope.projetos[index].descricao
-		};;
+		};
 	}
-
-	$rootScope.lista();
 
 	$scope.cadastro = function(item){
 		if(item != undefined){
@@ -165,8 +162,8 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 
 }]).
 controller('Projeto', 
-['$scope','$rootScope','$location', '$routeParams', 'usersService','projetosService', 
-function($scope, $rootScope, $location, $routeParams, usersService,projetosService){
+['$scope','$rootScope','$location', '$routeParams','projetosService', 
+function($scope, $rootScope, $location, $routeParams, projetosService){
 	$rootScope.logado('Projeto');
 
 	if($rootScope.projetos == undefined){
