@@ -98,10 +98,36 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 	$scope.includeEditProjeto = function(index){
 		$scope.ngNewProjeto = 'angularjs/partials/editProjeto.html';
 		$scope.item = {
-			id: $rootScope.projetos[index].id,
-			nome: $rootScope.projetos[index].nome,
-			descricao: $rootScope.projetos[index].descricao
+			id: $scope.projetos[index].id,
+			nome: $scope.projetos[index].nome,
+			descricao: $scope.projetos[index].descricao
 		};
+
+		usersService.listarall(
+				{},
+				{},
+				function(res){
+					//console.log(res.projeto);
+					$scope.usersl = res.users;
+					$scope.userl = $scope.usersl[2];
+				}
+			);
+
+
+	}
+
+	$scope.lista = function(){
+		var result = projetosService.lista(
+			{},
+			{},
+			function(res){
+				//console.log(res.projeto);
+				$scope.projetos = res.projeto;
+			},
+			function(res){
+				//console.dir(res.data.ValidationError);
+			}
+		);
 	}
 
 	$scope.cadastro = function(item){
@@ -145,6 +171,9 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 	}
 
 	$scope.editar = function(item){
+
+		//console.dir(item);
+
 		var result = projetosService.edit(
 			{},
 			item,

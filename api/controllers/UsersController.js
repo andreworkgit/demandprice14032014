@@ -13,6 +13,17 @@ module.exports = {
 			});
 		});
 	},
+
+	listarall: function(req,res,next){
+
+		Users.mongoose(function (model){
+			model.find({}, function(err, rs){
+				//console.dir(rs);
+				res.json({users: rs});
+			});
+		});
+		
+	},
 	create: function(req, res, next){
 		if(req.body.password == undefined || req.body.email == undefined){
 			res.writeHead(400);
