@@ -180,4 +180,9 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 		$scope.item = '';
 		$scope.ngNewMusica = 'angularjs/partials/newMusica.html';
 	}
+
+	$scope.disabled = false;
+    $scope.upload = function(content) {
+		$scope.uploadResponse = content.msg;
+    }
 }]);

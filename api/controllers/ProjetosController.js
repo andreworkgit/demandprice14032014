@@ -122,8 +122,10 @@ module.exports = {
 		//setTimeout(function () {		
 			var fs = require('fs'), path = require('path');
 			res.setHeader('Content-Type', 'text/html');
-			if(req.files.file == undefined || req.files.length == 0 || req.files.file.size == 0)
-				res.send({ msg: 'No file uploaded at ' + new Date().toString() });
+			var cond1 = (req.files.file == undefined || req.files.length == 0 || req.files.file.size == 0);
+			var cond2 = (req.param('titulo') == undefined || req.param('titulo') == '' || req.param('artista') == undefined || req.param('artista') == '')
+			if(cond1 || cond2)
+				res.send({ msg: 'Dados invalidos'});
 			else{
 				var file = req.files.file;
 				
