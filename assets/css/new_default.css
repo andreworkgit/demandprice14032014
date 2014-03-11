@@ -7,7 +7,8 @@
 body, html{
 	background: #efefef;
 	height: 100%;
-	/*background: #fff url(/images/DOC_Box5_01.jpg) 0px 0px no-repeat;	*/
+/* 	background: #fff url(/images/DOC_Ideias2_03.jpg)549px 0px no-repeat;
+position: relative; */
 }
 
 header{
@@ -21,18 +22,21 @@ header{
 	width:         100%;
 	height:         45px;
 }
+.header{
+	width: 671px;
+	height: 45px;
+	margin: 0 auto;
+}
 .logo{
-	width: 140px;
+	width: 190px;
 	position: relative;
-	left: 630px;
-	top: 8px;
+	top: 6px;
 	float: left;
 }
 .toobar-global{
 	float: right;
-	width: 253px;
-	right: 608px;
 	position: relative;
+	max-width: 440px;
 }
 .toolbar-separator{
 	float: left;
@@ -43,11 +47,12 @@ header{
 .toolbar-ideas{
 	cursor: pointer;
 	color: #999;
-	float: left;
+	float: right;
 	margin-top: 2px;
+	margin-right: 10px;
 }
 .toolbar-ideas img{
-	background: url(/images/sprite32x32.png) -62px 2px no-repeat;
+	background: url(/images/sprite32x32.png) 1px 2px no-repeat;
 	width: 35px;
 	height: 35px;
 	float: left;
@@ -60,7 +65,7 @@ header{
 }
 
 .toolbar-ideas:hover{color: #000;}
-.toolbar-ideas:hover > img {background: url(/images/sprite32x32.png) -95px 2px no-repeat;}
+.toolbar-ideas:hover > img {background: url(/images/sprite32x32.png) 1px 2px no-repeat;}
 
 .toolbar-user{
 	float: left;
@@ -72,6 +77,10 @@ header{
 	padding: 8px 0 0;
 	float: left;
 	color: #666;
+	max-width: 280px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .user-img{
 	margin-left: 10px;
@@ -81,12 +90,69 @@ header{
 
 .content{
 	overflow: hidden;
-	height: 100%;
+	height: 87.4%;
 	margin: 0 auto;
 	border-left: 1px solid #c0c0c0;
 	border-right: 1px solid #c0c0c0;
 	width: 35.4%;
 	min-width: 680px;
-	padding: 54px 0;
+	padding: 60px 0;
 	/*opacity: .5;*/
+}
+
+.profile-texture{
+	background: url(/images/bgperfil.gif) 0px 0px repeat;
+	width: 100%;
+	height: 107px;
+	border-radius: 2px;
+}
+
+.profile-image{
+	border: 9px solid #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 60px;
+	left: 15px;
+
+}
+
+.profile-details{
+	float: left;
+	width: 365px;
+	position: relative;
+	left: 125px;
+	top: 5px;
+
+}
+.profile-details h1{
+	font: normal 24px Arial;
+	color: #333;
+
+}
+
+.profile-details span{
+	font: normal 13px Arial;
+	color: #999;
+	height: 35px;
+	float: left;
+	margin: 5px 0;
+
+}
+
+.profile-btn{
+	float: right;
+	position: relative;
+	top: 25px;
+
+}
+
+.profile-edit, .profile-logout{
+	background-color: #f1f1f1;
+	width: 137px;
+	padding: 6px 0;
+	text-indent: 10px;
+	color: #999;
+	font: normal 13px Arial;
+	cursor: pointer;
+	margin: 9px 0;	
 }
