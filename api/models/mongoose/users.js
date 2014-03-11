@@ -18,6 +18,7 @@ module.exports = function (mongoose){
 	var ProjetoSchema = new Schema({
 		nome		: { type: String, unique: true, required: true },
 		descricao	: String,
+		curtiu		: Array,
 		musicas 	: [MusicaSchema]
 	}, schemaOptions);
 

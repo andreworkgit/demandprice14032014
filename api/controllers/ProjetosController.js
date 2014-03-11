@@ -66,21 +66,31 @@ module.exports = {
 	},
 	edit: function(req, res, next){
 		Users.mongoose(function (model){
+			
 			var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
 			var dados = {
-			    $set: {
-			        "projetos.$.nome": req.param('nome'),
+				$set : {
+					"projetos.$.nome": req.param('nome'),
 			        "projetos.$.descricao": req.param('descricao')
-			    }
+				} 
 			}
 
 			model.update(where, dados, function(err, rs){
 				if(err){
 					return res.end(err);
-				}
+				}else if(req.param('userl')._id) {
+					
+					model.update(where, {
+						$addToSet: {
+				    		"projetos.$.curtiu": req.param('userl')
+				   	 	}
+				   	}, function(err2, rs2){
 
-				res.json(rs);
+						res.json(rs);
+					});
+				}
 			});
+
 		});
 	},
 
@@ -89,11 +99,14 @@ module.exports = {
 		//console.dir(Users);
 
 		Users.mongoose(function (model){
-			model.findById(req.session.user._id, {projetos: 1}, function (err, result) {
+			model.findById(req.session.user._id, function (err, result) {
+					if(err){
+						return res.end(err);
+					}
 					//console.log(err);
 					//console.log(user);
 					res.json({projeto: result.projetos});
-			});
+			}).sort({"projetos": 1});
 		});
 		
 		
