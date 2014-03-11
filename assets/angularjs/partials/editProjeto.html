@@ -4,6 +4,7 @@
 		<input type="text" value="" ng-model="item.nome" required class="input-xlarge">
 		<label>Descrição</label>
 		<input type="text" value="" ng-model="item.descricao" required class="input-xlarge">
+		<select ng-model="item.userl" ng-options="c.firstname for c in usersl"></select><br>
 		<input type="hidden" ng-model="item.id">
 		<div>
 			<button class="btn btn-primary">Salvar</button>

@@ -18,6 +18,11 @@ angular.module('NcBox.services', []).
   			method: 'GET',
   			url: '/users/logado'
   		},
+      listarall: {
+        method: 'POST',
+        url: '/users/listarall'
+        //,isArray: true
+      },
   		logoff: {
   			method: 'GET',
   			url: '/users/logoff'

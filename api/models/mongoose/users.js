@@ -11,7 +11,8 @@ module.exports = function (mongoose){
 	
 	var ProjetoSchema = new Schema({
 		nome		: { type: String, unique: true, required: true },
-		descricao	: String
+		descricao	: String,
+		curtiu		: Array
 	}, schemaOptions);
 
 	//ProjetoSchema.path('nome').index({ unique: true });

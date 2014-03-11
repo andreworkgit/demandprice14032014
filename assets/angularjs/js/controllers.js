@@ -96,7 +96,19 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 			id: $scope.projetos[index].id,
 			nome: $scope.projetos[index].nome,
 			descricao: $scope.projetos[index].descricao
-		};;
+		};
+
+		usersService.listarall(
+				{},
+				{},
+				function(res){
+					//console.log(res.projeto);
+					$scope.usersl = res.users;
+					$scope.userl = $scope.usersl[2];
+				}
+			);
+
+
 	}
 
 	$scope.lista = function(){
@@ -156,6 +168,9 @@ controller('Projetos', ['$scope','$location', 'usersService','projetosService', 
 	}
 
 	$scope.editar = function(item){
+
+		//console.dir(item);
+
 		var result = projetosService.edit(
 			{},
 			item,
