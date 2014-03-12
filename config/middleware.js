@@ -64,7 +64,7 @@ module.exports = {
             passport.use(new GitHubStrategy({
                     clientID: "eb7f477d437f54529d7b",
                     clientSecret: "7d9ef2c37fff70fd6056250c0364d6c87e6ba5c3",
-                    callbackURL: "http://localhost:1337/auth/github/callback"
+                    callbackURL: "http://id.ncllabs.com/auth/github/callback"
                 },
                 verifyHandler
             ));
@@ -72,7 +72,7 @@ module.exports = {
              passport.use(new FacebookStrategy({
                     clientID: "551126531621876",
                     clientSecret: "877b184e50b42924d01ee09cd708cffb",
-                    callbackURL: "http://localhost:1337/auth/facebook/callback"
+                    callbackURL: "http://id.ncllabs.com/auth/facebook/callback"
                 },
                 verifyHandler
             ));
@@ -80,7 +80,7 @@ module.exports = {
             passport.use(new GoogleStrategy({
                     clientID: '740383275630-4cme4abgmkdcn7surcb35bea9iq9emv0.apps.googleusercontent.com',
                     clientSecret: 'dsYfNik7wJAuGMzJnyiOXkDU',
-                    callbackURL: 'http://localhost:1337/auth/google/callback'
+                    callbackURL: 'http://id.ncllabs.com/auth/google/callback'
                 },
                 verifyHandler
             ));
