@@ -135,33 +135,59 @@ module.exports = {
 		//setTimeout(function () {		
 			var fs = require('fs'), path = require('path');
 			res.setHeader('Content-Type', 'text/html');
-			if(req.files.file == undefined || req.files.length == 0 || req.files.file.size == 0)
-				res.send({ msg: 'No file uploaded at ' + new Date().toString() });
-			else{
-				var file = req.files.file;
-				
-				var extensoes_validas = ['audio/mp3','audio/mpeg'];
-				if(extensoes_validas.indexOf(file.headers['content-type']) < 0){
-					res.send({ msg: 'não é um arquivo mp3'});
-					return;
-				}
+			var cond1 = (req.files.file == undefined || req.files.length == 0 || req.files.file.size == 0);
+			var cond2 = (req.param('titulo') == undefined || req.param('titulo') == '' || req.param('artista') == undefined || req.param('artista') == '')
+			if(cond1 || cond2){
+				res.send({ msg: 'Dados invalidos'});
+				return;
+			}
+			
+			var file = req.files.file;
+			
+			var extensoes_validas = ['audio/mp3','audio/mpeg'];
+			if(extensoes_validas.indexOf(file.headers['content-type']) < 0){
+				res.send({ msg: 'não é um arquivo mp3'});
+				return;
+			}
 
-				fs.readFile(file.path, function (err, data){
-					var newPath = path.join(__dirname,"..","..","assets","uploads", file.name);
+			fs.readFile(file.path, function (err, data){
+				require('bcrypt-nodejs').hash(file.name + 'noisecall' + new Date().toString(), null, null, function(err, hash) {
+					var filename = hash;
+					console.log(filename);
+					filename.replace('/','a');
+					filename.replace('\\','a');
+					filename.replace('.','a');
+					filename = filename + '.mp3';
+					console.log(filename);
+					var newPath = path.join(__dirname,"..","..","assets","uploads", filename);
 					fs.writeFile(newPath, data, function (err){
-						if(err) 
-							res.send({ msg: err});
-						else{
-							fs.unlink(file.path, function (err){
-								if(err)
-									res.send({ msg: 'erro no unlink'});
-								else
-									res.send({ msg: '<b>"' + file.name + '"</b> uploaded to the server '});
+						if(err) {res.send({ msg: err}); return;}
+
+						fs.unlink(file.path, function (err){
+							if(err) {res.send({ msg: 'erro no unlink'}); return;}
+
+							Users.mongoose(function (model){
+								var where = {projetos:{$elemMatch: {"_id": req.param('id')}}};
+								musica = {
+									titulo: req.param('titulo'),
+									artista: req.param('artista'),
+									url: filename
+								};
+
+								model.update(where, {
+									$addToSet: {
+							    		"projetos.$.musicas": musica
+							   	 	}
+							   	},function(err2, rs2){
+									if(err2) {res.send({ msg: err2}); return;}
+								});
 							});
-						}
+
+							res.send({ msg: '<b>"' + file.name + '"</b> uploaded to the server '});
+						});
 					});
 				});
-			}
+			});
 
 		//},10000);
 	}  

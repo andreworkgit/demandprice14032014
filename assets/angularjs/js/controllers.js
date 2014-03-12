@@ -104,16 +104,14 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 		};
 
 		usersService.listarall(
-				{},
-				{},
-				function(res){
-					//console.log(res.projeto);
-					$scope.usersl = res.users;
-					$scope.userl = $scope.usersl[2];
-				}
-			);
-
-
+			{},
+			{},
+			function(res){
+				//console.log(res.projeto);
+				$scope.usersl = res.users;
+				$scope.userl = $scope.usersl[2];
+			}
+		);
 	}
 
 	$scope.lista = function(){
@@ -209,4 +207,13 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 		$scope.item = '';
 		$scope.ngNewMusica = '/angularjs/partials/newMusica.html';
 	}
+
+	$scope.disabled = false;
+    $scope.upload = function(content) {
+    	$scope.ngNewMusica = '';
+		$scope.uploadResponse = content.msg;
+		$rootScope.lista(function(){
+			$scope.projeto = $rootScope.projetos[$routeParams.index - 1];
+		});
+    }
 }]);
