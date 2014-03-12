@@ -11,9 +11,12 @@ angular.module('NcBox', [
   'NcBox.directives',
   'NcBox.controllers'
 ]).
-config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/', {templateUrl: 'angularjs/partials/home.html', controller: 'Home'});
-	$routeProvider.when('/projetos', {templateUrl: 'angularjs/partials/perfil.html', controller: 'Projetos'});
-  $routeProvider.when('/projeto/:index', {templateUrl: 'angularjs/partials/perfil.html', controller: 'Projeto'});
-	$routeProvider.otherwise({redirectTo: '/'});
+config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
+	$routeProvider.when('/', {templateUrl: '/angularjs/partials/home.html', controller: 'Home'});
+	$routeProvider.when('/projetos', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projetos'});
+  $routeProvider.when('/projeto/:index', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projeto'});
+  
+  $routeProvider.otherwise({redirectTo: '/'});
+
+  $locationProvider.html5Mode(true);
 }]);

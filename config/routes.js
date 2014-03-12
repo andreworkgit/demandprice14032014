@@ -34,6 +34,19 @@ module.exports.routes = {
   // (This would also work if you had a file at: `/views/home.ejs`)
   '/': {
     view: 'home/index'
+  },
+
+  '/:username': {
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },
+
+
+  '/projeto/:id': {
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
   }
 
   /*

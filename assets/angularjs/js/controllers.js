@@ -87,16 +87,16 @@ controller('Projetos', ['$scope','$rootScope','$location', 'usersService','proje
 	
 	$rootScope.logado('Proejtos');
 
-	$scope.parte = 'angularjs/partials/listaProjetos.html';
+	$scope.parte = '/angularjs/partials/listaProjetos.html';
 	$rootScope.lista();
 
 	$scope.includeNewProjeto = function(){
 		$scope.item = '';
-		$scope.ngNewProjeto = 'angularjs/partials/newProjeto.html';
+		$scope.ngNewProjeto = '/angularjs/partials/newProjeto.html';
 	}
 
 	$scope.includeEditProjeto = function(index){
-		$scope.ngNewProjeto = 'angularjs/partials/editProjeto.html';
+		$scope.ngNewProjeto = '/angularjs/partials/editProjeto.html';
 		$scope.item = {
 			id: $scope.projetos[index].id,
 			nome: $scope.projetos[index].nome,
@@ -203,10 +203,10 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 		$scope.projeto = $rootScope.projetos[$routeParams.index - 1];
 	}
 
-	$scope.parte = 'angularjs/partials/projeto.html';
+	$scope.parte = '/angularjs/partials/projeto.html';
 	
 	$scope.includeNewMusica = function(){
 		$scope.item = '';
-		$scope.ngNewMusica = 'angularjs/partials/newMusica.html';
+		$scope.ngNewMusica = '/angularjs/partials/newMusica.html';
 	}
 }]);
