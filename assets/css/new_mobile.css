@@ -1,0 +1,32 @@
+.content{
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 60px 2px;
+	width: 98%;
+}
+.header{width: 100%;}
+
+
+.toolbar-user span, .toolbar-ideas span{display: none}
+.user-img{margin-left: 0px}
+
+.profile-box{float: left;}
+
+@media screen and (max-width: 603px){
+	.project-tittle{width: 65%}
+}
+@media screen and (max-width: 382px){
+	.project-tittle{width: 50%}
+	
+}
+.profile-details{width: 185px;}
+.profile-details h1{font-size: 16px;}
+.profile-details span{width: 170px;	max-height: 82px;}
+.profile-btn{width: 100%;top: 2px;}
+.profile-edit, .profile-logout{text-indent: 0px; text-align: center; width: 145px;}
+.profile-edit{float: left;}
+.profile-logout{float: right;}
+
+.project-details{width: 98%; margin: 8px 5px;}
+.boxContent{padding: 0px 5px;}
+.add-idea, .guitar-idea, .vocal-idea, .drumm-idea{margin: 8px 5px;}
