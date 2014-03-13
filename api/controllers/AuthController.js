@@ -34,18 +34,38 @@ module.exports = {
         res.redirect('/');
     },
 
-    teste: function(req, res) {
+    ncgit: function(req, res) {
         //var sys = require('sys')
         var exec = require('child_process').exec;
-        exec("git pull origin dev; forever restart X8Ko", function (error, stdout, stderr) { 
+        exec("git pull origin dev", function (error, stdout, stderr) { 
             //sys.puts(stdout); 
             res.json({error: error,cmderror: stderr2,cmdsuccess: stdout2});
         });
         
     },
 
-     teste4: function(req, res) {
-        res.json({teste: "forever3"});
+    ncrs: function(req, res) {
+        //var sys = require('sys')
+        var exec = require('child_process').exec;
+        exec("forever restart X8Ko", function (error, stdout, stderr) { 
+            //sys.puts(stdout); 
+            res.json({error: error,cmderror: stderr,cmdsuccess: stdout});
+        });
+        
+    },
+
+    ncdual: function(req, res) {
+        //var sys = require('sys')
+        var exec = require('child_process').exec;
+        exec("git pull origin dev; forever restart X8Ko", function (error, stdout, stderr) { 
+            //sys.puts(stdout); 
+            res.json({error: error,cmderror: stderr,cmdsuccess: stdout});
+        });
+        
+    },
+
+     teste5: function(req, res) {
+        res.json({teste: "forever5"});
                 
     },
 
