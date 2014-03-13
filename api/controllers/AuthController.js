@@ -39,7 +39,7 @@ module.exports = {
         var exec = require('child_process').exec;
         exec("git pull origin dev", function (error, stdout, stderr) { 
             //sys.puts(stdout); 
-            res.json({cmdsuccess: stdout,cmderror: stderr});
+            res.json({cmderror: stderr,cmdsuccess: stdout,teste: 123});
         });
         //forever restart X8Ko
         
