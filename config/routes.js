@@ -36,12 +36,26 @@ module.exports.routes = {
     view: 'home/index'
   },
 
-  '/:username': {
+  /*'/:username': {
     //controller: 'notfound',
     //action: 'index',
     view: 'home/index'
-  },
+  },*/
 
+  //'/^(?!.*?\.html).*': {
+  /*'get /\d*[0-9](\.\d*[0-9])?': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
+
+  /*'get /:username(^\d*[0-9](\.\d*[0-9])?$)': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
 
   '/projeto/:id': {
     //controller: 'notfound',

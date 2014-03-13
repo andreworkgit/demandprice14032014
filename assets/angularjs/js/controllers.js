@@ -216,4 +216,7 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 			$scope.projeto = $rootScope.projetos[$routeParams.index - 1];
 		});
     }
+}]).
+controller('Notfound', [function(){
+	
 }]);

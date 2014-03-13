@@ -15,8 +15,8 @@ config(['$routeProvider','$locationProvider', function($routeProvider,$locationP
 	$routeProvider.when('/', {templateUrl: '/angularjs/partials/home.html', controller: 'Home'});
 	$routeProvider.when('/projetos', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projetos'});
   $routeProvider.when('/projeto/:index', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projeto'});
-  
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider.when('/notfound', {templateUrl: '/angularjs/partials/404.html', controller: 'Notfound'});
+  $routeProvider.otherwise({redirectTo: '/notfound'});
 
   $locationProvider.html5Mode(true);
 }]);
