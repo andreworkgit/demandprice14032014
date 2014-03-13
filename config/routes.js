@@ -32,22 +32,40 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   // 
   // (This would also work if you had a file at: `/views/home.ejs`)
+  
   '/': {
     view: 'home/index'
   },
 
-
-
  'get /:username(\[a-zA-Z0-9-_]+)': {
   //'get /:username(\/^((?!^[a-zA-Z0-9-_\.]+\.(html)$).)*$/i\)': {
-  
- /*   controller: 'users',
-    action: 'teste',*/
     view: 'home/index'
   },
+
   /*'/regua.html': {
      controller: 'users',
     action: 'teste',
+
+  /*'/:username': {
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
+
+  //'/^(?!.*?\.html).*': {
+  /*'get /\d*[0-9](\.\d*[0-9])?': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
+
+  /*'get /:username(^\d*[0-9](\.\d*[0-9])?$)': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+
   },*/
 
   '/projeto/:id': {
