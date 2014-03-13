@@ -36,18 +36,25 @@ module.exports.routes = {
     view: 'home/index'
   },
 
-  '/:username': {
-    //controller: 'notfound',
-    //action: 'index',
+
+
+ 'get /:username(\[a-zA-Z0-9-_]+)': {
+  //'get /:username(\/^((?!^[a-zA-Z0-9-_\.]+\.(html)$).)*$/i\)': {
+  
+ /*   controller: 'users',
+    action: 'teste',*/
     view: 'home/index'
   },
-
+  /*'/regua.html': {
+     controller: 'users',
+    action: 'teste',
+  },*/
 
   '/projeto/:id': {
     //controller: 'notfound',
     //action: 'index',
     view: 'home/index'
-  }
+  },
 
   /*
   // But what if you want your home page to display
@@ -102,10 +109,15 @@ module.exports.routes = {
   // NOTE:
   // You'll still want to allow requests through to the static assets,
   // so we need to set up this route to ignore URLs that have a trailing ".":
-  // (e.g. your javascript, CSS, and image files)
-  'get /*(^.*)': 'UserController.profile'
+  // (e.g. your javascript, CSS, and image files)*/
+ /* 'get /*(^.*)': {
+   controller: 'users',
+    action: 'teste',
+    view: 'home/index'
+  }*/
 
-  */
+  //'UserController.profile'
+
 };
 
 
