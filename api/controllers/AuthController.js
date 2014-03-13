@@ -39,7 +39,7 @@ module.exports = {
 
         var exec = require('child_process').exec;
         function puts(error, stdout, stderr) { //sys.puts(stdout); 
-            res.end(stdout); }
+            res.json({ret: stdout}); }
         exec("git pull origin dev; forever restart FX5b", puts);
         
     },
