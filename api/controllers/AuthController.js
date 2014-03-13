@@ -40,6 +40,12 @@ module.exports = {
         exec("git pull origin dev", function (error, stdout, stderr) { 
             //sys.puts(stdout); 
             res.json({cmderror: stderr,cmdsuccess: stdout,teste: 123});
+
+            exec("forever restart X8Ko", function (error, stdout, stderr) { 
+                //sys.puts(stdout); 
+                res.json({cmderror: stderr,cmdsuccess: stdout,teste: "forever"});
+            });
+
         });
         //forever restart X8Ko
         
