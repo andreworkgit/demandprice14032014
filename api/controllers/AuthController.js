@@ -57,6 +57,11 @@ module.exports = {
                 
     },
 
+     teste3: function(req, res) {
+        res.json({teste: "forever3"});
+                
+    },
+
     // http://developer.github.com/v3/
     // http://developer.github.com/v3/oauth/#scopes
     github: function (req, res) {
