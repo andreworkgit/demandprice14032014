@@ -1,11 +1,22 @@
 <div class="span4">
-	<form ng-submit="addMusica(item)">
+	<form ng-upload="upload(content)" method="post" action="/projetos/upload">
 		<label>Titulo</label>
-		<input type="text" value="" ng-model="item.titulo" required class="input-xlarge">
+		<input type="text" value="" name="titulo" ng-model="item.titulo" required class="input-xlarge">
 		<label>Artista</label>
-		<input type="text" value="" ng-model="item.artista" required class="input-xlarge">
+		<input type="text" value="" name="artista" ng-model="item.artista" required class="input-xlarge">
+		<br>
+		<input type="file" name="file">
+
+		<input type="hidden" name="id" value="{{projeto.id}}">
 		<div>
-			<button class="btn btn-primary">Salvar</button>
+			<button class="btn btn-primary" ng-disabled="$isUploading">Salvar</button>
 		</div>
 	</form>
+
+	<div class="alert alert-info">
+      Server Response:
+      <div>
+        {{uploadResponse}}
+      </div>
+    </div>
 </div>

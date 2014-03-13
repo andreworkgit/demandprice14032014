@@ -14,6 +14,10 @@ module.exports = {
 		});
 	},
 
+	teste: function(req,res,next){
+		next();
+	},
+
 	listarall: function(req,res,next){
 
 		Users.mongoose(function (model){

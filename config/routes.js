@@ -32,9 +32,47 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   // 
   // (This would also work if you had a file at: `/views/home.ejs`)
+  /*
   '/': {
     view: 'home/index'
-  }
+  },
+
+ 'get /:username(\[a-zA-Z0-9-_]+)': {
+  //'get /:username(\/^((?!^[a-zA-Z0-9-_\.]+\.(html)$).)*$/i\)': {
+    view: 'home/index'
+  },*/
+
+  /*'/regua.html': {
+     controller: 'users',
+    action: 'teste',
+
+  /*'/:username': {
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
+
+  //'/^(?!.*?\.html).*': {
+  /*'get /\d*[0-9](\.\d*[0-9])?': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },*/
+
+  /*'get /:username(^\d*[0-9](\.\d*[0-9])?$)': {
+    
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+
+  },*/
+
+  '/projeto/:id': {
+    //controller: 'notfound',
+    //action: 'index',
+    view: 'home/index'
+  },
 
   /*
   // But what if you want your home page to display
@@ -89,10 +127,15 @@ module.exports.routes = {
   // NOTE:
   // You'll still want to allow requests through to the static assets,
   // so we need to set up this route to ignore URLs that have a trailing ".":
-  // (e.g. your javascript, CSS, and image files)
-  'get /*(^.*)': 'UserController.profile'
+  // (e.g. your javascript, CSS, and image files)*/
+ /* 'get /*(^.*)': {
+   controller: 'users',
+    action: 'teste',
+    view: 'home/index'
+  }*/
 
-  */
+  //'UserController.profile'
+
 };
 
 
