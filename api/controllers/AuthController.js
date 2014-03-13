@@ -35,7 +35,13 @@ module.exports = {
     },
 
     teste: function(req, res) {
-        res.json({id:"ddddd"});
+        var sys = require('sys')
+
+        var exec = require('child_process').exec;
+        function puts(error, stdout, stderr) { //sys.puts(stdout); 
+            res.end(stdout); }
+        exec("git pull origin dev; forever restart FX5b", puts);
+        
     },
 
     // http://developer.github.com/v3/
