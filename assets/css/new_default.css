@@ -40,12 +40,6 @@ header{
 	position: relative;
 	max-width: 450px;
 }
-.toolbar-separator{
-	float: left;
-	font-size: 40px;
-	margin: -4px 10px 0;
-}
-
 .toolbar-ideas{
 	cursor: pointer;
 	color: #999;
@@ -72,6 +66,10 @@ header{
 .toolbar-user{
 	float: left;
 	margin-top: 7px;
+	border-right: 1px solid;
+	padding-right: 7px;
+	height: 33px;
+	margin-right: 5px;
 	
 }
 .toolbar-user span{
