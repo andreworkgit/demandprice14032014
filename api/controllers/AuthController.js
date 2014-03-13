@@ -34,6 +34,10 @@ module.exports = {
         res.redirect('/');
     },
 
+    teste: function(req, res) {
+        res.json({id:"ddddd"});
+    },
+
     // http://developer.github.com/v3/
     // http://developer.github.com/v3/oauth/#scopes
     github: function (req, res) {
@@ -57,6 +61,7 @@ module.exports = {
     facebook: function (req, res) {
         passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] },
             function (err, user) {
+                console.log(user);
                 req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
@@ -91,8 +96,8 @@ module.exports = {
     'facebook/callback': function (req, res) {
         passport.authenticate('facebook',
             function (req, res) {
-                res.json({resposta: "ok"});
-                //res.redirect('/');
+                //res.json({resposta: "ok"});
+                res.redirect('/projetos');
             })(req, res);
     }
 
