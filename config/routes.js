@@ -32,7 +32,7 @@ module.exports.routes = {
   // located at `views/home/index.ejs`
   // 
   // (This would also work if you had a file at: `/views/home.ejs`)
-  
+  /*
   '/': {
     view: 'home/index'
   },
@@ -40,7 +40,7 @@ module.exports.routes = {
  'get /:username(\[a-zA-Z0-9-_]+)': {
   //'get /:username(\/^((?!^[a-zA-Z0-9-_\.]+\.(html)$).)*$/i\)': {
     view: 'home/index'
-  },
+  },*/
 
   /*'/regua.html': {
      controller: 'users',
