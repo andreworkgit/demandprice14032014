@@ -35,12 +35,13 @@ module.exports = {
     },
 
     teste: function(req, res) {
-        var sys = require('sys')
-
+        //var sys = require('sys')
         var exec = require('child_process').exec;
-        function puts(error, stdout, stderr) { //sys.puts(stdout); 
-            res.json({cmdsuccess: stdout,cmderror: stderr}); }
-        exec("git pull origin dev; forever restart X8Ko", puts);
+        exec("git pull origin dev", function (error, stdout, stderr) { 
+            //sys.puts(stdout); 
+            res.json({cmdsuccess: stdout,cmderror: stderr});
+        });
+        //forever restart X8Ko
         
     },
 
