@@ -37,16 +37,19 @@ module.exports = {
     teste: function(req, res) {
         //var sys = require('sys')
         var exec = require('child_process').exec;
-        exec("git pull origin dev", function (error, stdout, stderr) { 
+       /* exec("git pull origin dev", function (error, stdout, stderr) { 
             //sys.puts(stdout); 
             var cmdgit = {cmderror: stderr,cmdsuccess: stdout,teste: 123};
 
-            exec("forever restart X8Ko", function (error2, stdout2, stderr2) { 
-                //sys.puts(stdout); 
-                res.json({cmdgit: cmdgit,cmderror: stderr2,cmdsuccess: stdout2,teste: "forever"});
-            });
+            
 
-        });
+        });*/
+
+
+        exec("forever restart X8Ko", function (error2, stdout2, stderr2) { 
+                //sys.puts(stdout); 
+                res.json({cmdgit: 123,cmderror: stderr2,cmdsuccess: stdout2,teste: "forever"});
+            });
         //forever restart X8Ko
         
     },
