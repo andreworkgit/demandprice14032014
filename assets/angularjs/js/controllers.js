@@ -236,7 +236,12 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 		});
     }
 }]).
-controller('FrontAuth', [function(){
+controller('FrontAuth', ['$scope',function($scope){
+
+	$scope.alerta = function (){
+		alert('teste');
+		window.close();
+	}
 	
 }]).
 controller('Notfound', [function(){

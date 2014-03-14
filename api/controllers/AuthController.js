@@ -124,7 +124,7 @@ module.exports = {
                 res.writeHead(200, {'Content-Type': 'text/plain'});
                 res.end('exec');*/
 
-                res.redirect('/frontauth');
+                res.redirect('/auth/front');
                 /*req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
