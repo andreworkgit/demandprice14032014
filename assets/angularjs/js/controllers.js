@@ -53,6 +53,25 @@ controller('Home', ['$scope','$location', '$rootScope', 'usersService', function
 		);
 	}
 
+	$scope.popup = function(link, titulo){
+	  var width = 500,  height = 270;
+
+	  var screenX  = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft,
+	         screenY  = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop,
+	         outerWidth = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth,
+	         outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22),
+	         left  = parseInt(screenX + ((outerWidth - width) / 2), 10),
+	         top   = parseInt(screenY + ((outerHeight - height) / 2.5), 10),
+	         features = ('width='+ width +',height='+ height +',left=' + left +',top=' + top);
+
+	  window.open(link, titulo, features);
+	 }
+
+	$scope.redire = function(url){
+		window.location.href = '/'+url;
+		//$location.url('/'+url);
+	}
+
 	$scope.cadastro = function(item){
 		if(item != undefined){
 
@@ -216,6 +235,9 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 			$scope.projeto = $rootScope.projetos[$routeParams.index - 1];
 		});
     }
+}]).
+controller('Http', [function(){
+	
 }]).
 controller('Notfound', [function(){
 	

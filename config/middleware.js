@@ -7,7 +7,9 @@ var passport = require('passport')
 var verifyHandler = function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
         console.dir(profile);
-
+        var user = { id : "123456"};
+        var err = null;
+        return done(err, user);
       /*  User.findOrCreate({ uid:  profile.id,
         					name: profile.displayName,
         					email:profile.emails.value}).done(function (err, user) {
@@ -48,9 +50,15 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    User.findOne({id: id}).done(function (err, user) {
+
+	var user = { id : "123456"};
+	var err = null;
+    done(err, user);
+
+   /* User.findOne({id: id}).done(function (err, user) {
         done(err, user);
-    });
+    });*/
+
 	//done(null, uid);
 });
 
@@ -80,7 +88,7 @@ module.exports = {
             passport.use(new GoogleStrategy({
                     clientID: '740383275630-4cme4abgmkdcn7surcb35bea9iq9emv0.apps.googleusercontent.com',
                     clientSecret: 'dsYfNik7wJAuGMzJnyiOXkDU',
-                    callbackURL: 'http://id.ncllabs.com/auth/google/callback'
+                    callbackURL: 'http://localhost:1337/auth/google/callback'
                 },
                 verifyHandler
             ));

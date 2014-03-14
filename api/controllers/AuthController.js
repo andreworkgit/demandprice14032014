@@ -92,6 +92,7 @@ module.exports = {
     facebook: function (req, res) {
         passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] },
             function (err, user) {
+                console.log('rota facebook');
                 console.log(user);
                 req.logIn(user, function (err) {
                     if (err) {
@@ -127,6 +128,7 @@ module.exports = {
     'facebook/callback': function (req, res) {
         passport.authenticate('facebook',
             function (req, res) {
+                console.log('rota facebook/callback');
                 //res.json({resposta: "ok"});
                 res.redirect('/projetos');
             })(req, res);
