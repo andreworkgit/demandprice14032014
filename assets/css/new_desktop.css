@@ -1,3 +1,13 @@
+.content{
+	overflow: hidden;
+	margin: 0 auto;
+	border-left: 1px solid #c0c0c0;
+	border-right: 1px solid #c0c0c0;
+	padding: 60px 15px;
+	width: 652px;
+	min-height: 87%;
+	/*opacity: .5;*/
+}
 
 
 /*TOOL TIPS*/
@@ -31,15 +41,31 @@
 .tools-trackMove:hover + .tooltip-left{display: block;}
 .tools-trackMute:hover + .tooltip-center{display: block;}
 
-.profile-box{
-	width: 652px;
-	height: 220px;
-	background: #fff;
-	border-radius: 2px;
-	position: relative;	
 
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	margin-bottom:         7.5px;
+.leftColumn, .rightColumn{width: 318px;}
+.leftColumn{float: left;} .rightColumn{float: right;}
+
+.profile-invite{
+	right: 0px;
+	bottom: 8px;
+	background: #fff;
+	display: none;
 }
+.profile_inviteAlert{
+	background-color: #f25252;
+	width: 137px;
+	padding: 6px 0;
+	text-indent: 10px;
+	color: #fff;
+	font: normal 13px Arial;
+	cursor: pointer;
+}
+.profile-invite span{
+	font: normal 11px Arial;
+	color: #999;
+	float: left;
+	width: 132px;
+	margin: 5px 0;
+	padding-left: 5px;
+}
+.profile-details span{max-height: 35px;}

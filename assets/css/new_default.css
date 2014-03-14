@@ -7,20 +7,22 @@
 body, html{
 	background: #efefef;
 	height: 100%;
-/* 	background: #fff url(/images/DOC_Ideias2_03.jpg)549px 0px no-repeat;
-position: relative; */
+	color: #333;
+backgr/* ound: #fff url(/images/DOC_Ideias2_03.jpg)549px 0px no-repeat;
+position: re */lative;
+
 }
 
 header{
 	background: #fff;
 	position: fixed;
 	z-index: 999;
+	width: 100%;
+	height: 45px;
 
-	-webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 1px 3px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 1px 3px 0px rgba(50, 50, 50, 0.75);
-	width:         100%;
-	height:         45px;
+	-webkit-box-shadow: 0px 1px 3px 0px rgba(50, 50, 50, 0.25);
+	-moz-box-shadow:    0px 1px 3px 0px rgba(50, 50, 50, 0.25);
+	box-shadow:         0px 1px 3px 0px rgba(50, 50, 50, 0.25);
 }
 .header{
 	width: 671px;
@@ -36,14 +38,8 @@ header{
 .toobar-global{
 	float: right;
 	position: relative;
-	max-width: 440px;
+	max-width: 450px;
 }
-.toolbar-separator{
-	float: left;
-	font-size: 40px;
-	margin: -4px 10px 0;
-}
-
 .toolbar-ideas{
 	cursor: pointer;
 	color: #999;
@@ -69,7 +65,11 @@ header{
 
 .toolbar-user{
 	float: left;
-	margin-top: 7px;
+	margin-top: 6px;
+	border-right: 1px solid;
+	padding-right: 7px;
+	height: 33px;
+	margin-right: 5px;
 	
 }
 .toolbar-user span{
@@ -87,16 +87,17 @@ header{
 	border-radius: 50%;
 }
 
+.profile-box{
+	width: 100%;
+	background: #fff;
+	border-radius: 2px;
+	position: relative;	
 
-.content{
-	overflow: hidden;
-	height: 87.4%;
-	margin: 0 auto;
-	border-left: 1px solid #c0c0c0;
-	border-right: 1px solid #c0c0c0;
-	padding: 60px 13px;
-	width: 652px;
-	/*opacity: .5;*/
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	margin-bottom:         7.5px;
+	min-height:         220px;
 }
 
 .profile-texture{
@@ -132,9 +133,9 @@ header{
 .profile-details span{
 	font: normal 13px Arial;
 	color: #999;
-	height: 35px;
 	float: left;
 	margin: 5px 0;
+	overflow: hidden;
 
 }
 
@@ -157,7 +158,7 @@ header{
 }
 
 .newProject-box{
-	width: 317px;
+	width: 100%;
 	height: 39px;
 	background: #fff;
 	border-radius: 2px;
@@ -165,16 +166,16 @@ header{
 	margin: 7.5px 0;
 	float: left;
 
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
 }
 
 .newProject-box img{
 	background: url(/images/sprite32x32.png) 0px -65px no-repeat;
 	width: 30px;
 	height: 30px;
-	margin: 4px 5px 0 56px;
+	margin: 4px 5px 0 21%;
 	float: left;
 }
 
@@ -184,4 +185,102 @@ header{
 	float: left;
 	margin: 12px 0 0;
 	
+}
+
+.defaultLeft-box, .defaultRight-box{
+	background: #fff;
+	border-radius: 2px;
+	position: relative;
+	margin: 7.5px 0;
+	padding-bottom: 8px;
+	width: 100%;
+
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+}
+.defaultLeft-box{float: left;} .defaultRight-box{float: right;}
+
+.boxContent{padding: 0 8px;}
+
+.tittle-box{
+	font: bold 14px Arial;
+	padding: 10px 15px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 8px;
+}
+.project-details{
+	border-radius: 2px;
+	width: 286px;
+	height: 88px;
+	margin: 8px;
+	float: left;
+	position: relative;
+
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.25);
+}
+.project-details img{
+	border-radius: 2px 0 0 2px;
+
+}
+.project-play{
+	background: url(/images/sprite32x32.png) 0px -33px no-repeat;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 8px;
+	left: 53px;
+	cursor: pointer;
+}
+.show-more{
+	float: left;
+	color: #999;
+	font: normal 11px Arial;
+	margin: 0 16px;
+}
+.project-tittle{
+	float: left;
+	font: bold 13px Arial;
+	width: 57%;
+	margin: 20px 16px 14px;
+}
+
+.add-idea, .guitar-idea, .vocal-idea, .drumm-idea{
+	width: 82px;
+	border: 1px solid #ccc;
+	height: 82px;
+	border-radius: 6px;
+	position: relative;
+	margin: 8px 8px;
+	float: left;
+}
+.add-idea img{
+	background: url(/images/sprite32x32.png) -65px -33px no-repeat;
+	width: 30px;
+	height: 30px;
+	margin: 19px 26px -4px;
+}
+.add-idea span{
+	color: #ccc;
+	font: normal 11px Arial;
+	margin: 0 18px;
+}
+.guitar-idea img, .vocal-idea img, .drumm-idea img{
+	width: 70px;
+	height: 70px;
+	margin: 6px;
+}
+.guitar-idea img{background: url(/images/sprite70x70.png) 0px 0px no-repeat;}
+.vocal-idea img{background: url(/images/sprite70x70.png) 0px -70px no-repeat;}
+.drumm-idea img{background: url(/images/sprite70x70.png) 0px -140px no-repeat;}
+
+.guitar-idea span, .vocal-idea span, .drumm-idea span{
+	color: #999;
+	font: normal 12px Arial;
+	position: absolute;
+	left: 8px;
+	top: 8px;
+
 }
