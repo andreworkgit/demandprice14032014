@@ -40,12 +40,16 @@ module.exports = {
         exec("git pull origin dev", function (error, stdout, stderr) { 
             //sys.puts(stdout); 
             //res.json({error: error,cmderror: stderr,cmdsuccess: stdout});
-            res.view({
+            /*res.view({
                 outerror: error,
                 outstrerror: stderr,
                 outstr: stdout,
                 _layoutFile: 'outconsole.ejs'
-            })
+            })*/
+
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.end(error+stderr+stdout);
+
         });
         
     },
