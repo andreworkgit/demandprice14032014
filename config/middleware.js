@@ -6,24 +6,46 @@ var passport = require('passport')
 
 var verifyHandler = function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
-        console.dir(profile);
-        //var user = { id : "123456"};
-        //var err = null;
-		//return done(err, user);
+        //console.dir(profile);
 
         Users.mongoose(function (model){
 			model.findOne({
-				/*oauth : { $elemMatch: { id: profile.id,
-										provider:provider.provider} 
-						}*/
+				//oauth : { $elemMatch: { id: profile.id,
+				//						provider:provider.provider} 
+				//		}
 				email : profile._json.email
 			}, function(err, user){
 				if (user) {
-                	return done(null, user);
+					var where = {
+						oauth : { $elemMatch: { id: profile.id,
+													provider:profile.provider} 
+						}
+					};
+					model.findOne(where, function (errauth, userauth){
+
+						if(!userauth){
+
+							model.update(where, {
+								$addToSet: {
+						    		"oauth": {	'id': profile.id,
+												'provider': profile.provider	}
+						   	 	}
+						   	}, function(errup, userup){
+
+								return done(null, user);
+							});
+
+						}else{
+							return done(null, user);
+						}
+
+					});
+
+                	
                 }else{
                 	var user = new model({
-						firstname : profile._json.first_name,
-						lastname : profile._json.last_name,
+						firstname : profile.name.givenName,
+						lastname : profile.name.familyName,
 						email : profile._json.email,
 						oauth: [{	'id': profile.id,
 									'provider': profile.provider	}]

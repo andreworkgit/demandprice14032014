@@ -111,20 +111,15 @@ module.exports = {
     facebook: function (req, res) {
         passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] },
             function (err, user) {
-                console.log('rota facebook');
-                console.log(user);
+                //console.log('rota facebook');
+                //console.log(user);
 
                 req.session.logado = true;
                 req.session.cookie.maxAge = 86400000 * 28;
                 req.session.user = user;
                 req.session.save();
-
-               /* window.opener.location ="/projetos";
-                window.close();
-                res.writeHead(200, {'Content-Type': 'text/plain'});
-                res.end('exec');*/
-
                 res.redirect('/auth/front');
+                
                 /*req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
@@ -143,25 +138,25 @@ module.exports = {
     google: function (req, res) {
         passport.authenticate('google', { failureRedirect: '/login', scope:['https://www.googleapis.com/auth/plus.login','https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email'] },
             function (err, user) {
-                req.logIn(user, function (err) {
-                    if (err) {
-                        console.log(err);
-                        res.view('500');
-                        return;
-                    }
-
-                    res.redirect('/');
-                    return;
-                });
+                req.session.logado = true;
+                req.session.cookie.maxAge = 86400000 * 28;
+                req.session.user = user;
+                req.session.save();
+                res.redirect('/auth/front');
             })(req, res);
     },
 
     'facebook/callback': function (req, res) {
         passport.authenticate('facebook',
             function (req, res) {
-                console.log('rota facebook/callback');
-                //res.json({resposta: "ok"});
-                res.redirect('/projetos');
+                res.redirect('/auth/front');
+            })(req, res);
+    },
+
+    'google/callback': function (req, res) {
+        passport.authenticate('google',
+            function (req, res) {
+                res.redirect('/auth/front');
             })(req, res);
     }
 
