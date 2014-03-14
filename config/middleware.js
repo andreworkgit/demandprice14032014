@@ -83,7 +83,7 @@ passport.deserializeUser(function (id, done) {
     done(err, user);*/
 
     Users.mongoose(function (model){
-			model.findOne({_id: id}, function(err, user){
+			model.findOne({id: id}, function(err, user){
 				done(err,user);
 			});
 	});
