@@ -48,7 +48,8 @@ module.exports = {
 							firstname : req.body.firstname,
 							lastname : req.body.lastname,
 							email : req.body.email,
-							password : hash
+							password : hash,
+							oauth: [{'id':'1234','provider':'google'}]
 						});
 
 						user.save(function(err){

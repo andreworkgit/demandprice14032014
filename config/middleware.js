@@ -25,7 +25,8 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 						firstname : profile._json.first_name,
 						lastname : profile._json.last_name,
 						email : profile._json.email,
-						oauth: [{id:profile.id,provider:profile.provider}]
+						oauth: [{	'id': profile.id,
+									'provider': profile.provider	}]
 					});
 
 					user.save(function(err){
