@@ -236,7 +236,7 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 		});
     }
 }]).
-controller('Http', [function(){
+controller('FrontAuth', [function(){
 	
 }]).
 controller('Notfound', [function(){
