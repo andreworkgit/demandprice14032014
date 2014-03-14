@@ -119,7 +119,7 @@ module.exports = {
                 req.session.user = user;
                 req.session.save();
 
-                opener.location ="/projetos";
+                window.opener.location ="/projetos";
                 window.close();
                 res.writeHead(200, {'Content-Type': 'text/plain'});
                 res.end('exec');
