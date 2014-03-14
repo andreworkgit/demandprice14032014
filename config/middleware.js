@@ -16,16 +16,16 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 				/*oauth : { $elemMatch: { id: profile.id,
 										provider:provider.provider} 
 						}*/
-				email : provider._json.email
+				email : profile._json.email
 			}, function(err, user){
 				if (user) {
                 	return done(null, user);
                 }else{
                 	var user = new model({
-						firstname : provider._json.first_name,
-						lastname : provider._json.last_name,
-						email : provider._json.email,
-						auth: [{id:provider.id,provider:provider.provider}]
+						firstname : profile._json.first_name,
+						lastname : profile._json.last_name,
+						email : profile._json.email,
+						auth: [{id:profile.id,provider:profile.provider}]
 					});
 
 					user.save(function(err){
