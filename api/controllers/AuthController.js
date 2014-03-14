@@ -113,7 +113,12 @@ module.exports = {
             function (err, user) {
                 console.log('rota facebook');
                 console.log(user);
-                
+
+                req.session.logado = true;
+                req.session.cookie.maxAge = 86400000 * 28;
+                req.session.user = user;
+                req.session.save();
+                res.redirect('/projetos');
                 /*req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
