@@ -9,12 +9,8 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
         //console.dir(profile);
 
         Users.mongoose(function (model){
-			model.findOne({
-				//oauth : { $elemMatch: { id: profile.id,
-				//						provider:provider.provider} 
-				//		}
-				email : profile._json.email
-			}, function(err, user){
+        	var wherebyemail = { email : profile._json.email };
+			model.findOne(wherebyemail, function(err, user){
 				if (user) {
 					var where = {
 						oauth : { $elemMatch: { id: profile.id,
@@ -25,7 +21,7 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 
 						if(!userauth){
 
-							model.update(where, {
+							model.update(wherebyemail, {
 								$addToSet: {
 						    		"oauth": {	'id': profile.id,
 												'provider': profile.provider	}
