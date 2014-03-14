@@ -239,7 +239,7 @@ function($scope, $rootScope, $location, $routeParams, projetosService){
 controller('FrontAuth', ['$scope',function($scope){
 
 	$scope.alerta = function (){
-		alert('teste');
+		window.opener.location ="/projetos";
 		window.close();
 	}
 	
