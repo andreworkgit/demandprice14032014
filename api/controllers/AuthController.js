@@ -44,7 +44,8 @@ module.exports = {
                 outerror: error,
                 outstrerror: stderr,
                 outstr: stdout,
-                _layoutFile: 'index/outconsole.ejs'
+                //_layoutFile: 'index/outconsole.ejs'
+                layout: 'index/outconsole.ejs'
             })
         });
         
