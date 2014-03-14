@@ -7,9 +7,36 @@ var passport = require('passport')
 var verifyHandler = function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
         console.dir(profile);
-        var user = { id : "123456"};
-        var err = null;
-        return done(err, user);
+        //var user = { id : "123456"};
+        //var err = null;
+		//return done(err, user);
+
+        Users.mongoose(function (model){
+			model.findOne({
+				/*oauth : { $elemMatch: { id: profile.id,
+										provider:provider.provider} 
+						}*/
+				email : provider._json.email
+			}, function(err, user){
+				if (user) {
+                	return done(null, user);
+                }else{
+                	var user = new model({
+						firstname : provider._json.first_name,
+						lastname : provider._json.last_name,
+						email : provider._json.email,
+						auth: [{id:provider.id,provider:provider.provider}]
+					});
+
+					user.save(function(err){
+						 return done(err, user);
+					});
+                }
+			});
+		});
+
+
+        
       /*  User.findOrCreate({ uid:  profile.id,
         					name: profile.displayName,
         					email:profile.emails.value}).done(function (err, user) {
@@ -51,9 +78,15 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
 
-	var user = { id : "123456"};
+	/*var user = { id : "123456"};
 	var err = null;
-    done(err, user);
+    done(err, user);*/
+
+    Users.mongoose(function (model){
+			model.findOne({_id: id}, function(err, user){
+				done(err,user);
+			});
+	});
 
    /* User.findOne({id: id}).done(function (err, user) {
         done(err, user);

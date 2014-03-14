@@ -113,7 +113,8 @@ module.exports = {
             function (err, user) {
                 console.log('rota facebook');
                 console.log(user);
-                req.logIn(user, function (err) {
+                
+                /*req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
                         res.view('500');
@@ -122,7 +123,7 @@ module.exports = {
 
                     res.redirect('/');
                     return;
-                });
+                });*/
             })(req, res);
     },
 

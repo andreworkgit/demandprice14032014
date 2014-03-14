@@ -17,7 +17,6 @@ config(['$routeProvider','$locationProvider', function($routeProvider,$locationP
   $routeProvider.when('/projeto/:index', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projeto'});
   $routeProvider.when('/notfound', {templateUrl: '/angularjs/partials/404.html', controller: 'Notfound'});
   $routeProvider.when('/:username', {templateUrl: '/angularjs/partials/parte2.html', controller: 'Projetos'});
-  //$routeProvider.when('/auth/google', {templateUrl: '/angularjs/partials/parte2.html', controller: 'Http'});
   
   $routeProvider.otherwise({redirectTo: '/notfound'});
 

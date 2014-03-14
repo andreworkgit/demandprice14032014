@@ -29,6 +29,7 @@ module.exports = function (mongoose){
 		lastname 	: String,
 		email  		: { type: String, unique: true },
 		password 	: String,
+		oauth		: Array,
 		projetos  	: [ProjetoSchema]
 	});
 	return UsersSchema;
