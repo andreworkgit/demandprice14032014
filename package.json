@@ -18,7 +18,8 @@
     "passport": "0.1.18",
     "passport-github": "0.1.5",
     "passport-google-oauth": "0.1.5",
-    "passport-facebook": "~1.0.2"
+    "passport-facebook": "~1.0.2",
+    "cheerio": "~0.13.1"
   },
   "scripts": {
     "start": "node app.js",

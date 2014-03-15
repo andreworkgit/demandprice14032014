@@ -84,7 +84,78 @@ module.exports = {
     },
 
      teste5: function(req, res) {
-        res.json({teste: "forever5"});
+        var https = require('https');
+        var http = require('http');
+
+
+        function download(url, callback) {
+          https.get(url, function(res) {
+            var data = "";
+            res.on('data', function (chunk) {
+              data += chunk;
+            });
+            res.on("end", function() {
+              callback(data);
+            });
+          }).on("error", function() {
+            callback(null);
+          });
+        }
+        var cheerio = require("cheerio");
+        var url = "https://www.google.com.br/search?q=Smartphone+LG+Optimus+L3+II+Desbloqueado&ie=UTF-8&prmd=ivns&source=univ&tbm=shop&tbo=u&sa=X&tbs=vw:l,p_ord:p&ei=W6EjU8vJJIe2kAeu8oDgDA&ved=0CHsQsxg";
+        
+
+        //var url = "https://www.google.com.br/search?q=Smartphone+LG+Optimus+L3+II+Desbloqueado&oq=Smartphone+LG+Optimus+L3+II+Desbloqueado&aqs=chrome..69i57j69i61.496j0j9&sourceid=chrome&espv=210&es_sm=122&ie=UTF-8#q=Smartphone+LG+Optimus+L3+II+Desbloqueado&tbm=shop&tbs=vw:l,p_ord:p";
+        //var url = "http://www.dailymail.co.uk/news/article-2297585/Wild-squirrels-pose-charming-pictures-photographer-hides-nuts-miniature-props.html";
+
+        download(url, function(data) {
+          if (data) {
+            //console.log(data);
+            
+            var dados_produtos = [];
+
+            var $ = cheerio.load(data);
+
+            console.log($("#ires > ol > li.g").length);
+            var c = 0;
+
+            $("#ires > ol > li.g").each(function(i, e) {
+                console.log($(e).find("div._zd").html());
+                dados_produtos[c] = { 
+                                        titulo: $(e).find("div._Li").find("h3.r").find("a").html(), 
+                                        price: $(e).find("div._zd").find("b").html(), 
+                                        loja:  $(e).find("div._zd").find("cite").html()
+                                    };
+                c++;
+                //console.log($(e).attr("src"));
+              });
+            console.dir(dados_produtos.length);
+            console.dir(dados_produtos);
+            console.log($("#center_col > div.sd").html());
+            console.log("done");
+            res.json({dados:dados_produtos});
+            //res.end(data);
+            
+
+          }
+          else console.log("error");  
+        });
+
+
+        
+       /* http.get("https://www.google.com.br/search?q=Smartphone+LG+Optimus+L3+II+Desbloqueado&ie=UTF-8&prmd=ivns&source=univ&tbm=shop&tbo=u&sa=X&ei=W6EjU8vJJIe2kAeu8oDgDA&ved=0CHsQsxg", function (result) {
+        //http.get("https://www.google.com.br/search?q=Smartphone+LG+Optimus+L3+II+Desbloqueado&oq=Smartphone+LG+Optimus+L3+II+Desbloqueado#q=Smartphone+LG+Optimus+L3+II+Desbloqueado&tbm=shop&tbs=vw:l", function (result) {
+            result.on('data', function (chunk) {
+                //console.log(chunk);
+                process.stdout.write(chunk);
+                res.write(chunk);
+            });
+            result.on('end', function () {
+                res.end();
+            });
+        });*/
+
+        //res.json({teste: "forever5"});
                 
     },
 

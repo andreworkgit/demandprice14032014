@@ -140,7 +140,7 @@ module.exports = {
             passport.use(new GoogleStrategy({
                     clientID: '740383275630-4cme4abgmkdcn7surcb35bea9iq9emv0.apps.googleusercontent.com',
                     clientSecret: 'dsYfNik7wJAuGMzJnyiOXkDU',
-                    callbackURL: 'http://id.ncllabs.com/auth/google/callback'
+                    callbackURL: 'http://localhost:1337/auth/google/callback'
                 },
                 verifyHandler
             ));
