@@ -68,7 +68,8 @@ module.exports = function (grunt) {
     "angularjs/js/controllers.js",
     "angularjs/js/filters.js",
     "angularjs/js/directives.js",
-    "angularjs/lib/angular/ng-upload.js"
+    "angularjs/lib/angular/ng-upload.js",
+    "angularjs/lib/angular/angular-sanitize.js"
 
     // All of the rest of your app scripts imported here
     //'angularjs/**/*.js'

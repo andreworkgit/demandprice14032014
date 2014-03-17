@@ -7,4 +7,15 @@ angular.module('NcBox.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
-  }]);
+  }]).
+  filter('htmlToPlaintext', function() {
+    return function(text) {
+      return String(text).replace(/<[^>]+>/gm, '');
+    }
+  })
+.
+  filter('convUTF8', function() {
+    return function(text) {
+      return String(text).toString("uft8");
+    }
+  });

@@ -48,6 +48,31 @@ angular.module('NcBox.services', []).
         url: '/projetos/edit'
       }
     });
+  }])
+  .factory('produtosService', ['$resource', function($resource){
+    return $resource('/users/:id',{id: '@id'}, {
+      create: {
+        method: 'POST',
+        url: '/users/create'
+      },
+      login: {
+        method: 'POST',
+        url: '/users/login'
+      },
+      logado: {
+        method: 'GET',
+        url: '/users/logado'
+      },
+      listar: {
+        method: 'POST',
+        url: '/auth/teste5'
+        //,isArray: true
+      },
+      logoff: {
+        method: 'GET',
+        url: '/users/logoff'
+      }   
+    });
   }]);
 
 

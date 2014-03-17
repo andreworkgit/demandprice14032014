@@ -244,6 +244,32 @@ controller('FrontAuth', ['$scope',function($scope){
 	}
 	
 }]).
+controller('DashBoard', ['$scope','produtosService',function($scope,produtosService){
+
+	$scope.parte = '/angularjs/partials/dashboard/ListaProdutos.html';
+
+	$scope.alerta = function (){
+		window.opener.location ="/projetos";
+		window.close();
+	}
+
+	//$scope.listar();
+
+	$scope.listar = function(){
+		var result = produtosService.listar(
+			{},
+			{},
+			function(res){
+				console.log(res.dados);
+				$scope.produtos = res.dados;
+			},
+			function(res){
+				//console.dir(res.data.ValidationError);
+			}
+		);
+	}
+	
+}]).
 controller('Notfound', [function(){
 	
 }]);
