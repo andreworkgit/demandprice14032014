@@ -255,10 +255,11 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 
 	//$scope.listar();
 
-	$scope.listar = function(){
+	$scope.listar = function(busca){
+		var params = {q: busca}
 		var result = produtosService.listar(
 			{},
-			{},
+			params,
 			function(res){
 				console.log(res.dados);
 				$scope.produtos = res.dados;

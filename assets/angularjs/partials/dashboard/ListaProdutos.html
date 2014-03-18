@@ -10,7 +10,7 @@
 
     <div class="span9">
     <br><br>
-        Busca <input type="search" ng-model="busca">
+        Busca <input type="search" ng-model="busca" ng-keyup="listar(busca)">
     </div>
 
     <table class="table table-striped" ng-init="listar()">
@@ -24,9 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="produto in produtos | filter:busca">
+            <tr ng-repeat="produto in produtos">
                 <td ng-bind-html="produto.titulo">{{produto.titulo}}</td>
-                <td>{{produto.loja | convUTF8}}</td>
+                <td>{{produto.loja}}</td>
                 <td>{{produto.price}}</td>
                 <td>
                    <!-- <ul>

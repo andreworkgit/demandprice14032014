@@ -65,7 +65,7 @@ angular.module('NcBox.services', []).
       },
       listar: {
         method: 'POST',
-        url: '/auth/teste6'
+        url: '/produtos/listar'
         //,isArray: true
       },
       logoff: {
