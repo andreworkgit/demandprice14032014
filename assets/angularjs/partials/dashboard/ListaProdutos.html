@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="span9">
+    	<h2>Projetos</h2>
+
+    	<button ng-click="" class="btn btn-primary">Novo Projeto</button>
+    
+
+        <div ng-include=""></div>
+    </div>
+
+    <div class="span9">
+    <br><br>
+        Busca <input type="search" ng-model="busca">
+    </div>
+
+    <table class="table table-striped" ng-init="listar()">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Loja</th>
+                <th>Preço</th>
+                <th></th>
+                <th>Op</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="produto in produtos | filter:busca">
+                <td ng-bind-html="produto.titulo">{{produto.titulo}}</td>
+                <td>{{produto.loja | convUTF8}}</td>
+                <td>{{produto.price}}</td>
+                <td>
+                   <!-- <ul>
+                        <li ng-repeat="user in projeto.curtiu">
+                            {{user.firstname}}
+                        </li>
+                    </ul>-->
+                </td>
+                <td>
+
+                 <!--   <a href="/projeto/{{$index + 1}}" class="btn btn-success btn-xs">Musicas</a>
+                    <button class="btn btn-primary btn-xs" ng-click="includeEditProjeto($index)">Edit</button>
+                    <button class="btn btn-danger btn-xs" ng-click="del(projeto.id)">Del</button>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -86,6 +86,64 @@ module.exports = {
 
     teste6: function(req,res){
 
+
+        function str_replace(search, replace, subject, count) {
+          //  discuss at: http://phpjs.org/functions/str_replace/
+          // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+          // improved by: Gabriel Paderni
+          // improved by: Philip Peterson
+          // improved by: Simon Willison (http://simonwillison.net)
+          // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+          // improved by: Onno Marsman
+          // improved by: Brett Zamir (http://brett-zamir.me)
+          //  revised by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
+          // bugfixed by: Anton Ongson
+          // bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+          // bugfixed by: Oleg Eremeev
+          //    input by: Onno Marsman
+          //    input by: Brett Zamir (http://brett-zamir.me)
+          //    input by: Oleg Eremeev
+          //        note: The count parameter must be passed as a string in order
+          //        note: to find a global variable in which the result will be given
+          //   example 1: str_replace(' ', '.', 'Kevin van Zonneveld');
+          //   returns 1: 'Kevin.van.Zonneveld'
+          //   example 2: str_replace(['{name}', 'l'], ['hello', 'm'], '{name}, lars');
+          //   returns 2: 'hemmo, mars'
+
+          var i = 0,
+            j = 0,
+            temp = '',
+            repl = '',
+            sl = 0,
+            fl = 0,
+            f = [].concat(search),
+            r = [].concat(replace),
+            s = subject,
+            ra = Object.prototype.toString.call(r) === '[object Array]',
+            sa = Object.prototype.toString.call(s) === '[object Array]';
+          s = [].concat(s);
+          if (count) {
+            this.window[count] = 0;
+          }
+
+          for (i = 0, sl = s.length; i < sl; i++) {
+            if (s[i] === '') {
+              continue;
+            }
+            for (j = 0, fl = f.length; j < fl; j++) {
+              temp = s[i] + '';
+              repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
+              s[i] = (temp)
+                .split(f[j])
+                .join(repl);
+              if (count && s[i] !== temp) {
+                this.window[count] += (temp.length - s[i].length) / f[j].length;
+              }
+            }
+          }
+          return sa ? s : s[0];
+        }
+
         var request = require('request');
         var cheerio = require("cheerio");
 
@@ -99,21 +157,34 @@ module.exports = {
 
         request(options, function (error, response, body) {
           if (!error && response.statusCode == 200) {
-            console.log(response.headers);
+           // console.log(response.headers);
 
             var dados_produtos = [];
 
             var $ = cheerio.load(body);
 
-            //console.log($("#ires > ol > li.g").length);
+            //console.log($("#main").find("#ires > ol > li.g").length);
+            
+
+            //console.log($("#div.ires > ol > li").length);
             var c = 0;
 
-            $("#ires > ol > li.g").each(function(i, e) {
-                console.log($(e).find("div._zd").html());
+            $("#main").find("#ires > ol > li.g").each(function(i, e) {
+               // console.log($(e).find("div._zd").html());
+
+                var price = $(e).find("div.pslmain").find("span._Am > b").html();
+
+                if(price == null){
+                    price = $(e).find("div.pslmain").find("span.price > b").html()
+                }
+
+                var loja = $(e).find("div.pslmain").find("div._et > div > span").remove();
+                loja = str_replace(' de ','',$(e).find("div.pslmain").find("div._et > div").html());
+                //loja.replace('/ de /gi,','');
                 dados_produtos[c] = { 
-                                        titulo: $(e).find("div._Li").find("h3.r").find("a").html(), 
-                                        price: $(e).find("div._zd").find("b").html(), 
-                                        loja:  $(e).find("div._zd").find("cite").html()
+                                        titulo: $(e).find("div.pslmain").find("h3.r").find("a").html(), 
+                                        price: price, 
+                                        loja:  loja
                                     };
                 c++;
                 //console.log($(e).attr("src"));
@@ -124,9 +195,10 @@ module.exports = {
 
 
             //console.log(body);
-            res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            //res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            res.json({dados:dados_produtos});
             //res.end(response); 
-            res.end(body);
+            //res.end(body);
             //console.log(body) // Print the google web page.
           }
         })

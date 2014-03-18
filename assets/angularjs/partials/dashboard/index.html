@@ -1,0 +1,14 @@
+<div class="container" ng-init="">
+  <div class="row">
+      <div class="col-sm-4 col-md-4">
+          <blockquote>
+              <p>{{user.firstname}} {{user.lastname}}</p> <small><cite title="Source Title"> {{user.email}}  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+          </blockquote>
+      </div>
+
+      <button ng-click="logoff()" class="btn btn-danger">Sair</button>
+  </div>
+
+  <br><br>
+  <div ng-include="parte"></div>
+</div>
