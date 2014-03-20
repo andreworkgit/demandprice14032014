@@ -1,70 +1,91 @@
-<div class="container" ng-init="">
-    <div class="row">
-        <div class="span12">
-            <div class="" id="loginModal">
-              <div class="modal-header"> 
-                <h3>Have an Account?</h3>
-              </div>
-              <div class="modal-body">
-                <div class="well">
-                  <ul class="nav nav-tabs">
-                    <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-                    <li><a href="#create" data-toggle="tab">Create Account</a></li>
-                  </ul>
-                  <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane active in" id="login">
-                      <form class="form-horizontal" ng-submit="login()">
-                        <fieldset>
-                          <div id="legend">
-                            <legend class="">Login</legend>
-                          </div>
-                          <div class="alert-danger">{{errorlogin}}</div>
-                          <p><a href="" ng-click="popup('/auth/facebook','Facebook')" class="btn btn-primary"><i class="icon16  icomoon-icon-facebook-3 white"></i>Conectar com Facebook</a></p>
-                          <p><a ng-href="" ng-click="popup('/auth/google','Google')" class="btn btn-danger"><i class="icon16  icomoon-icon-facebook-3 white"></i>Conectar com GOOGLE</a></p>
-                          
-                          <div class="control-group">
-                            <!-- Username -->
-                            <label class="control-label" for="email">E-mail</label>
-                            <div class="controls">
-                              <input type="text" id="email" ng-model="loginemail" required name="email" class="input-xlarge">
-                            </div>
-                          </div>
-     
-                          <div class="control-group">
-                            <!-- Password-->
-                            <label class="control-label" for="password">Password</label>
-                            <div class="controls">
-                              <input type="password" id="password" ng-model="loginsenha" required name="password"  class="input-xlarge">
-                            </div>
-                          </div>
-     
-                          <div class="control-group">
-                            <!-- Button -->
-                            <div class="controls">
-                              <button class="btn btn-success">Login</button>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </form>                
-                    </div>
-                    <div class="tab-pane fade" id="create">
-                      <form id="tab" ng-submit="cadastro(item)">
-                        <label>First Name</label>
-                        <input type="text" value="" ng-model="item.firstname" required class="input-xlarge">
-                        <label>Last Name</label>
-                        <input type="text" value="" ng-model="item.lastname" required class="input-xlarge">
-                        <label>Email</label>
-                        <input type="email" value="" ng-model="item.email" required class="input-xlarge">
-                        <label>Password</label>
-                        <input type="password" value="" ng-model="item.password" required class="input-xlarge">
-     
-                        <div>
-                          <button class="btn btn-primary">Create Account</button>
-                        </div>
-                      </form>
-                    </div>
-                </div>
-              </div>
-            </div>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="http://bootswatch.com/" class="navbar-brand">PayNowLess</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="http://bootswatch.com/slate/#" id="download">Login <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="http://bootswatch.com/slate/bootstrap.min.css">Com Facebook</a></li>
+                <li><a href="http://bootswatch.com/slate/bootstrap.css">Com Google</a></li>
+                <li class="divider"></li>
+                <li><a href="http://bootswatch.com/slate/variables.less">Sair</a></li>
+                </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-12">
+            
+            <form class="">
+                <div class="form-group">
+                <label class="control-label"></label>
+                  <div class="input-group">
+                    <span class="input-group-addon">></span>
+                    <input type="text" class="form-control" ng-model="ipt_busca" placeholder="Digite aqui o produto especifico">
+
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" ng-click="listar(ipt_busca)">Buscar</button>
+                    </span>
+                    
+                  </div>
+                  <span class="help-block">Exemplo: Smartphone moto g dual chip 16gb</span>
+                </div>
+            </form>
+
+
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <table class="table table-striped table-hover" ng-init="listar()">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Loja</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="produto in produtos"> 
+                    <td ng-bind-html="produto.titulo">{{produto.titulo}}</td>
+                    <td>{{produto.loja}}</td>
+                    <td>{{produto.price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+
+            <ul class="list-unstyled">
+              <li class="pull-right"><a href="http://bootswatch.com/slate/#top">Back to top</a></li>
+              <li><a href="http://news.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Sobre</a></li>
+              <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F22JEM3Q78JC2">Donate</a></li>
+            </ul>
+            
+            <p>Based on <a href="http://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
+
+          </div>
+        </div>
+      </footer>
     </div>

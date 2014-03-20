@@ -71,14 +71,18 @@ module.exports = {
         var request = require('request');
         var cheerio = require("cheerio");
 
-        console.log('veio do post',req.param('q'));
+        //console.log('veio do post',req.param('q'));
         var querystring = require('querystring');
         var value_search = querystring.stringify({q: req.param('q')});
 
-         console.log('veio do post',req.param('q'),value_search);
+        //console.log('veio do post',req.param('q'),value_search);
+        var search_default = "q=Smartphone+moto+g+dual+chip+16gb";
+        
+        if(value_search && req.param('q'))
+            search_default = value_search;
 
         var options = {
-            url: 'https://www.google.com.br/search?q=Smartphone+LG+Optimus+L3+II+Desbloqueado&tbm=shop&tbs=vw:l,p_ord:p',
+            url: 'https://www.google.com.br/search?'+search_default+'&tbm=shop&tbs=vw:l,p_ord:p',
             headers: {
                 "host":"www.google.com.br",
                 'user-agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36',

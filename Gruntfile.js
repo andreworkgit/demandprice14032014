@@ -30,7 +30,8 @@ module.exports = function (grunt) {
 
   var cssFilesToInject = [
     //'angularjs/**/*.css'
-    'styles/bootstrap.min.css'
+    'css/bootstrap.css',
+    'css/bootswatch.min.css'
   ];
 
 
@@ -60,6 +61,7 @@ module.exports = function (grunt) {
     // *->    put other dependencies here   <-*
     "angularjs/lib/jquery/jquery-1.11.0.min.js",
     "js/bootstrap.min.js",
+    "js/bootswatch.js",
     "angularjs/lib/angular/angular.js",
     "angularjs/lib/angular/angular-route.js",
     "angularjs/lib/angular/angular-resource.js",

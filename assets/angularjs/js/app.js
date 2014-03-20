@@ -13,7 +13,7 @@ angular.module('NcBox', [
   'NcBox.controllers'
 ]).
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
-	$routeProvider.when('/', {templateUrl: '/angularjs/partials/home.html', controller: 'Home'});
+	$routeProvider.when('/', {templateUrl: '/angularjs/partials/home.html', controller: 'DashBoard'});
   $routeProvider.when('/dashboard', {templateUrl: '/angularjs/partials/dashboard/index.html', controller: 'DashBoard'});
 	
   $routeProvider.when('/projetos', {templateUrl: '/angularjs/partials/perfil.html', controller: 'Projetos'});

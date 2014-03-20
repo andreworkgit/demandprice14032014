@@ -246,7 +246,7 @@ controller('FrontAuth', ['$scope',function($scope){
 }]).
 controller('DashBoard', ['$scope','produtosService',function($scope,produtosService){
 
-	$scope.parte = '/angularjs/partials/dashboard/ListaProdutos.html';
+	//$scope.parte = '/angularjs/partials/dashboard/ListaProdutos.html';
 
 	$scope.alerta = function (){
 		window.opener.location ="/projetos";
