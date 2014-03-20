@@ -15,7 +15,9 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-
+var request = require('request');
+var cheerio = require("cheerio");
+var querystring = require('querystring');
 
 module.exports = {
   /**
@@ -24,6 +26,55 @@ module.exports = {
    */
 
   	_config: {},
+
+  	listsubstores: function(req, res, next){
+
+  		if(req.param('ref'))
+  		{
+  		var hostname = "https://www.google.com.br/shopping/product/"+req.param('ref')+"/online?sa=X&prds=scoring:p";
+		var options = {
+	        url: hostname,
+	        headers: {
+	            "host":"www.google.com.br",
+	            'user-agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36',
+	        }
+	    };
+
+	    request(options, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+
+          	var data_store_price = [];
+          	var c = 0;
+          	var $ = cheerio.load(body);
+
+          	$("#os-sellers-table").find("tr.os-row").each(function(i, e) {
+          		//$(e).find("td.os-seller-name").find("a").html();
+          		var loja = $(e).find("td.os-seller-name").find("a").html();
+          		var price = $(e).find("td.os-price-col").find("span.os-base_price").html();
+          		var link = "";
+          		//console.log($(e).find("td.os-seller-name").find("a").html());
+
+          		data_store_price[c] = { 
+                                        loja:  loja,
+                                        price: price,
+                                        link: link
+                                    };
+                c++;
+
+
+          	});
+          	console.log(data_store_price);
+          	res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            res.end(body);
+
+          }
+
+        });
+		}else{
+			console.log("Entre com ref",req.param('ref'));
+		}
+
+  	},
 
   	listar: function(req, res, next){
   		
@@ -68,11 +119,12 @@ module.exports = {
           return sa ? s : s[0];
         }
 
-        var request = require('request');
-        var cheerio = require("cheerio");
+
+
+        var hostname = "https://www.google.com.br";
 
         //console.log('veio do post',req.param('q'));
-        var querystring = require('querystring');
+
         var value_search = querystring.stringify({q: req.param('q')});
 
         //console.log('veio do post',req.param('q'),value_search);
@@ -82,7 +134,7 @@ module.exports = {
             search_default = value_search;
 
         var options = {
-            url: 'https://www.google.com.br/search?'+search_default+'&tbm=shop&tbs=vw:l,p_ord:p',
+            url: hostname+'/search?'+search_default+'&tbm=shop&tbs=vw:l,p_ord:p',
             headers: {
                 "host":"www.google.com.br",
                 'user-agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36',
@@ -111,14 +163,27 @@ module.exports = {
                 if(price == null){
                     price = $(e).find("div.pslmain").find("span.price > b").html()
                 }
-
+                var link = "";
                 var loja = $(e).find("div.pslmain").find("div._et > div > span").remove();
                 loja = str_replace(' de ','',$(e).find("div.pslmain").find("div._et > div").html());
+                
+                if(loja == 'null'){
+                	$(e).find("div.pslmain").find("span.price").remove();
+                	loja = $(e).find("div.pslmain").find("div._RH").html();
+
+                	var link_split1 = $(e).find("div.pslmain").find("h3.r").find("a").attr('href').split("?");
+                	var link_split2 = link_split1[0].split("/");
+                	//console.log(link_split2);
+                	link = link_split2[3];
+                }
+                //console.log("loja",loja);
+                console.log("link",link);
                 //loja.replace('/ de /gi,','');
                 dados_produtos[c] = { 
                                         titulo: $(e).find("div.pslmain").find("h3.r").find("a").html(), 
                                         price: price, 
-                                        loja:  loja
+                                        loja:  loja,
+                                        link: link
                                     };
                 c++;
                 //console.log($(e).attr("src"));
@@ -129,10 +194,10 @@ module.exports = {
 
 
             //console.log(body);
-            //res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
-            res.json({dados:dados_produtos});
-            //res.end(response); 
-            //res.end(body);
+            res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            res.end(body);
+            //res.json({dados:dados_produtos});
+            
             //console.log(body) // Print the google web page.
           }
         })
