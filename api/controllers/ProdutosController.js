@@ -28,7 +28,7 @@ module.exports = {
   	_config: {},
 
   	listsubstores: function(req, res, next){
-
+      //114139354350728268
   		if(req.param('ref'))
   		{
   		var hostname = "https://www.google.com.br/shopping/product/"+req.param('ref')+"/online?sa=X&prds=scoring:p";
@@ -51,8 +51,10 @@ module.exports = {
           		//$(e).find("td.os-seller-name").find("a").html();
           		var loja = $(e).find("td.os-seller-name").find("a").html();
           		var price = $(e).find("td.os-price-col").find("span.os-base_price").html();
-          		var link = "";
-          		//console.log($(e).find("td.os-seller-name").find("a").html());
+          		var link_split1 = $(e).find("td.os-seller-name").find("a").attr('href').split('&adurl=');
+          		var link_split2 = link_split1[1].split('?');
+              var link = link_split2[0];
+              //console.log($(e).find("td.os-seller-name").find("a").html());
 
           		data_store_price[c] = { 
                                         loja:  loja,
@@ -63,9 +65,10 @@ module.exports = {
 
 
           	});
-          	console.log(data_store_price);
-          	res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
-            res.end(body);
+          	//console.log(data_store_price);
+          	//res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            //res.end(body);
+            res.json({dados:data_store_price});
 
           }
 
@@ -167,17 +170,21 @@ module.exports = {
                 var loja = $(e).find("div.pslmain").find("div._et > div > span").remove();
                 loja = str_replace(' de ','',$(e).find("div.pslmain").find("div._et > div").html());
                 
+                 
+                
                 if(loja == 'null'){
                 	$(e).find("div.pslmain").find("span.price").remove();
                 	loja = $(e).find("div.pslmain").find("div._RH").html();
-
+                  loja = str_replace(' em mais ','+',loja);
+                  loja = str_replace(' em ','',loja);
+                  
                 	var link_split1 = $(e).find("div.pslmain").find("h3.r").find("a").attr('href').split("?");
                 	var link_split2 = link_split1[0].split("/");
                 	//console.log(link_split2);
                 	link = link_split2[3];
                 }
                 //console.log("loja",loja);
-                console.log("link",link);
+                //console.log("link",link);
                 //loja.replace('/ de /gi,','');
                 dados_produtos[c] = { 
                                         titulo: $(e).find("div.pslmain").find("h3.r").find("a").html(), 
@@ -190,13 +197,13 @@ module.exports = {
               });
 
 
-           // console.log(dados_produtos);
+           //console.log(dados_produtos);
 
 
             //console.log(body);
-            res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
-            res.end(body);
-            //res.json({dados:dados_produtos});
+            //res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            //res.end(body);
+            res.json({dados:dados_produtos});
             
             //console.log(body) // Print the google web page.
           }

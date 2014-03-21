@@ -51,27 +51,17 @@ angular.module('NcBox.services', []).
   }])
   .factory('produtosService', ['$resource', function($resource){
     return $resource('/users/:id',{id: '@id'}, {
-      create: {
-        method: 'POST',
-        url: '/users/create'
-      },
-      login: {
-        method: 'POST',
-        url: '/users/login'
-      },
-      logado: {
-        method: 'GET',
-        url: '/users/logado'
-      },
       listar: {
         method: 'POST',
         url: '/produtos/listar'
         //,isArray: true
       },
-      logoff: {
-        method: 'GET',
-        url: '/users/logoff'
-      }   
+      liststore: {
+        method: 'POST',
+        url: '/produtos/listsubstores'
+        //,isArray: true
+      }
+         
     });
   }]);
 
