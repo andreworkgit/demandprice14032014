@@ -14,3 +14,10 @@ paynowless
 
 
 http://buysellads.com/#/
+
+gm convert logo: logo.jpg
+gm convert logo.jpg win:
+
+
+get img-server:d:098b158d413e4454101f980425832110
+get img-server:lock:d:098b158d413e4454101f980425832110_ar_w250
