@@ -259,22 +259,34 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 		console.log($scope.produtos[index])
 	}
 
-	$scope.liststores = function(index){
-		console.log($scope.produtos[index])
-		
+	$scope.target = "_blank";
 
-		var params = {ref: $scope.produtos[index].link}
-		var result = produtosService.liststore(
-			{},
-			params,
-			function(res){
-				console.log(res.dados);
-				$scope.stores[index] = res.dados;
-			},
-			function(res){
-				//console.dir(res.data.ValidationError);
-			}
-		);
+	$scope.loading_table = false;
+	$scope.loading_img =true;
+	$scope.loading_img_td = [];
+
+	$scope.liststores = function(index){
+		//console.log($scope.produtos[index])
+		
+		if($scope.produtos[index].link_loja){
+			$scope.loading_img_td[index] = true;
+			$scope.target = "";
+			var params = {ref: $scope.produtos[index].link_loja}
+			var result = produtosService.liststore(
+				{},
+				params,
+				function(res){
+					$scope.loading_img_td[index] = false;
+					//console.log(res.dados);
+					$scope.stores[index] = res.dados;
+				},
+				function(res){
+					//console.dir(res.data.ValidationError);
+				}
+			);
+		}else{
+			$scope.target = "_blank";
+		}
 	}
 
 	//$scope.listar();
@@ -285,6 +297,8 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 			{},
 			params,
 			function(res){
+				$scope.loading_table = true;
+				$scope.loading_img =false;
 				//console.log(res.dados);
 				$scope.produtos = res.dados;
 			},

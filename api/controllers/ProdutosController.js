@@ -39,8 +39,8 @@ module.exports = {
 	            'user-agent':'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36',
 	        }
 	    };
-	    var Entities = require('html-entities').AllHtmlEntities;
-	    var entities = new Entities();
+	    //var Entities = require('html-entities').AllHtmlEntities;
+	    //var entities = new Entities();
 	    request(options, function (error, response, body) {
           if (!error && response.statusCode == 200) {
 
@@ -54,30 +54,12 @@ module.exports = {
           		var price = $(e).find("td.os-price-col").find("span.os-base_price").html();
           		var link = "";
           		var link_split1 = $(e).find("td.os-seller-name").find("a").attr('href').split('&adurl=');
-          		var link_split2 = unescape(link_split1[1]).split('?');
-          		var link_split3 = unescape(link_split2[0]).split('&url=');
-          		
-          		if(link_split3[1]){
-              	 link = link_split3[1];
-              	}else{
-              		
-              		var link_split5 = link_split2[0].split('?');
-              		link = link_split5[0];
-              	}
-          		//link = unescape(link_split2[0]);
+              var link_split2 = unescape(link_split1[1]).split('&url=');
 
-              /*	var link_split3 = link_split2[0].split('%3Futm_source%3');
-              	var link_split4 = link_split3[0].split('%3Fepar%3');
-              	var link_split5 = link_split4[0].split('%26url%3D');
-              	if(link_split5[1]){
-              	 link = link_split5[1];
-              	}else{
-              		console.log('ssss');
-              		link =  unescape(link_split4[0]);
-              	}*/
-
-              	console.log(link,"\n");
-              //console.log($(e).find("td.os-seller-name").find("a").html());
+              var link_split3 = link_split2[1] ? link_split2[1] : link_split2[0];
+              var link_split4 = unescape(link_split3).split('?');
+              link = link_split4[0];
+              
 
           		data_store_price[c] = { 
                                         loja:  loja,
@@ -189,13 +171,26 @@ module.exports = {
                 if(price == null){
                     price = $(e).find("div.pslmain").find("span.price > b").html()
                 }
-                var link = "";
+                //formata link
+                var link = false;
+                link = $(e).find("div.pslmain").find("h3.r").find("a").attr('href');
+                var link_split1 = link.split('&adurl=');
+                var link_split2 = unescape(link_split1[1]).split('&url=');
+
+                var link_split3 = link_split2[1] ? link_split2[1] : link_split2[0];
+                var link_split4 = unescape(link_split3).split('?');
+                link = link_split4[0];
+
+                //console.log('link',link);
+
+
                 var loja = $(e).find("div.pslmain").find("div._et > div > span").remove();
                 loja = str_replace(' de ','',$(e).find("div.pslmain").find("div._et > div").html());
                 
-                 
+                var isstore = false;
                 
                 if(loja == 'null'){
+                  isstore = true;
                 	$(e).find("div.pslmain").find("span.price").remove();
                 	loja = $(e).find("div.pslmain").find("div._RH").html();
                   loja = str_replace(' em mais ','+',loja);
@@ -204,16 +199,22 @@ module.exports = {
                 	var link_split1 = $(e).find("div.pslmain").find("h3.r").find("a").attr('href').split("?");
                 	var link_split2 = link_split1[0].split("/");
                 	//console.log(link_split2);
-                	link = link_split2[3];
+                	var link_loja = link_split2[3];
+                }
+
+                if(link == 'undefined'){
+                  link = '#';
                 }
                 //console.log("loja",loja);
-                //console.log("link",link);
+               // console.log("link",link);
                 //loja.replace('/ de /gi,','');
                 dados_produtos[c] = { 
                                         titulo: $(e).find("div.pslmain").find("h3.r").find("a").html(), 
                                         price: price, 
                                         loja:  loja,
-                                        link: link
+                                        link_loja: link_loja,
+                                        link: link,
+                                        isstore: isstore
                                     };
                 c++;
                 //console.log($(e).attr("src"));

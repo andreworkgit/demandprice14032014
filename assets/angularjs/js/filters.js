@@ -15,7 +15,7 @@ angular.module('NcBox.filters', []).
   }).
   filter('formatPriceCol', function() {
     return function(text) {
-      return String(text).replace(/R\$/g, 'R$ ');
+      return String(text).replace(/R\$/g, '');
     }
   }).
   filter('convUTF8', function() {
