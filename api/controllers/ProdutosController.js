@@ -243,7 +243,7 @@ module.exports = {
               });
 
 
-           console.log(dados_produtos);
+           //console.log(dados_produtos);
 
            if(req.param('modo')){
             //console.log(body);

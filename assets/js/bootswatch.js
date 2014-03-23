@@ -6,6 +6,7 @@
     $("#source-modal pre").text(html);
     $("#source-modal").modal();
   });
+  alert($('.bs-docs-section').size());
 
   $('.bs-component [data-toggle="popover"]').popover();
   $('.bs-component [data-toggle="tooltip"]').tooltip();

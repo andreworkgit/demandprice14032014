@@ -253,11 +253,17 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 		window.close();
 	}
 
+	$scope.startJquery = function(){
+		jQuery('.bs-component [data-toggle="popover"]').popover();
+	}
+
 	$scope.stores = [];
 
 	$scope.addstore = function(index){
 		console.log($scope.produtos[index])
 	}
+
+	$scope.txt_busca = false;
 
 	$scope.target = "_blank";
 
@@ -292,6 +298,14 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 	//$scope.listar();
 
 	$scope.listar = function(busca){
+
+		if(busca){
+			$scope.txt_busca = 'Adicionar: ' + busca;
+		}
+
+		$scope.loading_table = false;
+		$scope.loading_img 	 = true;
+
 		var params = {q: busca}
 		var result = produtosService.listar(
 			{},

@@ -49,7 +49,7 @@
 </nav>
 
 
-    <section class="container">
+    <div class="container" ng-init="startJquery()">
 
       <div class="page-header" id="banner">
         <div class="row">
@@ -63,13 +63,24 @@
                     <input type="text" class="form-control" ng-model="ipt_busca" placeholder="Digite aqui o produto especifico">
 
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" ng-click="">Buscar</button>
+                      <button class="btn btn-default" type="submit" ng-click="">Buscar</button>
                     </span>
                     
                   </div>
                   <span class="help-block">Exemplo: Smartphone moto g dual chip 16gb</span>
                 </div>
             </form>
+
+
+            <p class="bs-component" ng-show="txt_busca">
+              <button type="button" class="btn btn-default btn-lg btn-block" data-container="body" data-toggle="popover" data-placement="top" data-content="Logue antes de adicionar." data-original-title="" title="">{{txt_busca}}</button>
+              <div class="form-group">
+                  <label class="control-label" for="">Logar com</label>
+                  <button class="btn btn-info" type="button" ng-click="">Facebook</button>
+                  <button class="btn btn-success" type="button" ng-click="">Google</button>
+                 
+                </div>
+            </p>
 
 
           </div>
@@ -124,7 +135,6 @@
                 </table>
               </div>
         </div>
-        
 
       <footer>
         <div class="row">
@@ -141,4 +151,4 @@
           </div>
         </div>
       </footer>
-    </section>
+    </div>

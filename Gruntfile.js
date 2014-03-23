@@ -71,8 +71,7 @@ module.exports = function (grunt) {
     "angularjs/lib/angular/ng-upload.js",
     "angularjs/lib/angular/angular-sanitize.js",
     "js/jquery-1.10.2.min.js",
-    "js/bootstrap.min.js",
-    "js/bootswatch.js"
+    "js/bootstrap.min.js"
 
     // All of the rest of your app scripts imported here
     //'angularjs/**/*.js'
