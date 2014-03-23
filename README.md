@@ -21,3 +21,13 @@ gm convert logo.jpg win:
 
 get img-server:d:098b158d413e4454101f980425832110
 get img-server:lock:d:098b158d413e4454101f980425832110_ar_w250
+
+
+http://sitediscount.ru/classic_bl_inverted_theme/index.html
+http://sitediscount.ru/classic_bl_inverted_alt_theme/index.html
+
+<ul id="fruits">
+  <li class="apple">Apple</li>
+  <li class="orange">Orange</li>
+  <li class="pear">Pear</li>
+</ul>

@@ -58,7 +58,7 @@ module.exports = {
 
               var link_split3 = link_split2[1] ? link_split2[1] : link_split2[0];
               var link_split4 = unescape(link_split3).split('?');
-              link = link_split4[0];
+              link = link_split4[0].replace(/google/gi, '');
               
 
           		data_store_price[c] = { 
@@ -149,6 +149,8 @@ module.exports = {
             }
         };
 
+        //https://www.google.com.br/search?q=Smartphone+moto+g+dual+chip+16gb&tbm=shop&tbs=vw:l,p_ord:p
+
         request(options, function (error, response, body) {
           if (!error && response.statusCode == 200) {
            // console.log(response.headers);
@@ -159,6 +161,9 @@ module.exports = {
 
             //console.log($("#main").find("#ires > ol > li.g").length);
             
+            var key_price = ['_Am','_vm'];
+            var key_loja = ['_et','_vm'];
+            var price,titulo;
 
             //console.log($("#div.ires > ol > li").length);
             var c = 0;
@@ -166,7 +171,19 @@ module.exports = {
             $("#main").find("#ires > ol > li.g").each(function(i, e) {
                // console.log($(e).find("div._zd").html());
 
-                var price = $(e).find("div.pslmain").find("span._Am > b").html();
+               /*key_price.forEach(function(value) {
+                  price = $(e).find("div.pslmain").find("span."+value+" > b").html();
+                  if(price){
+                    console.log(value);
+                    return true;
+                  }  
+                });*/
+               titulo = $(e).find("div.pslmain").find("h3.r").find("a").html();
+               titulo = str_replace('<em>','<b>',titulo);
+               titulo = str_replace('</em>','</b>',titulo);
+              
+               price = $(e).find("div.pslmain").find("div.pslline").first().find("div > span > b").html();
+               //console.log(price);
 
                 if(price == null){
                     price = $(e).find("div.pslmain").find("span.price > b").html()
@@ -179,22 +196,27 @@ module.exports = {
 
                 var link_split3 = link_split2[1] ? link_split2[1] : link_split2[0];
                 var link_split4 = unescape(link_split3).split('?');
-                link = link_split4[0];
+                link = link_split4[0].replace(/google/gi, '');
 
                 //console.log('link',link);
 
 
-                var loja = $(e).find("div.pslmain").find("div._et > div > span").remove();
-                loja = str_replace(' de ','',$(e).find("div.pslmain").find("div._et > div").html());
-                
+                var loja = $(e).find("div.pslmain").find("div.pslline").first().find("div > div > span").remove();
+                loja = $(e).find("div.pslmain").find("div.pslline").first().find("div > div").html();
+                loja = str_replace(' de ','',loja).replace(/<[^>]+>/gm, '');
+
+
+
+
+               // console.log('loja',loja.indexOf(" em mais "));
                 var isstore = false;
+
+
                 
-                if(loja == 'null'){
-                  isstore = true;
-                	$(e).find("div.pslmain").find("span.price").remove();
-                	loja = $(e).find("div.pslmain").find("div._RH").html();
+                if(loja.indexOf(" em mais ") === 0 || loja.indexOf(" em ") === 0){
+                  isstore=true;
                   loja = str_replace(' em mais ','+',loja);
-                  loja = str_replace(' em ','',loja);
+                  loja = str_replace(' em ','+',loja);
                   
                 	var link_split1 = $(e).find("div.pslmain").find("h3.r").find("a").attr('href').split("?");
                 	var link_split2 = link_split1[0].split("/");
@@ -209,7 +231,7 @@ module.exports = {
                // console.log("link",link);
                 //loja.replace('/ de /gi,','');
                 dados_produtos[c] = { 
-                                        titulo: $(e).find("div.pslmain").find("h3.r").find("a").html(), 
+                                        titulo: titulo, 
                                         price: price, 
                                         loja:  loja,
                                         link_loja: link_loja,
@@ -221,14 +243,15 @@ module.exports = {
               });
 
 
-           //console.log(dados_produtos);
+           console.log(dados_produtos);
 
-
+           if(req.param('modo')){
             //console.log(body);
-            //res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
-            //res.end(body);
+            res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});//';charset=iso-8859-1'
+            res.end(body);
+          }else{
             res.json({dados:dados_produtos});
-            
+           } 
             //console.log(body) // Print the google web page.
           }
         })

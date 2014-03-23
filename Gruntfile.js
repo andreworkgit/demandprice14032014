@@ -59,9 +59,7 @@ module.exports = function (grunt) {
     //'angularjs/js/app.js',
 
     // *->    put other dependencies here   <-*
-    "angularjs/lib/jquery/jquery-1.11.0.min.js",
-    "js/bootstrap.min.js",
-    "js/bootswatch.js",
+
     "angularjs/lib/angular/angular.js",
     "angularjs/lib/angular/angular-route.js",
     "angularjs/lib/angular/angular-resource.js",
@@ -71,7 +69,10 @@ module.exports = function (grunt) {
     "angularjs/js/filters.js",
     "angularjs/js/directives.js",
     "angularjs/lib/angular/ng-upload.js",
-    "angularjs/lib/angular/angular-sanitize.js"
+    "angularjs/lib/angular/angular-sanitize.js",
+    "js/jquery-1.10.2.min.js",
+    "js/bootstrap.min.js",
+    "js/bootswatch.js"
 
     // All of the rest of your app scripts imported here
     //'angularjs/**/*.js'
