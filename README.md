@@ -25,6 +25,10 @@ get img-server:lock:d:098b158d413e4454101f980425832110_ar_w250
 http://sitediscount.ru/classic_bl_inverted_theme/index.html
 http://sitediscount.ru/classic_bl_inverted_alt_theme/index.html
 
+comando atalho nodemon
+C:\Windows\System32\cmd.exe /K nodemon --watch assets --watch config --watch api --watch views --watch app.js --watch Gruntfile.js --delay 100ms node_modules/sails/bin/sails lift
+
+
 RECOMENDAÇÕES 
 MONITORAMENTO DE SITE
 https://www.youtube.com/watch?v=gKR-YOYOpOI
