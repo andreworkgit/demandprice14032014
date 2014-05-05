@@ -26,7 +26,8 @@ angular.module('NcBox.services', []).
   		logoff: {
   			method: 'GET',
   			url: '/users/logoff'
-  		}  	
+  		}
+      
   	});
   }])
   .factory('projetosService', ['$resource', function($resource){
@@ -60,7 +61,11 @@ angular.module('NcBox.services', []).
         method: 'POST',
         url: '/produtos/listsubstores'
         //,isArray: true
-      }
+      },
+      sendEmail: {
+        method: 'POST',
+        url: '/produtos/sendemail'
+      } 
          
     });
   }]);

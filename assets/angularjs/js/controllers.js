@@ -256,6 +256,29 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 		window.close();
 	}
 
+	$scope.user = {};
+
+	$scope.submitForm = function(valida){
+
+		if(valida){
+
+			produtosService.sendEmail(
+				{},
+				$scope.user,
+				function(res){
+					console.log("resposta >>> ",res);
+				},
+				function(res){
+					console.dir(res.data.ValidationError);
+				}
+			);
+
+		}
+
+		console.log("valida >>>",valida,$scope.user);
+
+	}
+
 	$scope.startJquery = function(){
 		//jQuery('.bs-component [data-toggle="popover"]').popover();
 	  function formatReal( int )
@@ -274,12 +297,19 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
         max: 300000000,
         values: [29000000, 100000000],
         slide: function(event, ui) {
-          $('#vlr_min').val(ui.values[0]);
-          $('#vlr_max').val(ui.values[1]);
+          //$('#vlr_min').val(ui.values[0]);
+          //$('#vlr_max').val(ui.values[1]);
+
+          $scope.user.vlmin = ui.values[0];
+      	  $scope.user.vlmax = ui.values[1];
 
           return jQuery("#slider-example2-amount").text("(Mínimo) R$ " + formatReal(ui.values[0]) + " - (Máximo) R$ " + formatReal(ui.values[1]));
         }
       });
+
+      $scope.user.vlmin = $("#slider-example2").slider("values", 0);
+      $scope.user.vlmax = $("#slider-example2").slider("values", 1);
+      
       
       jQuery("#slider-example2-amount").text("(Mínimo) R$ " + $("#slider-example2").slider("values", 0) + " - (Máximo) R$ " + $("#slider-example2").slider("values", 1));
 	}

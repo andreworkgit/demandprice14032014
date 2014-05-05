@@ -27,6 +27,12 @@ module.exports = {
 
   	_config: {},
 
+    sendemail: function(req, res, next){
+
+      res.json({result:true,dados: req.param('email')});
+
+    },
+
   	listsubstores: function(req, res, next){
       //114139354350728268
   		if(req.param('ref'))
