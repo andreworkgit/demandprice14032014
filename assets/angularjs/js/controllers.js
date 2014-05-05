@@ -244,6 +244,9 @@ controller('FrontAuth', ['$scope',function($scope){
 	}
 	
 }]).
+controller('Home2', ['$scope','produtosService',function($scope,produtosService){
+
+}]).
 controller('DashBoard', ['$scope','produtosService',function($scope,produtosService){
 
 	//$scope.parte = '/angularjs/partials/dashboard/ListaProdutos.html';
@@ -254,7 +257,31 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 	}
 
 	$scope.startJquery = function(){
-		jQuery('.bs-component [data-toggle="popover"]').popover();
+		//jQuery('.bs-component [data-toggle="popover"]').popover();
+	  function formatReal( int )
+      {
+              var tmp = int+'';
+              tmp = tmp.replace(/([0-9]{2})$/g, ",$1");
+              if( tmp.length > 6 )
+                      tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+       
+              return tmp;
+      }
+
+	  jQuery("#slider-example2").slider({
+        range: true,
+        min: 25000000,
+        max: 300000000,
+        values: [29000000, 100000000],
+        slide: function(event, ui) {
+          $('#vlr_min').val(ui.values[0]);
+          $('#vlr_max').val(ui.values[1]);
+
+          return jQuery("#slider-example2-amount").text("(Mínimo) R$ " + formatReal(ui.values[0]) + " - (Máximo) R$ " + formatReal(ui.values[1]));
+        }
+      });
+      
+      jQuery("#slider-example2-amount").text("(Mínimo) R$ " + $("#slider-example2").slider("values", 0) + " - (Máximo) R$ " + $("#slider-example2").slider("values", 1));
 	}
 
 	$scope.stores = [];

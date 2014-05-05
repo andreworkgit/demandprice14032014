@@ -2,8 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('NcBox', [
-  'ngSanitize',
+angular.module('App', [
   'ngUpload',
   'ngRoute',
   'ngResource',
