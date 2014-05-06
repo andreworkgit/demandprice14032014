@@ -29,7 +29,42 @@ module.exports = {
 
     sendemail: function(req, res, next){
 
-      res.json({result:true,dados: req.param('email')});
+      var nodemailer = require("nodemailer");
+
+      // create reusable transport method (opens pool of SMTP connections)
+      var smtpTransport = nodemailer.createTransport("SMTP",{
+          service: "Gmail",
+          auth: {
+              user: "urelby@gmail.com",
+              pass: "a331b331"
+          }
+      });
+
+      var content = "Segue minha solicitação: <br><br>Tipo: "+req.param('tipo')+" <br>Estado: "+req.param('estado')+" <br>Região: "+req.param('regiao')+" <br>Valor Mínimo: "+req.param('vlmin')+" <br>Valor Máximo: "+req.param('vlmax')+" <br>Nome: "+req.param('nome')+" <br>E-mail: "+req.param('email')+" <br>Telefone: "+req.param('telefone')+" <br><br>Por favor entrar em contato, com a proposta.";
+
+      // setup e-mail data with unicode symbols
+      var mailOptions = {
+          from: "Contato Imovel <urelby@gmail.com>", // sender address
+          to: "andrework@gmail.com", // list of receivers
+          subject: "Novo Contato Imóvel", // Subject line
+          text: content, // plaintext body
+          html: content // html body
+      }
+
+      // send mail with defined transport object
+      smtpTransport.sendMail(mailOptions, function(error, response){
+          if(error){
+              console.log(error);
+          }else{
+              console.log("Message sent: " + response.message);
+              res.json({result:true});
+
+          }
+
+          // if you don't want to use this transport object anymore, uncomment following line
+          //smtpTransport.close(); // shut down the connection pool, no more messages
+      });
+
 
     },
 
