@@ -261,12 +261,23 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 	$scope.submitForm = function(valida){
 
 		if(valida){
-
+			$scope.user.enviado = 1;
 			produtosService.sendEmail(
 				{},
 				$scope.user,
 				function(res){
-					console.log("resposta >>> ",res);
+					//console.log("resposta >>> ",res);
+					if(res.result){
+						bootbox.alert({
+				          message: "Obrigado <br> Logo entraremos em contato para apresentar os melhores imóveis para você",
+				        });
+				        $scope.user = {};
+					}else{
+						bootbox.alert({
+				          message: "Ocorreu um erro ao enviar os dados, por favor envie novamente",
+				        });
+				        $scope.user.enviado = 0;
+					}
 				},
 				function(res){
 					console.dir(res.data.ValidationError);
@@ -275,8 +286,10 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 
 		}
 
-		console.log("valida >>>",valida,$scope.user);
+	}
 
+	$scope.clickButton = function(){
+		$scope.user.enviado = true;
 	}
 
 	$scope.startJquery = function(){

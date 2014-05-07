@@ -26,7 +26,7 @@ http://sitediscount.ru/classic_bl_inverted_theme/index.html
 http://sitediscount.ru/classic_bl_inverted_alt_theme/index.html
 
 comando atalho nodemon
-C:\Windows\System32\cmd.exe /K nodemon --watch assets --watch config --watch api --watch views --watch app.js --watch Gruntfile.js --delay 100ms node_modules/sails/bin/sails lift
+C:\Windows\System32\cmd.exe /K nodemon --watch assets --watch config --watch api --watch views --watch app.js --watch Gruntfile.js --delay 100ms node_modules/sails/bin/sails lift 
 
 
 RECOMENDAÇÕES 
