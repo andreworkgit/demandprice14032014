@@ -1,8 +1,8 @@
 {
-  "name": "ncbox",
+  "name": "bomlugar10",
   "private": true,
   "version": "0.0.1",
-  "description": "Ncbox",
+  "description": "bomlugar10",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "cheerio": "~0.13.1",

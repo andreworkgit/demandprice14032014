@@ -5,6 +5,6 @@
 module.exports = {
 
   //schema: true,
-  adapter: 'mongoose'
+  //adapter: 'mongoose'
 
 };

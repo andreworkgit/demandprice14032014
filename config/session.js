@@ -17,7 +17,6 @@ module.exports.session = {
   // forcing them to log in again. 
   secret: '9cc18654b688d88c80e276004a24d7ca',
 
-
   // In production, uncomment the following lines to set up a shared redis session store
   // that can be shared across multiple Sails.js servers
   // adapter: 'redis',
@@ -36,12 +35,12 @@ module.exports.session = {
 
   // Uncomment the following lines to use your Mongo adapter as a session store
    adapter: 'mongo',
-  //
-   host: 'localhost',
+   url: process.env.URL_DB
+   /*host: 'localhost',
    port: 27017,
-   db: 'ncbox',
+   db: 'bomlugar10',
    collection: 'sessions',
-   prefix: 'sailsjs'
+   prefix: 'sailsjs'*/
   //
   // Optional Values:
   //
