@@ -11,7 +11,7 @@
     "html-entities": "~1.0.10",
     "mongodb": "~1.3.23",
     "mongoose": "~3.8.8",
-    "nodemailer": "^0.6.3",
+    "nodemailer":"0.4.1",
     "nodemon": "~1.0.15",
     "optimist": "0.3.4",
     "passport": "0.1.18",

@@ -37,6 +37,15 @@ module.exports = {
           auth: {
               user: "urelby@gmail.com",
               pass: "a331b331"
+
+             /* XOAuth2: {
+                  user: "andrework@gmail.com" ,
+                  clientId: "740383275630.apps.googleusercontent.com" ,
+                  clientSecret: "NFUXXX1dBbN6Dle-8T8DWTRQ" ,
+                  refreshToken: "1/fSsTG4iTsq-YAw2SKZEG8iUrRGng1xR7cZTvn3MGZBw" ,
+                  accessToken: "ya29.1.AADtN_WXX691XPFCqsEn_Ht7Rw13eqd2FLU8hjnijTJDgbBE9PJDhe-1-u5eWUzAyhFp2A" ,
+                  timeout: 3600
+              }*/
           }
       });
 
