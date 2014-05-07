@@ -31,7 +31,7 @@ module.exports.adapters = {
 
    mongo: {
       module: 'sails-mongo',
-      url: 'mongodb://localhost/bomlugar10'
+      url: process.env.URL_DB
       /*host: 'localhost',
       port   : 27017,
       user: '',
