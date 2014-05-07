@@ -54,9 +54,10 @@ module.exports = {
       // send mail with defined transport object
       smtpTransport.sendMail(mailOptions, function(error, response){
           if(error){
-              console.log(error);
+              //console.log(error);
+              res.json({result:false,error:error});
           }else{
-              console.log("Message sent: " + response.message);
+              //console.log("Message sent: " + response.message);
               res.json({result:true});
 
           }
