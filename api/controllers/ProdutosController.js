@@ -35,8 +35,11 @@ module.exports = {
       var smtpTransport = nodemailer.createTransport("SMTP",{
           service: "Gmail",
           auth: {
-              user: "urelby@gmail.com",
-              pass: "a331b331"
+              //user: "urelby@gmail.com",
+              //pass: "a331b331"
+
+              user: "imoveisbr2.contato@gmail.com",
+              pass: "824imo276"
 
              /* XOAuth2: {
                   user: "andrework@gmail.com" ,
@@ -54,7 +57,7 @@ module.exports = {
       // setup e-mail data with unicode symbols
       var mailOptions = {
           from: "Contato Imovel <urelby@gmail.com>", // sender address
-          to: "andrework@gmail.com", // list of receivers
+          to: "andrework@gmail.com,elis29811@gmail.com", // list of receivers
           subject: "Novo Contato Imóvel", // Subject line
           text: content, // plaintext body
           html: content // html body
