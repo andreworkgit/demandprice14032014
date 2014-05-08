@@ -36,6 +36,7 @@ https://github.com/fzaninotto/uptime
 
 DISPONIBILIDADE PARA DOMINIO
 http://www.tiselvagem.com.br/desenvolvimento/redirecionamento-heroku/
+http://br.godaddy.com/
 
 CONFIGURAÇÃO SMTP GOOGLE
 http://docs.helpscout.net/article/120-smtp-settings
