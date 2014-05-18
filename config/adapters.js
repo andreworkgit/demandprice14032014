@@ -29,6 +29,11 @@ module.exports.adapters = {
   
   'default': 'mongo',
 
+  mongoose: {
+    module: 'sails-ncmongoose',
+    url: process.env.URL_DB
+  },
+
    mongo: {
       module: 'sails-mongo',
       url: process.env.URL_DB
