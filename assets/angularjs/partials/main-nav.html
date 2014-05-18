@@ -1,0 +1,218 @@
+<div class='navigation'>
+    <div class='search'>
+      <form action='search_results.html' method='get'>
+        <div class='search-wrapper'>
+          <input value="" class="search-query form-control" placeholder="Search..." autocomplete="off" name="q" type="text" />
+          <button class='btn btn-link icon-search' name='button' type='submit'></button>
+        </div>
+      </form>
+    </div>
+    <ul class='nav nav-stacked'>
+      <li class='active'>
+        <a href='/'>
+          <i class='icon-home'></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href='/dashboard'>
+          <i class='icon-film'></i>
+          <span>Painel de Cursos</span>
+        </a>
+      </li>
+      <li class='newnav'>
+        <a href='#' ng-click="isCollapsed[0] = !isCollapsed[0]">
+          <i class='icon-picture'></i>
+          <span>Ambiente de Trabalho</span>
+          <i class='icon-angle-down angle-down'></i>
+        </a>
+       
+        <ul collapse="!isCollapsed[0]">
+          <li class='newnavn2'>
+            <a href='#' ng-click="isCollapsed[100] = !isCollapsed[100]">
+              <i class='icon-caret-right'></i>
+              <span>Controle de versão GiT e GitHub</span>
+            </a>
+
+            <ul collapse="!isCollapsed[100]">
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Instalando e configurando GIT no windows</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Sincronizando SSH com Github</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Criar e adicionar repositório do Github</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Enviando e recebendo seu código do repositório github</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Comando Git branch</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='/dashboard'>
+                  <i class='icon-caret-right'></i>
+                  <span>Outros Comandos git</span>
+                </a>
+              </li>
+
+            </ul>
+
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Editores de Códigos</span>
+            </a>
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Ferramenta de Gerenciamento MongoDB</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class='newnav'>
+        <a href='#' ng-click="isCollapsed[1] = !isCollapsed[1]">
+          <i class='icon-desktop'></i>
+          <span>Bootstrap</span>
+          <i class='icon-angle-down angle-down'></i>
+        </a>
+       
+        <ul collapse="!isCollapsed[1]">
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Iniciando</span>
+            </a>
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Componentes</span>
+            </a>
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>JavaScript</span>
+            </a>
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Geradores de Templates</span>
+            </a>
+          </li>
+          <li class=''>
+            <a href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Aplicando no nosso Projeto</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class='newnav'>
+       <a href='#' ng-click="isCollapsed[2] = !isCollapsed[2]">
+        <i class='icon-code'></i>
+        <span>Linguagem e DB</span>
+        <i class='icon-angle-down angle-down'></i>
+        </a>
+
+        <ul collapse="!isCollapsed[2]">
+          <li class=''>
+            <a class='dropdown-collapse' href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>Node.js</span>
+            </a>
+            <ul class='nav nav-stacked'>
+              <li>
+                <a class='dropdown-collapse' href='index.html#'>
+                  <i class='icon-caret-right'></i>
+                  <span>Sobre</span>
+                  <i class='icon-angle-down angle-down'></i>
+                </a>
+                <a class='dropdown-collapse' href='index.html#'>
+                  <i class='icon-caret-right'></i>
+                  <span>NPM</span>
+                  <i class='icon-angle-down angle-down'></i>
+                </a>
+                <a class='dropdown-collapse' href='index.html#'>
+                  <i class='icon-caret-right'></i>
+                  <span>Instalando</span>
+                  <i class='icon-angle-down angle-down'></i>
+                </a>
+                <a class='dropdown-collapse' href='index.html#'>
+                  <i class='icon-caret-right'></i>
+                  <span>Hello Word</span>
+                  <i class='icon-angle-down angle-down'></i>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class=''>
+            <a class='dropdown-collapse' href='/dashboard'>
+              <i class='icon-caret-right'></i>
+              <span>MongoDb</span>
+            </a>
+            <ul class='nav nav-stacked'>
+              <li class=''>
+                <a href='ui_elements.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>Sobre</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='widgets.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>Instalação</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='widgets.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>Comando help (Analisando)</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='widgets.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>CRUD</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='widgets.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>Filtro com REGEX</span>
+                </a>
+              </li>
+              <li class=''>
+                <a href='widgets.html'>
+                  <i class='icon-caret-right'></i>
+                  <span>Agregação</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+  
+    </ul>
+  </div>

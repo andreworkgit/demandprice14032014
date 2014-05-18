@@ -1,0 +1,103 @@
+<div id='main-nav-bg'></div>
+<nav id='main-nav' ng-include="mainnav">
+</nav>
+<section id='content'>
+  <div class='container'>
+    <div class='row' id='content-wrapper'>
+      <div class='col-xs-12'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div class='page-header'>
+              <h1 class='pull-left'>
+                <i class='icon-signin'></i>
+                <span>Seja Assinante</span>
+              </h1>
+              <div class='pull-right'>
+                <ul class='breadcrumb'>
+                  <li>
+                    <a href='index.html'>
+                      <i class='icon-bar-chart'></i>
+                    </a>
+                  </li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li><a href='/dashboard'>Dashboard</a></li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li class='active'>Seja Assinate</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div>
+              <p>Acompanhe todos os vídeos e webinars ao vivo por apenas <b>R$ 55,00</b> mensais (Assinatura válida por <b>1 ano</b>).</p>
+              <p>Serão dezenas de vídeo-aulas exclusivas, fundamental para completar sua aprendizagem e conhecimento no processo do curso.</p>
+              <p>Trabalhamos com o pagseguro, para efetivar a assinatura é necessário possuir cartão de crédito. Clique no botão abaixo para assinar.</p>
+
+              <p>
+                <div class="alert alert-info alert-dismissable">
+                  <a class="close" data-dismiss="alert" href="ui_elements.html#">×
+                </a>
+    
+                <h4>
+                  <i class="icon-info-sign"></i>
+                  Atenção
+                </h4>
+                Após efeitar a assinatura no pagseguro, assista o vídeo abaixo para ativar.
+              </div>
+
+              </p>
+
+              <div ng-if="user">
+                <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+                <form action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
+                <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+                <input type="hidden" name="code" value="28AA8EE4DEDE4CE3344A4FA5F11DA5E8" />
+                <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/assinaturas/99x61-assinar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+                </form>
+                <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+              </div>
+
+              <div ng-if="!user">
+                <p>
+                  <button class="btn btn-primary" ng-click="popup('/auth/google','Google');">
+                        <i class="icon-google-plus"></i>
+                        Faça login com google
+                      </button>
+                </p>
+              </div>
+
+              <div class="box">
+              <div class="box-content">
+                <h4>
+                  <a class="text-contrast" href="search_results.html#">Assista o vídeo abaixo para ativar e completar sua assinatura</a>
+                </h4>
+                <p>Seu e-mail cadastrado é: <b>{{user.email}}</b></p>
+                <p>
+                 <iframe allowfullscreen="" src="http://www.youtube.com/embed/VyG1rk1XgT4" style="width:50%;height:315px;frameborder:0;"></iframe>
+                </p>
+              </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div>
+              
+                
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id='footer' ng-include="urlfooter"></footer>
+  </div>
+</section>

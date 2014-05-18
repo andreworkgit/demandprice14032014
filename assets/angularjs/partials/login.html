@@ -1,0 +1,58 @@
+<div id='main-nav-bg'></div>
+<nav id='main-nav' ng-include="mainnav">
+</nav>
+<section id='content'>
+  <div class='container'>
+    <div class='row' id='content-wrapper'>
+      <div class='col-xs-12'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div class='page-header'>
+              <h1 class='pull-left'>
+                <i class='icon-signin'></i>
+                <span>Faça Login</span>
+              </h1>
+              <div class='pull-right'>
+                <ul class='breadcrumb'>
+                  <li>
+                    <a href='index.html'>
+                      <i class='icon-bar-chart'></i>
+                    </a>
+                  </li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li><a href='/dashboard'>Dashboard</a></li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li class='active'>Login</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div>
+              <div ng-if="!user">
+                <p>
+                  <button class="btn btn-primary" ng-click="popup('/auth/google','Google');">
+                    <i class="icon-google-plus"></i>
+                    Logar com Google
+                  </button>
+                </p>
+              </div>
+
+              <div ng-if="user">
+                Você já está logado
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id='footer' ng-include="urlfooter"></footer>
+  </div>
+</section>
