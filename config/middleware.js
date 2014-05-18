@@ -144,11 +144,19 @@ module.exports = {
                 },
                 verifyHandler
             ));
+             var dominioCB;
+             if(process.env.DOMAIN_CURRENT){
+                dominioCB = process.env.DOMAIN_CURRENT;
+             }else{
+                dominioCB = "localhost:1337";
+             }
 
             passport.use(new GoogleStrategy({
                     clientID: '740383275630-4cme4abgmkdcn7surcb35bea9iq9emv0.apps.googleusercontent.com',
                     clientSecret: 'dsYfNik7wJAuGMzJnyiOXkDU',
-                    callbackURL: 'http://desventu.herokuapp.com/auth/google/callback'
+                    //callbackURL: 'http://desventu.herokuapp.com/auth/google/callback'
+                    callbackURL: 'http://'+dominioCB+'/auth/google/callback'
+                
                 },
                 verifyHandler
             ));
