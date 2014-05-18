@@ -1,14 +1,119 @@
-<div class="container" ng-init="">
-  <div class="row">
-      <div class="col-sm-4 col-md-4">
-          <blockquote>
-              <p>{{user.firstname}} {{user.lastname}}</p> <small><cite title="Source Title"> {{user.email}}  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
-          </blockquote>
+<div id='main-nav-bg'></div>
+<nav id='main-nav' ng-include="mainnav">
+</nav>
+<section id='content'>
+  <div class='container'>
+    <div class='row' id='content-wrapper'>
+      <div class='col-xs-12'>
+        <div class='row'>
+          <div class='col-sm-12'>
+            <div class='page-header'>
+              <h1 class='pull-left'>
+                <i class='icon-film'></i>
+                <span>Vídeo-Aulas</span>
+              </h1>
+              <div class='pull-right'>
+                <ul class='breadcrumb'>
+                  <li>
+                    <a href='index.html'>
+                      <i class='icon-bar-chart'></i>
+                    </a>
+                  </li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li>Dashboard</li>
+                  <li class='separator'>
+                    <i class='icon-angle-right'></i>
+                  </li>
+                  <li class='active'>Vídeo-Aulas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='row timeline'>
+          <div class='col-sm-12'>
+            <ol class='list-unstyled'>
+              <li>
+                <div class='icon purple-background'>
+                  <i class=' icon-eye-open'></i>
+                </div>
+                <div class='title'>
+                  Sobre a Desventu
+                  <small class='text-muted'>1 minute ago</small>
+                </div>
+                <div class='content'>
+                  Entenda sobre o projeto DESVENTU, metódos aplicados e objetivo.
+                  <br><br>
+                  <i class='icon-facetime-video'></i> Desventu Projeto, Metódo e Objetivo.
+                </div>
+              </li>
+              <li>
+                <div class='icon green-background'>
+                  <i class='icon-picture'></i>
+                </div>
+                <div class='title'>
+                  <a class="text-muted" href="#">Ambiente de Trabalho</a>
+                  <small class='text-muted'>10 minutes ago</small>
+                </div>
+                <div class='content'>
+                  Vamos preparar nosso ambiente de trabalho para iniciar nosso projeto.
+                  <br><br>
+                    <i class='icon-caret-right'></i><i>Controle de versão GiT e GitHub</i> <br>
+                    <i class='icon-facetime-video'></i> Instalando e configurando GIT no windows<br>
+                    <i class='icon-facetime-video'></i> Sincronizando SSH com Github<br>
+                    <i class='icon-facetime-video'></i> Criar e adicionar repositório do Github<br>
+                    <i class='icon-facetime-video'></i> Enviando e recebendo seu código do repositório github<br>
+                    <i class="icon-facetime-video"></i> Comando Git branch <i class="icon-signin"></i> <b>Apenas para Assinantes</b><br>
+                    <i class="icon-facetime-video"></i> Outros Comandos git <i class="icon-signin"></i> <b>Apenas para Assinantes</b><br>
+
+                    <br>
+                    <i class='icon-facetime-video'></i> Nodemon<br>
+                    <br>
+                    <i class='icon-facetime-video'></i> Editores de Códigos<br>
+                    <br>
+                    <i class='icon-facetime-video'></i> Ferramenta de Gerenciamento MongoDB<br>
+                </div>
+              </li>
+              <li>
+                <div class='icon red-background'>
+                  <i class='icon-desktop'></i>
+                </div>
+                <div class='title'>
+                  <a class="text-muted" href="#">Bootstrap</a>
+                  <small class='text-muted'>10 minutes ago</small>
+                </div>
+                <div class='content'>
+                  Vamos apreender e criar layouts responsivos no bootstarp.
+                  <br><br>
+                    <i class='icon-facetime-video'></i><i> Iniciando o bootstrap</i> <br>
+                    <i class='icon-facetime-video'></i> Componentes do bootstrap<br>
+                    <i class='icon-facetime-video'></i> JavaScript do bootstrap<br>
+                    <i class='icon-facetime-video'></i> Geradores de Templates em bootstrap <i class="icon-signin"></i> <b>Apenas para Assinantes</b><br>
+                    <i class='icon-facetime-video'></i> Aplicando bootstrap no nosso layout <i class="icon-signin"></i> <b>Apenas para Assinantes</b><br>      
+                </div>
+              </li>
+              <li>
+                <div class='icon blue-background'>
+                  <i class='icon-code'></i>
+                </div>
+                <div class='title'>
+                  <a class="text-muted" href="#">Linguagem e Banco de Dados</a>
+                  <small class='text-muted'>10 minutes ago</small>
+                </div>
+                <div class='content'>
+                  Aqui iremos conhecer e trabalhar com nodejs e mongodb.
+                  <br><br>
+                    <i class='icon-caret-right'></i><i> Nodejs</i> <br>
+                    <i class='icon-facetime-video'></i> MongoDB<br>     
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
-
-      <button ng-click="logoff()" class="btn btn-danger">Sair</button>
+    </div>
+    <footer id='footer' ng-include="urlfooter"></footer>
   </div>
-
-  <br><br>
-  <div ng-include="parte"></div>
-</div>
+</section>

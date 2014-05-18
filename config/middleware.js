@@ -9,50 +9,58 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
         //console.dir(profile);
 
         Users.mongoose(function (model){
-        	var wherebyemail = { email : profile._json.email };
-			model.findOne(wherebyemail, function(err, user){
-				if (user) {
-					var where = {
-						oauth : { $elemMatch: { id: profile.id,
-													provider:profile.provider} 
-						}
-					};
-					model.findOne(where, function (errauth, userauth){
+            var wherebyemail = { email : profile._json.email };
+            model.findOne(wherebyemail, function(err, user){
+                if (user) {
+                    var tosave = false;
 
-						if(!userauth){
+                    if(profile.provider == "google"){
+                        if(!user.google_id){
+                            user.google_id = profile.id;
+                            tosave = true;
+                        }
+                    }else if(profile.provider == "facebook"){
 
-							model.update(wherebyemail, {
-								$addToSet: {
-						    		"oauth": {	'id': profile.id,
-												'provider': profile.provider	}
-						   	 	}
-						   	}, function(errup, userup){
+                        if(!user.facebook_id){
+                            user.facebook_id =  profile.id;
+                            tosave = true;
+                        }
+                    }
 
-								return done(null, user);
-							});
+                    
+                    if(tosave){ 
+                        user.save(function(err){
+                             return done(err, user);
+                        });
+                    }else{
+                        return done(null, user);
+                    }
 
-						}else{
-							return done(null, user);
-						}
-
-					});
-
-                	
+                    
                 }else{
-                	var user = new model({
-						firstname : profile.name.givenName,
-						lastname : profile.name.familyName,
-						email : profile._json.email,
-						oauth: [{	'id': profile.id,
-									'provider': profile.provider	}]
-					});
 
-					user.save(function(err){
-						 return done(err, user);
-					});
+                    var modeluser = {
+                        nome: profile.displayName.toLowerCase(),
+                        firstname  : profile.name.givenName.toLowerCase(),
+                        lastname   : profile.name.familyName.toLowerCase(),
+                        email : profile._json.email
+                    };
+
+                    if(profile.provider == "google"){
+                        modeluser.google_id = profile.id;
+                    }else if(profile.provider == "facebook"){
+                        modeluser.facebook_id = profile.id;
+                        modeluser.username = profile.username
+                    }
+
+                    var user = new model(modeluser);
+
+                    user.save(function(err){
+                         return done(err, user);
+                    });
                 }
-			});
-		});
+            });
+        });
 
 
         

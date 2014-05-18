@@ -33,3 +33,16 @@
 
 .wysihtml5-sandbox {
   box-sizing: border-box; }
+
+  .newnav ul{
+    list-style: none;
+    padding-left: 5px;
+    background-color: #fff;
+  }
+
+  .newnavn2 ul{
+    list-style: none;
+    padding-left: 5px;
+    background-color: #fff;
+    font-size: 11px;
+  }

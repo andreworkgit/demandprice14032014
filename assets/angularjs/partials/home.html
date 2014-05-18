@@ -1,140 +1,5 @@
 <div id='main-nav-bg'></div>
-<nav id='main-nav'>
-  <div class='navigation'>
-    <div class='search'>
-      <form action='search_results.html' method='get'>
-        <div class='search-wrapper'>
-          <input value="" class="search-query form-control" placeholder="Search..." autocomplete="off" name="q" type="text" />
-          <button class='btn btn-link icon-search' name='button' type='submit'></button>
-        </div>
-      </form>
-    </div>
-    <ul class='nav nav-stacked'>
-      <li class='active'>
-        <a href='index.html'>
-          <i class='icon-home'></i>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a class='dropdown-collapse ' href='index.html#'>
-          <i class='icon-tint'></i>
-          <span>Ambiente de Trabalho</span>
-          <i class='icon-angle-down angle-down'></i>
-        </a>
-        <ul class='nav nav-stacked'>
-          <li class=''>
-            <a href='ui_elements.html'>
-              <i class='icon-caret-right'></i>
-              <span>Editores de Códigos</span>
-            </a>
-          </li>
-          <li class=''>
-            <a href='widgets.html'>
-              <i class='icon-caret-right'></i>
-              <span>Ferramenta de Gerenciamento MongoDB</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class=''>
-                <a class="dropdown-collapse" href="index.html#"><i class='icon-edit'></i>
-        <span>Linguagem e DB</span>
-        <i class='icon-angle-down angle-down'></i>
-        </a>
-
-        <ul class='nav nav-stacked'>
-          <li class=''>
-            <a class='dropdown-collapse' href='index.html#'>
-              <i class='icon-caret-right'></i>
-              <span>Node.js</span>
-            </a>
-            <ul class='nav nav-stacked'>
-              <li>
-                <a class='dropdown-collapse' href='index.html#'>
-                  <i class='icon-caret-right'></i>
-                  <span>Sobre</span>
-                  <i class='icon-angle-down angle-down'></i>
-                </a>
-                <a class='dropdown-collapse' href='index.html#'>
-                  <i class='icon-caret-right'></i>
-                  <span>NPM</span>
-                  <i class='icon-angle-down angle-down'></i>
-                </a>
-                <a class='dropdown-collapse' href='index.html#'>
-                  <i class='icon-caret-right'></i>
-                  <span>Instalando</span>
-                  <i class='icon-angle-down angle-down'></i>
-                </a>
-                <a class='dropdown-collapse' href='index.html#'>
-                  <i class='icon-caret-right'></i>
-                  <span>Hello Word</span>
-                  <i class='icon-angle-down angle-down'></i>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class=''>
-            <a class='dropdown-collapse' href='#'>
-              <i class='icon-caret-right'></i>
-              <span>MongoDb</span>
-            </a>
-            <ul class='nav nav-stacked'>
-              <li class=''>
-                <a href='ui_elements.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>Sobre</span>
-                </a>
-              </li>
-              <li class=''>
-                <a href='widgets.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>Instalação</span>
-                </a>
-              </li>
-              <li class=''>
-                <a href='widgets.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>Comando help (Analisando)</span>
-                </a>
-              </li>
-              <li class=''>
-                <a href='widgets.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>CRUD</span>
-                </a>
-              </li>
-              <li class=''>
-                <a href='widgets.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>Filtro com REGEX</span>
-                </a>
-              </li>
-              <li class=''>
-                <a href='widgets.html'>
-                  <i class='icon-caret-right'></i>
-                  <span>Agregação</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class=''>
-            <a href='validations.html'>
-              <i class='icon-caret-right'></i>
-              <span>Validations</span>
-            </a>
-          </li>
-          <li class=''>
-            <a href='wizard.html'>
-              <i class='icon-caret-right'></i>
-              <span>Wizard</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-  
-    </ul>
-  </div>
+<nav id='main-nav' ng-include="mainnav">
 </nav>
 <section id='content'>
   <div class='container'>
@@ -152,7 +17,8 @@
         
         <div class='row'>
           <div class='col-sm-12'>
-            <p class='lead'> Através de pesquisas e implementações em novas tecnologias para web. Oferemos a melhor maneira de aprender na prática com vídeo aulas intuitivas e diretas. </p>
+            <p class='lead'> Através de pesquisas e implementações em novas tecnologias para web. Oferemos a melhor maneira de aprender na prática com vídeo-aulas intuitivas e diretas. </p>
+
           </div>
         </div>
         <div class="row">
@@ -177,7 +43,7 @@
                   <a class="text-contrast" href="search_results.html#">Canal no Youtube</a>
                 </h4>
                 <p>
-                  Veja abaixo alguns vídeos e se inscreva no canal do youtube para acompanhar algumas vídeo aulas totamente gratuitas.
+                  Veja abaixo alguns vídeos e se inscreva no canal do youtube para acompanhar algumas vídeo-aulas totamente gratuitas.
                 </p>
               </div>
             </div>
@@ -198,7 +64,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-8">
                  
-                      <p>André Augusto é especialista em PHP e Nodejs, bacharelado nos cursos Ciências da Computação e Gestão de Sistemas da Informação. Trabalhou em diversas empresas como Inter.net, Jovem Pan entre outras</p>
+                      <p>André Augusto é especialista nas linguagens de programação PHP e Nodejs, com mais de 8 anos de experiência como profissional, cursou Ciência da Computação e Gestão de Sistemas da Informação. Trabalhou em diversas empresas como Inter.net, Jovem Pan entre outras.</p>
+
+                      <p>Contato:<br>
+                      <i class='icon-envelope-alt'></i> andrework@gmail.com
+                      </p>
                      
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-4">
@@ -228,27 +98,8 @@
           </div>
         </div>
         
-        <div class='group-header'>
-          <div class='row'>
-            <div class='col-sm-6 col-sm-offset-3'>
-              <div class='text-center'>
-                <img src="http://rolsulrolamentos.com.br/site/tpl/004/imagens/banner_pagseguro.jpg" />
-                <h2>Todo & Recent activity</h2>
-                <small class='text-muted'>Items in todo list can be reordered by drag & drop, you can mark them as important, complete, or you can delete them!</small>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    <footer id='footer'>
-      <div class='footer-wrapper'>
-        <div class='row'>
-          <div class='col-sm-6 text'>
-            Copyright © 2013 Your Project Name
-          </div>
-        </div>
-      </div>
-    </footer>
+    <footer id='footer' ng-include="urlfooter"></footer>
   </div>
 </section>

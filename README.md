@@ -42,3 +42,14 @@ CONFIGURAÇÃO SMTP GOOGLE
 http://docs.helpscout.net/article/120-smtp-settings
 
 http://www.bublinastudio.com/flattybs3/
+
+APIs GOOGLE
+https://console.developers.google.com
+
+INSTALAÇÂO CAMTASIA
+https://www.youtube.com/watch?v=n4fMzbdrVBc
+
+https://www.google.com.br/search?q=dropdown-collapse+not+in+angular&oq=dropdown-collapse+not+in+angular&aqs=chrome..69i57.7740j0j7&sourceid=chrome&es_sm=0&ie=UTF-8
+
+
+mongodb://admin:x8523@oceanic.mongohq.com:10037/desventu

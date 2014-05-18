@@ -25,11 +25,14 @@ module.exports = function (mongoose){
 	//ProjetoSchema.path('nome').index({ unique: true });
 	
 	var UsersSchema = new Schema({
+		nome 		: String,
 		firstname 	: String,
 		lastname 	: String,
 		email  		: { type: String, unique: true },
 		password 	: String,
-		oauth		: Array,
+		google_id	: String,
+		facebook_id	: String,
+		username	: String,
 		projetos  	: [ProjetoSchema]
 	});
 	return UsersSchema;

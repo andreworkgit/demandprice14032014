@@ -68,9 +68,7 @@ module.exports.routes = {
 
   },*/
 
-  '/projeto/:id': {
-    //controller: 'notfound',
-    //action: 'index',
+ '/': {
     view: 'home/index'
   },
 
@@ -79,6 +77,7 @@ module.exports.routes = {
     //action: 'index',
     view: 'home/index'
   },
+
 
   /*
   // But what if you want your home page to display

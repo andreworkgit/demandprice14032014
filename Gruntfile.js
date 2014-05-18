@@ -49,10 +49,10 @@ module.exports = function (grunt) {
     // linked in the proper order order
 
     // Bring in the socket.io client
-    'angularjs/lib/sails/socket.io.js',
+    //'angularjs/lib/sails/socket.io.js',
 
     // then beef it up with some convenience logic for talking to Sails.js
-    'angularjs/lib/sails/sails.io.js',
+    //'angularjs/lib/sails/sails.io.js',
 
     // A simpler boilerplate library for getting you up and running w/ an
     // automatic listener for incoming messages from Socket.io.
@@ -60,18 +60,28 @@ module.exports = function (grunt) {
 
     // *->    put other dependencies here   <-*
 
+    "javascripts/jquery/jquery.min.js", 
+    "javascripts/jquery/jquery.mobile.custom.min.js",
+    "javascripts/jquery/jquery-migrate.min.js",
+    "javascripts/jquery/jquery-ui.min.js", 
+    "javascripts/plugins/jquery_ui_touch_punch/jquery.ui.touch-punch.min.js", 
+    "javascripts/bootstrap/bootstrap.js", 
+    "javascripts/plugins/modernizr/modernizr.min.js", 
+    "javascripts/plugins/retina/retina.js", 
+    "javascripts/theme.js",
+    "javascripts/demo.js", 
+    "angularjs/lib/sails/socket.io.js",
+    "angularjs/lib/sails/sails.io.js",
     "angularjs/lib/angular/angular.js",
     "angularjs/lib/angular/angular-route.js",
     "angularjs/lib/angular/angular-resource.js",
+    "angularjs/lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js",
     "angularjs/js/app.js",
     "angularjs/js/services.js",
     "angularjs/js/controllers.js",
     "angularjs/js/filters.js",
     "angularjs/js/directives.js",
-    "angularjs/lib/angular/ng-upload.js",
-    "angularjs/lib/angular/angular-sanitize.js",
-    "js/jquery-1.10.2.min.js",
-    "js/bootstrap.min.js"
+    "angularjs/lib/angular/ng-upload.js"
 
     // All of the rest of your app scripts imported here
     //'angularjs/**/*.js'
