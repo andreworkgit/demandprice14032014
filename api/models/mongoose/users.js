@@ -15,11 +15,10 @@ module.exports = function (mongoose){
 		url			: String
 	}, schemaOptions);
 	
-	var ProjetoSchema = new Schema({
-		nome		: { type: String, unique: true, required: true },
-		descricao	: String,
-		curtiu		: Array,
-		musicas 	: [MusicaSchema]
+	var VideosSchema = new Schema({
+		ref			: { type: String, required: true},
+		datereq		: { type: Date},
+		created		: { type: Date, default: Date.now , required: true}
 	}, schemaOptions);
 
 	//ProjetoSchema.path('nome').index({ unique: true });
@@ -33,7 +32,8 @@ module.exports = function (mongoose){
 		google_id	: String,
 		facebook_id	: String,
 		username	: String,
-		projetos  	: [ProjetoSchema]
+		created		: {type: Date, default: Date.now},
+		videos  	: [VideosSchema]
 	});
 	return UsersSchema;
 };

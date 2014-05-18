@@ -52,10 +52,12 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
                         modeluser.facebook_id = profile.id;
                         modeluser.username = profile.username
                     }
-
+                    console.log('modeluser>>',modeluser);
                     var user = new model(modeluser);
+                    console.log('modeluser>>',user);
 
                     user.save(function(err){
+                        console.log('salve  >>',err);
                          return done(err, user);
                     });
                 }
