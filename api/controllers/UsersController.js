@@ -16,6 +16,9 @@ module.exports = {
     	if(req.param('notificationCode')){
     		mododev = false;
     		code = req.param('notificationCode');
+    		if(req.param('mododev333')){
+    			mododev = true;
+    		}
     	}else if(req.param('mododev')){
     		mododev = true;
     		code  	= "D2FCE566-CCB9-4733-98BA-7D5EBCCC38FB";
@@ -44,7 +47,7 @@ module.exports = {
 					if(err){ return res.json({r:err}); }
 				    //console.log('isXml >>',hostname);
 				    //res.json({isxml:hostname});
-				    if((mododev && result.transaction.status[0] == 1) || (!mododev && result.transaction.status[0] == 1 && req.param('notificationCode'))){
+				    if((mododev && result.transaction.status[0] == 1) || (!mododev && result.transaction.status[0] == 3 && req.param('notificationCode'))){
 				    	//console.log('chk >>',hostname);
 				    	Users.mongoose(function (model){
 				
