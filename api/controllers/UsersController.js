@@ -41,15 +41,15 @@ module.exports = {
           		var parseString = require('xml2js').parseString;
 				//var xml = "<root>Hello xml2js!</root>"
 				parseString(body, function (err, result) {
-					if(err){ console.log(err); return false; }
-				    console.log('isXml >>',hostname);
-				    res.json({isxml:hostname});
+					if(err){ console.log(err); res.json({err:err}); }
+				    //console.log('isXml >>',hostname);
+				    //res.json({isxml:hostname});
 				    if((mododev && result.transaction.status[0] == 1)|| (!mododev && result.transaction.status[0] == 3 && req.param('notificationCode'))){
 
 				    	Users.mongoose(function (model){
 				
 							model.findOne({ _id: result.transaction.reference[0]}, function (err,user){
-								if(err){ console.log(err); return false; }
+								if(err){ console.log(err); res.json({err:err}); }
 
 								var checkExists = _.where(user.videos, {ref: result.transaction.items[0].item[0].id[0]});
 								
@@ -62,10 +62,10 @@ module.exports = {
 
 									user.save(function(err){
 										if(err){
-											console.log(err);return false;
+											res.json({err:err});
 										}else if(user){
-											res.json({result:user});
-											console.log("Videos add com sucesso");
+											res.json({result:"OK"});
+											//console.log("Videos add com sucesso");
 										}
 									});
 									
@@ -80,7 +80,7 @@ module.exports = {
           	}
           	
           }else{
-          	console.log(error);
+          	res.json({error:error});
           }
         });
 	},
