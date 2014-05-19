@@ -24,7 +24,7 @@ module.exports = {
     	//https://ws.pagseguro.uol.com.br/v2/transactions/232CD979-18CF-4B98-9334-1DCFFB0D16F5?email=andrework@gmail.com&token=89104415F19443A69084FD13C2CC7E45
     
     	var hostname = "https://ws.pagseguro.uol.com.br/v2/transactions/" +code + "?email=" +email + "&token=" +token;
-   
+   		
    		var options = {
 	        url: hostname,
 	        /*headers: {
@@ -33,7 +33,7 @@ module.exports = {
 	        }*/
 	    };
 
-	    
+	    //console.log('ini >>',hostname);
 		request(options, function (error, response, body) {
           if (!error && response.statusCode == 200) {
           	if(body){
@@ -41,16 +41,16 @@ module.exports = {
           		var parseString = require('xml2js').parseString;
 				//var xml = "<root>Hello xml2js!</root>"
 				parseString(body, function (err, result) {
-					if(err){ console.log(err); res.json({err:err}); }
+					if(err){ return res.json({r:err}); }
 				    //console.log('isXml >>',hostname);
 				    //res.json({isxml:hostname});
-				    if((mododev && result.transaction.status[0] == 1)|| (!mododev && result.transaction.status[0] == 3 && req.param('notificationCode'))){
-
+				    if((mododev && result.transaction.status[0] == 1) || (!mododev && result.transaction.status[0] == 1 && req.param('notificationCode'))){
+				    	//console.log('chk >>',hostname);
 				    	Users.mongoose(function (model){
 				
 							model.findOne({ _id: result.transaction.reference[0]}, function (err,user){
-								if(err){ console.log(err); res.json({err:err}); }
-
+								if(err){ return res.json({r:err}); }
+								//console.log('isXml >>',user);
 								var checkExists = _.where(user.videos, {ref: result.transaction.items[0].item[0].id[0]});
 								
 								if(_.isEmpty(checkExists)){
@@ -62,25 +62,33 @@ module.exports = {
 
 									user.save(function(err){
 										if(err){
-											res.json({err:err});
+											console.log(err);
+											return res.json({r:err,row:'66'});
+											
 										}else if(user){
-											res.json({result:"OK"});
+											return res.json({r:'video salvo para user'});
 											//console.log("Videos add com sucesso");
 										}
 									});
 									
+								}else{
+									return res.json({r:'video ja cadastrado'});
 								}
 
 							});
 						});
 
+				    }else{
+				    	return res.json({r:'err de condição, cliente nao pagou'}); 
 				    }
 
 				});
+          	}else{
+          		return res.json({r:'sem conteudo'});
           	}
           	
           }else{
-          	res.json({error:error});
+          	return res.json({r:error});
           }
         });
 	},
