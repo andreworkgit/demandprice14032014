@@ -15,7 +15,7 @@ angular.module('App', [
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
 	$routeProvider.when('/', {templateUrl: '/angularjs/partials/home.html', controller: 'Home'});
   $routeProvider.when('/dashboard', {templateUrl: '/angularjs/partials/dashboard/index.html', controller: 'DashBoard'});
-	$routeProvider.when('/assinantes', {templateUrl: '/angularjs/partials/dashboard/assinantes.html', controller: 'Assinantes'});
+	//$routeProvider.when('/assinantes', {templateUrl: '/angularjs/partials/dashboard/assinantes.html', controller: 'Assinantes'});
   $routeProvider.when('/obrigado', {templateUrl: '/angularjs/partials/obrigado.html', controller: 'Assinantes'});
   $routeProvider.when('/login', {templateUrl: '/angularjs/partials/login.html', controller: 'Login'});
 

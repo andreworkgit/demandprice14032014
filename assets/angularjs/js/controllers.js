@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('NcBox.controllers', []).
-run(function($rootScope, projetosService, usersService, $location) {
+run(['$rootScope','usersService','$location',function($rootScope, usersService, $location) {
 
 	$rootScope.$on('handleEmit', function(event, args) {
         $rootScope.$broadcast('handleBroadcast', args);
@@ -60,7 +60,7 @@ run(function($rootScope, projetosService, usersService, $location) {
 	$rootScope.mainnav = "/angularjs/partials/main-nav.html";
 	$rootScope.urlfooter = "/angularjs/partials/footer.html";
 	$rootScope.isCollapsed = [];
-}).
+}]).
 controller('Home', ['$scope','$location', '$rootScope', 'usersService', function($scope, $location, $rootScope, usersService){
 
 	$scope.redire = function(url){
