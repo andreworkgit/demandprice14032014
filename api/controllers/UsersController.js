@@ -50,29 +50,36 @@ module.exports = {
 				
 							model.findOne({ _id: result.transaction.reference[0]}, function (err,user){
 								if(err){ return res.json({r:err}); }
-								//console.log('isXml >>',user);
-								var checkExists = _.where(user.videos, {ref: result.transaction.items[0].item[0].id[0]});
 								
-								if(_.isEmpty(checkExists)){
-
-									user.videos.push({
-											ref: result.transaction.items[0].item[0].id[0],
-											datereq: result.transaction.lastEventDate[0]
-										});
-
-									user.save(function(err){
-										if(err){
-											console.log(err);
-											return res.json({r:err,row:'66'});
-											
-										}else if(user){
-											return res.json({r:'video salvo para user'});
-											//console.log("Videos add com sucesso");
-										}
-									});
+								//console.log('isXml >>',user,result);
+								if(user != null)
+								{
+									var checkExists = _.where(user.videos, {ref: result.transaction.items[0].item[0].id[0]});
 									
+									if(_.isEmpty(checkExists)){
+
+										user.videos.push({
+												ref: result.transaction.items[0].item[0].id[0],
+												datereq: result.transaction.lastEventDate[0]
+											});
+
+										user.save(function(err){
+											if(err){
+												console.log(err);
+												return res.json({r:err,row:'66'});
+												
+											}else if(user){
+												return res.json({r:'video salvo para user'});
+												//console.log("Videos add com sucesso");
+											}
+										});
+										
+									}else{
+										return res.json({r:'video ja cadastrado'});
+									}
+
 								}else{
-									return res.json({r:'video ja cadastrado'});
+									return res.json({r:'user nao cadastrado '+result.transaction.reference[0]});
 								}
 
 							});
