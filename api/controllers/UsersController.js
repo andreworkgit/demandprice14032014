@@ -13,6 +13,8 @@ module.exports = {
     	var email 	= "andrework@gmail.com";
     	var code,mododev;
 
+    	var uid = null;
+
     	if(req.param('notificationCode')){
     		mododev = false;
     		code = req.param('notificationCode');
@@ -20,6 +22,7 @@ module.exports = {
     			mododev = true;
     		}
     	}else if(req.param('mododev')){
+    		uid  = req.param('uid');
     		mododev = true;
     		code  	= "D2FCE566-CCB9-4733-98BA-7D5EBCCC38FB";
     	}
@@ -41,7 +44,7 @@ module.exports = {
           if (!error && response.statusCode == 200) {
           	if(body){
 
-          		var parseString = require('xml2js').parseString;
+          		var parseString = require('xml2js').parseString,cid;
 				//var xml = "<root>Hello xml2js!</root>"
 				parseString(body, function (err, result) {
 					if(err){ return res.json({r:err}); }
@@ -50,8 +53,13 @@ module.exports = {
 				    if((mododev && result.transaction.status[0] == 1) || (!mododev && result.transaction.status[0] == 3 && req.param('notificationCode'))){
 				    	//console.log('chk >>',hostname);
 				    	Users.mongoose(function (model){
-				
-							model.findOne({ _id: result.transaction.reference[0]}, function (err,user){
+							if(uid == null){
+								cid = result.transaction.reference[0]
+							}else{
+								cid = uid;
+							}
+
+							model.findOne({ _id: cid}, function (err,user){
 								if(err){ return res.json({r:err}); }
 								
 								//console.log('isXml >>',user,result);

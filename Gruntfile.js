@@ -76,6 +76,7 @@ module.exports = function (grunt) {
     "angularjs/lib/angular/angular-route.js",
     "angularjs/lib/angular/angular-resource.js",
     "angularjs/lib/ui-bootstrap/ui-bootstrap-tpls-0.11.0.js",
+    "angularjs/lib/underscore/underscore-min.js",
     "angularjs/js/app.js",
     "angularjs/js/services.js",
     "angularjs/js/controllers.js",

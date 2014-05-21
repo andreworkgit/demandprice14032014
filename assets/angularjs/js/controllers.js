@@ -135,9 +135,15 @@ controller('Login', ['$scope','$rootScope','produtosService',function($scope,$ro
 }]).
 controller('DashBoard', ['$scope','$rootScope','produtosService',function($scope,$rootScope,produtosService){
 	$rootScope.logado('DashBoard');
-
+	$scope.solicitado = [];
 	$rootScope.$on('handleBroadcast', function(event, args) {
         $scope.user = args.user;
+        if($scope.user && $scope.user.videos.length>0){
+        	_.each($scope.user.videos,function(v,k){
+        		$scope.solicitado[v.ref] = true;
+        	});
+        	//console.log($scope.solicitado);
+        }
     });
 
 	$scope.submitForm = function(valida){

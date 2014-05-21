@@ -79,8 +79,8 @@
                         <table>
                           <tr>
                             <td>
-                              <i class="icon-facetime-video"></i> 2.4 Comando Git branch <i class="icon-signin"></i> <b>R$ 25,00 (Disponível por 3 meses)</b></td>
-                              <td>
+                              <i class="icon-facetime-video"></i> 2.4 Comando Git branch <i class="icon-signin"></i> <span ng-if="!solicitado['2400']"><b>R$ 25,00 (Disponível por 3 meses)</b></span></td>
+                              <td ng-if="!solicitado['2400']">
                                 <form method="post" target="pagseguro"  
 action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
                                                               <!-- Campos obrigatórios -->  
@@ -124,8 +124,8 @@ action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
                           <table>
                           <tr>
                             <td>
-                              <i class="icon-facetime-video"></i> 2.5 Outros comandos do Git <i class="icon-signin"></i> <b>R$ 25,00 (Disponível por 3 meses)</b></td>
-                              <td>
+                              <i class="icon-facetime-video"></i> 2.5 Outros comandos do Git <i class="icon-signin"></i> <span ng-if="!solicitado['2500']"><b>R$ 25,00 (Disponível por 3 meses)</b></span></td>
+                              <td ng-if="!solicitado['2500']">
                                 <form method="post" target="pagseguro"  
 action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
                                                               <!-- Campos obrigatórios -->  
