@@ -50,7 +50,7 @@ module.exports = {
           }
       });
 
-      var content = "Segue minha solicitação: <br><br>Tipo: "+req.param('tipo')+" <br>Estado: "+req.param('estado')+" <br>Região: "+req.param('regiao')+" <br>Valor Mínimo: "+req.param('vlmin')+" <br>Valor Máximo: "+req.param('vlmax')+" <br>Nome: "+req.param('nome')+" <br>E-mail: "+req.param('email')+" <br>Telefone: "+req.param('telefone')+" <br><br>Por favor entrar em contato, com a proposta.";
+      var content = "Segue minha solicitação: <br><br>Tipo: "+req.param('tipo')+" <br>Estado: "+req.param('estado')+" <br>Região: "+req.param('regiao')+" <br>Dormi: "+req.param('dormi')+" <br>Valor Mínimo: "+req.param('vlmin')+" <br>Valor Máximo: "+req.param('vlmax')+" <br>Nome: "+req.param('nome')+" <br>E-mail: "+req.param('email')+" <br>Telefone: "+req.param('telefone')+" <br><br>Por favor entrar em contato, com a proposta.";
 
       // setup e-mail data with unicode symbols
       var mailOptions = {
