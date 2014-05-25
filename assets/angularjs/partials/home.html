@@ -140,7 +140,7 @@
                             </div>
                             <div>
                             <div class="form-group">
-                            <strong>Valor</strong>
+                            <strong>Valor que você deseja pagar</strong>
                               <div class='text-right'>
                                 <small id='slider-example2-amount'></small>
                               </div>
@@ -158,13 +158,10 @@
                               <span for="validation_name" class="help-block has-error" ng-show="myForm.email.$error.required && myForm.email.$dirty">Obrigatório</span>
                               <span for="validation_name" class="help-block has-error" ng-show="myForm.email.$error.email && myForm.email.$dirty">Não é um e-mail válido</span>
                             </div>
-                            <div class='form-group' ng-class="{ 'has-error' : myForm.telefone.$invalid && myForm.telefone.$dirty}">
+                            <div class='form-group' >
                               <label>Telefone</label>
-                              <input class='form-control' id='telefone' name="telefone" ng-model="user.telefone" placeholder='Telefone DDD + Telefone Ex.:(11999999999)' type='text' ng-minlength="10" ng-maxlength="11" ng-pattern="/^\d*[0-9]?$/" required>
-                              <span  class="help-block has-error" ng-show="myForm.telefone.$error.required && myForm.telefone.$dirty">Obrigatório</span>
-                              <span  class="help-block has-error" ng-show="myForm.telefone.$error.minlength && myForm.telefone.$dirty">Número curto mínimo 10 dígitos com DDD</span>
-                              <span class="help-block has-error" ng-show="myForm.telefone.$error.maxlength && myForm.telefone.$dirty">Número longo máximo 11 dígitos com DDD</span>
-                              <span class="help-block has-error" ng-show="myForm.telefone.$error.pattern && myForm.telefone.$dirty">Não é número</span>
+                              <input class='form-control' id='telefone' name="telefone" ng-model="user.telefone" placeholder='Telefone DDD + Telefone Ex.:(11999999999)' type='text' >
+                              
 
                             </div>
                             

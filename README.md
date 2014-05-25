@@ -9,6 +9,9 @@ nodemon --watch app --watch libs app/server.js
 http://www.storminthecastle.com/2013/08/25/use-node-js-to-extract-data-from-the-web-for-fun-and-profit/
 https://github.com/zensh/ui-autocomplete
 
+git remote
+https://github.com/andreworkgit/demandprice14032014.git
+
 paydless.com
 paynowless
 
@@ -42,3 +45,13 @@ CONFIGURAÇÃO SMTP GOOGLE
 http://docs.helpscout.net/article/120-smtp-settings
 
 http://www.bublinastudio.com/flattybs3/
+
+<div class='form-group' ng-class="{ 'has-error' : myForm.telefone.$invalid && myForm.telefone.$dirty}">
+                              <label>Telefone</label>
+                              <input class='form-control' id='telefone' name="telefone" ng-model="user.telefone" placeholder='Telefone DDD + Telefone Ex.:(11999999999)' type='text' ng-minlength="10" ng-maxlength="11" ng-pattern="/^\d*[0-9]?$/" required>
+                              <span  class="help-block has-error" ng-show="myForm.telefone.$error.required && myForm.telefone.$dirty">Obrigatório</span>
+                              <span  class="help-block has-error" ng-show="myForm.telefone.$error.minlength && myForm.telefone.$dirty">Número curto mínimo 10 dígitos com DDD</span>
+                              <span class="help-block has-error" ng-show="myForm.telefone.$error.maxlength && myForm.telefone.$dirty">Número longo máximo 11 dígitos com DDD</span>
+                              <span class="help-block has-error" ng-show="myForm.telefone.$error.pattern && myForm.telefone.$dirty">Não é número</span>
+
+                            </div>
