@@ -269,12 +269,12 @@ controller('DashBoard', ['$scope','produtosService',function($scope,produtosServ
 					//console.log("resposta >>> ",res);
 					if(res.result){
 						bootbox.alert({
-				          message: "Obrigado <br> Logo entraremos em contato para apresentar os melhores imóveis para você",
+				          message: "Obrigado <br> Logo entraremos em contato para apresentar os melhores imóveis para você.",
 				        });
 				        $scope.user = {};
 					}else{
 						bootbox.alert({
-				          message: "Ocorreu um erro ao enviar os dados, por favor envie novamente",
+				          message: "Ocorreu um erro ao enviar os dados, por favor envie novamente.",
 				        });
 				        $scope.user.enviado = 0;
 					}

@@ -35,8 +35,6 @@ module.exports = {
       var smtpTransport = nodemailer.createTransport("SMTP",{
           service: "Gmail",
           auth: {
-              //user: "urelby@gmail.com",
-              //pass: "a331b331"
 
               user: "imoveisbr2.contato@gmail.com",
               pass: "824imo276"
