@@ -20,7 +20,7 @@
                   <div class='page-header'>
                     <h1 class='pull-left'>
                       <i class="icon-home"></i>
-                      <span>Encontre seu imóvel</span>
+                      <span>Encontre seu Imóvel</span>
                     </h1>
                     <div class='pull-right'>
                       <ul class='breadcrumb'>
@@ -49,6 +49,11 @@
                       <img class="img-responsive" src="/images/foto1.jpg" />
                     </div>
                   </div>
+                  <div class='box'>
+                    <div class='box-content'>
+                      <img class="img-responsive" src="/images/foto2.jpg" />
+                    </div>
+                  </div>
                 </div>
                 <div class='col-sm-9 col-lg-10'>
                   <div class='box'>
@@ -58,13 +63,23 @@
                           <div class='col-sm-4'>
                             <div class='lead'>
                               <i class='icon-search text-contrast'></i>
-                              Pesquisa Objetiva
+                              Busca Objetiva
                             </div>
-                            <small class='text-muted'>Preencha corretamente os campos ao lado e localizamos os imóveis de acordo com a sua necessidade.</small>
+                            <!--<small class='text'>Preencha corretamente os campos ao lado e localizamos os imóveis de acordo com a sua necessidade.</small>
+                            <br><br>-->
+                            <small>
+                              Os Melhores lançamentos imobiliários, várias opções de investimentos. Faça já seu cadastro e receba informações completas
+                            </small>
+                            <p>
+
+                            <div class='box-content'>
+                              <img class="img-responsive" src="/images/contato.jpg" />
+                            </div>
+                            </p>
                           </div>
                           <div class='col-sm-7 col-sm-offset-1'>
                             <div class="form-group">
-                              <label class="control-label" for="inputSelect">Tipo</label>
+                              <label class="control-label" for="inputSelect">Qual o tipo do ímovel?</label>
                               <div class="">
                                 <select class="form-control" id="inputSelect" ng-model="user.tipo" ng-init="user.tipo = '1|1';">
                                   <option value="1|26">Apartamento - Cobertura</option>
@@ -96,7 +111,7 @@
                               </div>
                             </div>
                             <div class="form-group">
-                              <label class="control-label" for="inputSelect">Estado</label>
+                              <label class="control-label" for="inputSelect">Em qual Estado?</label>
                               <div class="">
                                 <select class="form-control" id="inputSelect" ng-model="user.estado" ng-init="user.estado = '26';">
                                   <option value="1">AC</option>
@@ -151,7 +166,7 @@
                             </div>
                             <div>
                             <div class="form-group">
-                            <strong>Valor que você deseja pagar</strong>
+                            <strong>Valor que você deseja pagar?</strong>
                               <div class='text-right'>
                                 <small id='slider-example2-amount'></small>
                               </div>
@@ -160,11 +175,11 @@
                             </div>
                             </div>
                             <div class='form-group'>
-                              <label>Nome</label>
+                              <label>Seu nome</label>
                               <input class='form-control' id='nome' placeholder='Nome' type='text' ng-model="user.nome">
                             </div>
                             <div class='form-group' ng-class="{ 'has-error' : myForm.email.$invalid && myForm.email.$dirty}" >
-                              <label>E-mail</label>
+                              <label>Seu e-mail</label>
                               <input class='form-control' name="email" ng-model="user.email" id='email' placeholder='E-mail' type='email' required>
                               <span for="validation_name" class="help-block has-error" ng-show="myForm.email.$error.required && myForm.email.$dirty">Obrigatório</span>
                               <span for="validation_name" class="help-block has-error" ng-show="myForm.email.$error.email && myForm.email.$dirty">Não é um e-mail válido</span>
