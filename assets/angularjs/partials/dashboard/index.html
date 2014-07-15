@@ -46,7 +46,12 @@
                 <div class='content'>
                   Entenda sobre o projeto DESVENTU, metódos aplicados e objetivo.
                   <br><br>
-                  <i class='icon-facetime-video'></i> 1 Desventu Projeto, Metódo e Objetivo.
+                  <a href="https://www.youtube.com/watch?v=140TvSjeKAM" target="_blanck"><i class='icon-facetime-video'></i> 1. Sobre a Desventu</a>
+                  <br>
+                  <a href="https://www.youtube.com/watch?v=LWPKCXRgiZg" target="_blanck"><i class='icon-facetime-video'></i> 2. Método e Objetivo</a>
+                  <br>
+                  <a href="https://www.youtube.com/watch?v=IiJvrO2RCjs" target="_blanck"><i class='icon-facetime-video'></i> 3. Iniciando nosso projeto </a>
+                  
                 </div>
               </li>
               <li>
@@ -58,31 +63,33 @@
                   <small class='text-muted'>10 minutes ago</small>
                 </div>
                 <div class='content'>
-                  Vamos preparar nosso ambiente de trabalho para iniciar nosso projeto.
+                  Preparando nosso ambiente de trabalho para iniciar nosso projeto.
                   <br><br>
                     <i class='icon-caret-right'></i><i>Controle de versão GiT e GitHub</i> 
                     <table>
                       <tr>
-                        <td><i class='icon-facetime-video'></i> 2 Instalando e configurando GIT no windows</td>
+                        <td><a href="https://www.youtube.com/watch?v=Dyd7_vhQ3vY" target="_blanck"><i class='icon-facetime-video'></i> 4 Sobre o Git</a></td>
                       </tr>
                       <tr>
-                        <td><i class='icon-facetime-video'></i> 2.1 Sincronizando SSH com Github</td>
+                        <td><a href="https://www.youtube.com/watch?v=Q2FT7ebeZzE" target="_blanck"><i class='icon-facetime-video'></i> 4.1 Instalando e configurando GIT com o GitHub (Windows)</a></td>
                       </tr>
                       <tr>
-                        <td><i class='icon-facetime-video'></i> 2.2 Criar e adicionar repositório do Github</td>
+                        <td><a href="https://www.youtube.com/watch?v=gbTwXZis3o0" target="_blanck"><i class='icon-facetime-video'></i> 4.2 Comandos Git (Config,Status e Commit)</td>
                       </tr>
                       <tr>
-                        <td><i class='icon-facetime-video'></i> 2.3 Enviando e recebendo seu código do repositório github</td>
+                        <td><a href="https://www.youtube.com/watch?v=w8DqvJ1Ggdw" target="_blanck"><i class='icon-facetime-video'></i> 4.3 Comandos Git (Remote,Push e Pull)</td>
+                      </tr>
+                      <tr>
+                        <td><a href="https://www.youtube.com/watch?v=pumC4lF6EOU" target="_blanck"><i class='icon-facetime-video'></i> 4.4 Criando um outro usuário para simular comandos no git</td>
                       </tr>
                       <tr>
                         <td>
                         <table>
                           <tr>
                             <td>
-                              <i class="icon-facetime-video"></i> 2.4 Comando Git branch <i class="icon-signin"></i> <span ng-if="!solicitado['2400']"><b>R$ 25,00 (Disponível por 3 meses)</b></span></td>
+                              <a href="#" target="_blanck"><i class="icon-facetime-video"></i> 4.5 Comandos Git (Branch, Merge) e resolvendo conflitos. <i class="icon-signin"></i></a> <span ng-if="!solicitado['2400']"><b>R$ 25,00 (Disponível por 3 meses)</b></span></td>
                               <td ng-if="!solicitado['2400']">
-                                <form method="post" target="pagseguro"  
-action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
+                                <form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
                                                               <!-- Campos obrigatórios -->  
                                       <input name="receiverEmail" type="hidden" value="andrework@gmail.com">  
                                       <input name="currency" type="hidden" value="BRL">
@@ -119,28 +126,24 @@ action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
                           </table>
                         </td>
                       </tr>
-                      <tr>
+                      <!--<tr>
                         <td>
                           <table>
                           <tr>
                             <td>
                               <i class="icon-facetime-video"></i> 2.5 Outros comandos do Git <i class="icon-signin"></i> <span ng-if="!solicitado['2500']"><b>R$ 25,00 (Disponível por 3 meses)</b></span></td>
                               <td ng-if="!solicitado['2500']">
-                                <form method="post" target="pagseguro"  
-action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
-                                                              <!-- Campos obrigatórios -->  
+                                <form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
                                       <input name="receiverEmail" type="hidden" value="andrework@gmail.com">  
                                       <input name="currency" type="hidden" value="BRL">
                                       <input type="hidden" name="encoding" value="UTF-8">
                                 
-                                      <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
                                       <input name="itemId1" type="hidden" value="2500">  
                                       <input name="itemDescription1" type="hidden" value="Aluguel Vídeo-aula - 2.5 Outros comandos do Git - Disponível por 3 meses">  
                                       <input name="itemAmount1" type="hidden" value="25.00">  
                                       <input name="itemQuantity1" type="hidden" value="1">  
                                       <input name="itemWeight1" type="hidden" value="0">  
                                       
-                                      <!-- Código de referência do pagamento no seu sistema (opcional) -->  
                                       <input name="reference" type="hidden" value="{{user._id}}">
                                       <input name="senderEmail" type="hidden" value="{{user.email}}">  
                                       <input alt="Pague com PagSeguro" name="submit"  type="image"  
@@ -151,6 +154,9 @@ action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
                             </tr>
                           </table>
                         </td>
+                      </tr>-->
+                      <tr>
+                        <td><a href="#" target="_blanck"><i class='icon-facetime-video'></i> 4.6 Git Help</a></td>
                       </tr>
                       <tr>
                         <td><hr></td>
